@@ -1,0 +1,109 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Free Home Shoppe Website Template | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/Assets/client/css/slider.css" rel="stylesheet" />
+    <link href="/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Assets/client/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/client/css/bootstrap-theme.css" rel="stylesheet" />
+
+    <link href="/Assets/client/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="/Assets/client/js/jquery-1.11.3.min.js"></script>
+    <script src="/Assets/client/js/slides.min.jquery.js"></script>
+
+    <script src="/Assets/client/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="headertop_desc">
+                @{Html.RenderAction("TopMenu", "Home"); }
+                <div class="clear"></div>
+            </div>
+            <div class="header_top">
+                <div class="logo">
+                    <a href="/"><img src="/Assets/client/images/logo.png" alt="" /></a>
+                </div>
+                <div class="cart">
+                    @{Html.RenderAction("Cart", "Home"); }
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="header_bottom">
+                <div class="menu">
+                    @{Html.RenderAction("MainMenu", "Home"); }
+
+                </div>
+                <div class="search_box">
+                    <form>
+                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="header_slide ">
+                @RenderSection("slide", required: false)
+            </div>
+            <div class="an_top an_top1">
+                <div class="headertop_desc">
+                    @{Html.RenderAction("TopMenu", "Home"); }
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <div class="header_bottom" style="width:95%;float:left">
+                        <div class="menu">
+                            @{Html.RenderAction("MainMenu", "Home"); }
+
+                        </div>
+                        <div class="search_box">
+                            <form>
+                                <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="cart_top">
+                        @{Html.RenderAction("Cart", "Home"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrap">
+            <div class="section group">
+                @{Html.RenderAction("Footer", "Home"); }
+            </div>
+        </div>
+        <div class="copy_right">
+            <p>&copy; @DateTime.Now.Year home_shoppe. All rights reserved | Design by </p>
+        </div>
+    </div>
+
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    <script>
+        var header = document.querySelector('.header_bottom');
+        var origOffsetY = header.offsetTop;
+
+        var menutop = document.querySelector('.an_top');
+
+        function onScroll(e) {
+            window.scrollY >= origOffsetY ? menutop.classList.add('sticky') :
+                menutop.classList.remove('sticky');
+            window.scrollY >= origOffsetY ? menutop.classList.remove('an_top1') :
+                menutop.classList.add('an_top1');
+        }
+        document.addEventListener('scroll', onScroll);
+    </script>
+    @RenderSection("jsFooter", required: false)
+</body>
+
+</html>
+

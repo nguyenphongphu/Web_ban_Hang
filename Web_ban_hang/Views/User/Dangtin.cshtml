@@ -1,0 +1,261 @@
+﻿@model Model.EF.DangBT
+
+@{
+    ViewBag.Title = "Đăng ban tin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tinh = (List<Model.EF.Khuvuc>)ViewBag.Tinh;
+    var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+}
+
+<div class="content">
+    <div class="section group ">
+        @using (Html.BeginForm("Dangtin", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="section group " id="dangtin">
+                <div class="header_bottom_left">
+                    <div class="nav" style="padding:10px">
+                        <div class="dropdown">
+                            <button class="dropdown-toggl btn btn-danger" data-toggle=dropdown id="bt-tinh">
+                                <span id="tinh">Toàn quốc</span>
+                                <span class="caret"></span>
+                            </button>
+
+                            <ul class=" dropdown-menu btn-toolbar menu-tinh" role="toolbar" id="id-ten-t">
+                                @foreach (var item in tinh)
+                                {
+                                    <li class="btn-group" role="group"><a href="javascript:" id="City_@item.MaKV" style="padding:8px 15px;">@item.TenKV</a></li>
+                                }
+
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="categories">
+                        @{ Html.RenderAction("MenuSP", "User");}
+                    </div>
+                </div>
+                <div class="header_bottom_right">
+                    <div class="form-horizontal">
+                        <h4>Đăng tin miễn phí</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SanPham.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.SanPham.TieuDe, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SanPham.TieuDe, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SanPham.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.SanPham.Mota, htmlAttributes: new { @class = "form-control textarea-nd" })
+                                @Html.ValidationMessageFor(model => model.SanPham.Mota, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="group-form">
+                            @Html.LabelFor(model => model.SanPham.HinhAnh.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                <p class="title large">
+                                    Hình ảnh sản phẩm
+                                </p>
+                                <p class="hint">Được phép đăng tối đa 6 ảnh, mỗi ảnh không quá 4Mb</p>
+                                <div id="fileupload">
+                                    <link href="/Assets/client/css/css.css" rel="stylesheet" />
+
+                                    <ul id="uploadimage" class="form-upload-image clearfix">
+                                        <li>
+                                            <div class="upload-item working-upload-item upload ">
+                                                <label for="files" class="browse-img-upload">
+                                                    <i class="fa fa-file-image-o"></i>
+                                                    Tải ảnh lên
+                                                </label>
+                                                <input id='files' type='file' name='files' style="visibility:hidden" multiple />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SanPham.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class=" from-table">
+                                @Html.TextBoxFor(model => model.SanPham.GiaBan, htmlAttributes: new { @class = "form-control-1" })
+                                <div class="gia">
+                                    đ
+                                </div>
+                                @Html.ValidationMessageFor(model => model.SanPham.GiaBan, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Đăng tin" class="btn btn-default" />
+                                <input id="btnReview" type="button" class="btn-df btnReview" rel="nofollow" value="Xem trước" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel review-news-box" style="display: none;">
+
+                <div class="panel-header">
+                    <h2 class="panel-title text-center text-uppercase">Xem trước tin đăng</h2>
+                </div>
+
+                <div class="panel-body">
+                    <div class="preview-news">
+                        <div class="row clearfix">
+                            <div class="col-gr-60per">
+
+                                <div class="group-image-prd">
+                                </div>
+                            </div>
+                            <div class="col-gr-40per">
+                                <div class="group-info-detail-prd">
+                                    <div class="row-info-prd" style="margin-bottom: 10px">
+                                        <h1 class="title-name" id="viewTitle"></h1>
+                                        <p class="if-more">
+                                            <span> @DateTime.Now.ToString("dd/MM/yyyy")</span>
+                                            <span id="viewPlace"></span>
+                                        </p>
+                                    </div>
+                                    <div class="row-info-prd price" style="margin-bottom: 15px;">
+                                        <span id="viewPrice"></span>
+                                        <span class="unit">đ</span>
+                                    </div>
+
+                                    <div class="row-info-prd">
+                                        <div class="author">
+                                            <span class="pull-left">
+                                                <i class="icon-user"></i>
+                                                <span id="tempUser"></span>
+                                            </span>
+                                            <span class="pull-left">
+                                                <i class="icon-mobile-1"></i>
+                                                <span id="tempMobile"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="table-info-detail-prd" id="viewProperties"></ul>
+                        <div class="intro-detail-prd">
+                            <p id="viewDesc"></p>
+                        </div>
+                    </div>
+                    <!--
+                <div class="product-details">
+                    <div class="grid images_3_of_2">
+                        <div id="container">
+                            <div id="products_example">
+                                <div id="products">
+                                    <div class="slides_container">
+
+                                    </div>
+                                    <ul class="pagination">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc span_3_of_2 ">
+
+                                <div class="row-info-prd price">
+                                    <h5>Giá Bán:</h5>
+                                    <p> <span>gia đ</span></p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row-info-prd price">
+                                    <p><span> </span></p>
+                                </div>
+                            }
+                        }
+                        <div class="share-desc">
+                            <div class="share">
+                                <p>Chia sẻ :</p>
+                                <ul>
+                                    <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
+                                    <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
+                                </ul>
+                            </div>
+                            <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="wish-list">
+                            <ul>
+                                <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
+                                <li class="compare"><a href="#">So sánh</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--AA
+                    <div class="clear"></div>
+                </div>-->
+                    <div class="text-center">
+                        <input type="submit" value="Đăng tin" class="btn btn-default" />
+                        <input id="btnBackPost" type="button" class="btn-df btnReview" rel="nofollow" value="Quay lại" />
+                    </div>
+
+                </div>
+
+                <style>
+                    .review-news-box {
+                        width: 1150px !important;
+                    }
+                </style>
+
+            </div>
+
+            <script src="/assets/client/js/controller/dangtin.js"></script>
+        }
+    </div>
+
+    <style>
+        #PostError .validation-summary-errors {
+            color: #f09e29;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .form-table.regis-getNews li .form-tit {
+            width: 32%;
+        }
+
+        .form-table.regis-getNews li .form-cont {
+            width: 68%;
+        }
+    </style>
+
+   
+   
+
+
+</div>
+<script type="text/javascript">
+        //$(document).ready(function () {
+        //    $("#anh").click(function () {
+        //        var fileder = new CKFinder();
+        //        fileder.selectActionFuntion = function (fileUrl) {
+        //            $("#link").val(fileUrl)
+        //        }
+        //        fileder.popup();
+        //    });
+        // });
+
+    $("#id-ten-t>li>a").on('click', function () {
+        var val = $(this).html();
+        $("#tinh").html(val);
+    })
+</script>
+

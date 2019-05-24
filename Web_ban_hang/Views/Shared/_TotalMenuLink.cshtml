@@ -1,0 +1,245 @@
+﻿
+
+<script>
+	$(function () {
+	    // Click vao danh muc, thu gon lai va load ajax
+        $("#TotalMenuLink ul.group-category > li > a").not(".hangkhac").click(
+        function () {
+		    var id = $(this).attr("id");
+		    var datajson = $(this).attr("data-ajax");
+		    var datarel = $(this).attr("data-rel");
+		    if (datajson) {
+			    LoadAllLocationORCate(datarel, datajson);
+		    }
+		    else {
+			    SingleClick($(this));
+		    }
+		    return false;
+		});
+ 
+		//check for IE8
+		if (navigator.appVersion.indexOf("MSIE 8.") == -1) {
+			// Scrollbar cho danh muc
+			$("#TotalMenuLink .sub-category").scrollbar();
+        }
+        // check có active model thì ẩn các hãng khác
+		if ($("#TotalMenuLink #ul_ li.expand").length == 1) {
+			$("#TotalMenuLink #ul_ > li").not(".expand").hide();
+		}
+	});
+
+</script>
+
+<div id="TotalMenuLink" class="panel">
+    <h2 class="title-category">Danh mục sản phẩm</h2>
+    <ul class="group-category" id="ul_Category">
+        <li class="expand" id="liparrent_Cate1">
+            <a href="javascript:" title="Đồ điện tử" id="Cate1" data-rel="Cate" data-ajax="0|1|0|0|0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0">
+                <h3 style="font-weight: normal">Đồ điện tử</h3>
+                <i class="icon-right-open-1"></i>
+            </a>
+            <ul class="sub-category scrollbar-inner" id="submenu_Cate1">
+                <li>
+                    <a href="/ban-do-dien-tu" title="B&#225;n đồ điện tử cũ " id="Cate1">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Tất cả
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-dien-thoai" title="B&#225;n điện thoại cũ " id="Cate2">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Điện thoại
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-may-tinh-bang" title="B&#225;n m&#225;y t&#237;nh bảng cũ " id="Cate3">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            M&#225;y t&#237;nh bảng
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-sim-the" title="B&#225;n sim thẻ cũ " id="Cate4">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            SIM thẻ
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-may-doc-sach" title="B&#225;n m&#225;y đọc s&#225;ch cũ " id="Cate5">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            M&#225;y đọc s&#225;ch
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-may-tinh-ban" title="B&#225;n m&#225;y t&#237;nh b&#224;n, m&#225;y chủ cũ " id="Cate6">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            M&#225;y t&#237;nh b&#224;n, m&#225;y chủ
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-linh-kien-phu-kien-di-dong" title="B&#225;n linh kiện, phụ kiện di động cũ " id="Cate9">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Linh kiện, Phụ kiện di động
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-linh-kien-thiet-bi-ngoai-vi-may-tinh" title="B&#225;n linh kiện, thiết bị ngoại vi m&#225;y t&#237;nh cũ " id="Cate10">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Linh kiện, thiết bị ngoại vi m&#225;y t&#237;nh
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-may-anh" title="B&#225;n m&#225;y ảnh cũ " id="Cate11">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            M&#225;y ảnh
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-ong-kinh" title="B&#225;n ống k&#237;nh cũ " id="Cate12">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Ống k&#237;nh
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-thiet-bi-van-phong" title="B&#225;n thiết bị văn ph&#242;ng cũ " id="Cate13">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Thiết bị văn ph&#242;ng
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-thiet-bi-luu-tru" title="B&#225;n thiết bị lưu trữ cũ " id="Cate14">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Thiết bị lưu trữ
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-thiet-bi-choi-game" title="B&#225;n thiết bị chơi game cũ " id="Cate15">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Thiết bị chơi game
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-laptop" title="B&#225;n laptop cũ " id="Cate97">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Laptop
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-phu-kien-may-anh" title="B&#225;n phụ kiện m&#225;y ảnh cũ " id="Cate98">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Phụ kiện m&#225;y ảnh
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-may-quay" title="B&#225;n m&#225;y quay cũ " id="Cate100">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            M&#225;y quay
+
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ban-smartwatch" title="B&#225;n smartwatch cũ " id="Cate201">
+                        <i class="icon-right-open-mini"></i>
+                        <h3 style="font-weight: normal">
+                            Smartwatch
+
+                        </h3>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<div class="box-backlink">
+    <h2 class="title-category">Bạn quan tâm tới xe hơi?</h2>
+    <ul class="sub-category">
+        <li>
+            <h3>
+                <a href="https://oto.com.vn/mua-ban-xe-audi-q7" target="_blank" title="Audi Q7">
+                    <i class="icon-right-open-mini"></i>
+                    <span>Audi Q7</span>
+                </a>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a href="https://oto.com.vn/mua-ban-xe-ford-focus" target="_blank" title="Ford Focus">
+                    <i class="icon-right-open-mini"></i>
+                    <span>Ford Focus</span>
+                </a>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a href="https://oto.com.vn/mua-ban-xe-mitsubishi-attrage" target="_blank" title="Mitsubishi Attrage ">
+                    <i class="icon-right-open-mini"></i>
+                    <span>Mitsubishi Attrage </span>
+                </a>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a href="https://oto.com.vn/mua-ban-xe-suzuki-vitara" target="_blank" title="Suzuki Vitara">
+                    <i class="icon-right-open-mini"></i>
+                    <span>Suzuki Vitara</span>
+                </a>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a href="https://oto.com.vn/mua-ban-xe-toyota-highlander" target="_blank" title="Toyota Highlander">
+                    <i class="icon-right-open-mini"></i>
+                    <span>Toyota Highlander</span>
+                </a>
+            </h3>
+        </li>
+    </ul>
+</div>

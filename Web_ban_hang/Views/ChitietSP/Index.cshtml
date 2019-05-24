@@ -1,0 +1,192 @@
+﻿@model Model.EF.SanPham
+@using System.Text.RegularExpressions;
+@{
+    ViewBag.Title = "Chi Tiet San Phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var AnhCT = (List<Model.EF.HinhAnh>)ViewBag.AnhCT;
+}
+<script src="/Assets/client/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<link href="/Assets/client/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="/Assets/client/css/global.css">
+<script src="/Assets/client/js/slides.min.jquery.js"></script>
+<script>
+    $(function () {
+        $('#products').slides({
+            preload: true,
+            preloadImage: 'img/loading.gif',
+            effect: 'slide, fade',
+            crossfade: true,
+            slideSpeed: 350,
+            fadeSpeed: 500,
+            generateNextPrev: true,
+            generatePagination: false
+        });
+    });
+</script>
+<div class="content">
+    <div class="content_top">
+        <div class="back-links " style="width:50%">
+            <p>
+                <a href="/">Trang chủ</a> >> <a href="/san-pham/@Model.LoaiSanPham.TenLSP">@Model.LoaiSanPham.TenLSP</a>>>
+                <a href="/san-pham/@Model.LoaiSanPham.TenLSP/@Model.TieuDe">@Model.TenSP</a>
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        <div class="cont-desc span_1_of_2">
+            <div class="product-details">
+                <div class="grid images_3_of_2">
+                    <div id="container">
+                        <div id="products_example">
+                            <div id="products">
+                                <div class="slides_container">
+                                    @foreach (var item in AnhCT.Where(x => x.AnhFull == true).OrderBy(x => x.STTANH))
+                                    {
+
+                                        <a href="#" target="_blank"><img src="@item.Link" alt=" " /></a>
+                                    }
+                                </div>
+                                <ul class="pagination">
+                                    @foreach (var item in AnhCT.Where(x => x.AnhThumbnail == true).OrderBy(x => x.STTANH))
+                                    {
+                                        <li><a href="#"><img src="@item.Link" alt=" " /></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="desc span_3_of_2 ">
+                    <h2>@Model.TenSP </h2>
+                    <p>@Model.TieuDe</p>
+                    @{
+                        Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]*\.?[0-9]+$");
+                        if (regex.IsMatch(Model.GiaBan) == true)
+                        {
+                            <div class="row-info-prd price">
+                                <h5>Giá Bán:</h5>
+                                <p> <span>@Model.GiaBan đ</span></p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row-info-prd price">
+                                <p><span>@Model.GiaBan </span></p>
+                            </div>
+                        }
+                    }
+                    <div class="share-desc">
+                        <div class="share">
+                            <p>Chia sẻ :</p>
+                            <ul>
+                                <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
+                            </ul>
+                        </div>
+                        <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wish-list">
+                        <ul>
+                            <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
+                            <li class="compare"><a href="#">So sánh</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--AA-->
+                <div class="clear"></div>
+            </div>
+            <div class="product_desc">
+                <div id="horizontalTab">
+                    <ul class="resp-tabs-list">
+                        <li>Product Details</li>
+                        <li>product Tags</li>
+                        <li>Product Reviews</li>
+                        <div class="clear"></div>
+                    </ul>
+                    <div class="resp-tabs-container">
+                        <div class="product-desc">
+                            <p>Lorem Ipsum is simply dummy text of the <span>printing and typesetting industry</span>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <span>when an unknown printer took a galley of type and scrambled</span> it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span> It has survived not only five centuries</span>, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                        </div>
+                        <div class="product-tags">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <h4>Add Your Tags:</h4>
+                            <div class="input-box">
+                                <input type="text" value="">
+                            </div>
+                            <div class="button"><span><a href="#">Add Tags</a></span></div>
+                        </div>
+                        <div class="review">
+
+                            <h4>Lorem ipsum Review by <a href="#">Finibus Bonorum</a></h4>
+                            <ul>
+                                <li>Price :<a href="#"><img src="/Assets/client/images/price-rating.png" alt="" /></a></li>
+                                <li>Value :<a href="#"><img src="/Assets/client/images/value-rating.png" alt="" /></a></li>
+                                <li>Quality :<a href="#"><img src="/Assets/client/images/quality-rating.png" alt="" /></a></li>
+                            </ul>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <div class="your-review">
+                                <h3>How Do You Rate This Product?</h3>
+                                <p>Write Your Own Review?</p>
+                                <form>
+                                    <div>
+                                        <span><label>Nickname<span class="red">*</span></label></span>
+                                        <span><input type="text" value=""></span>
+                                    </div>
+                                    <div>
+                                        <span><label>Summary of Your Review<span class="red">*</span></label></span>
+                                        <span><input type="text" value=""></span>
+                                    </div>
+                                    <div>
+                                        <span><label>Review<span class="red">*</span></label></span>
+                                        <span><textarea> </textarea></span>
+                                    </div>
+                                    <div>
+                                        <span><input type="submit" value="SUBMIT REVIEW"></span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#horizontalTab').easyResponsiveTabs({
+                        type: 'default', //Types: default, vertical, accordion
+                        width: 'auto', //auto or any width like 600px
+                        fit: true   // 100% fit in a container
+                    });
+                });
+            </script>
+            <div class="content_bottom">
+                <div class="heading">
+                    <h3>CÁC SẢN PHẨM LIÊN QUAN</h3>
+                </div>
+                <div class="see">
+                    <p><a href="#">Tất cả sản phẩm</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="rightsidebar span_3_of_1">
+            <div class="categories">
+                @{ Html.RenderAction("MenuSanPham", "Home");}
+            </div>
+
+            <div class="subscribe">
+                <h2>Newsletters Signup</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
+                <div class="signup">
+                    <form>
+                        <input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+﻿@model List<Model.EF.DangBT>
+@using System.Text.RegularExpressions;
+@{
+    ViewBag.Title = "Sanpham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var header =ViewBag.header;
+
+}
+
+
+<div class="content">
+    <div class="content_top">
+        <div class="back-links" style="width:80%;">
+            @if (header != null)
+            {
+                <p>
+                    <a href="/">Trang chủ</a> >> <a href="/san-pham-@header ">Sản phẩm @header</a>
+                </p>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group header_slide">
+        <div class="header_bottom_left">
+            <div class="categories">
+                @{ Html.RenderAction("MenuSanPham", "Home");}
+            </div>
+        </div>
+        <div class="header_bottom_right">
+            <div class="section group ">
+                @{
+                    Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]*\.?[0-9]+$");
+                    foreach (var item in Model)
+                    {
+                        var url = "/chi-tiet/" + item.SanPham.TieuDe + "-" + item.MaSP;
+
+
+                        if (regex.IsMatch(item.SanPham.GiaBan) == true)
+                        {
+                            <div class="grid_1_of_4 images_1_of_5">
+                                <a href="@url" class="item-sp" style="text-decoration:none">
+                                    <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
+                                    <h2>@item.SanPham.TenSP</h2>
+                                    <div class="price-details">
+                                        <div class="price-number">
+                                            <span class="rupees">@item.SanPham.GiaBan đ</span>
+                                        </div>
+                                        <div class="add-cart">
+                                            <span>@item.Khuvuc.TenKV</span>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                        }
+                        else
+                        {
+                            <div class="grid_1_of_4 images_1_of_5">
+                                <a href="@url" class="item-sp" style="text-decoration:none">
+                                    <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
+                                    <h2>@item.SanPham.TenSP</h2>
+                                    <div class="price-details">
+                                        <div class="price-number">
+                                            <span class="rupees">@item.SanPham.GiaBan </span>
+                                        </div>
+                                        <div class="add-cart">
+                                            <span>@item.Khuvuc.TenKV</span>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+            <!--Phân trang-->
+            @if (ViewBag.TotalPage > 1)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = ((int)ViewBag.Page);
+
+                // Create numeric links
+                var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                var link = "/san-pham/" + header[0].Link + " -" + header[0].ID;
+                <nav class="phanT">
+                    <ul class="pagination">
+                        @if (currentPage > ViewBag.First)
+                        {
+                            <li><a href="@link?page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>
+                                <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
+                            </li>
+
+                        }
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (currentPage == i)
+                            {
+
+                                <li> <a href="@link?page=@i" class="active" title="Trang @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@link?page=@i" title="Trang @i" class="pos">@i</a></li>
+                            }
+                        }
+                        @if (currentPage < totalPage)
+                        {
+                            <li><a href="@link?page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                            <li> <a href="@link?page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+                        }
+                    </ul>
+                </nav>
+
+            }
+            else
+            {
+                <span>Không có bản ghi nào</span>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

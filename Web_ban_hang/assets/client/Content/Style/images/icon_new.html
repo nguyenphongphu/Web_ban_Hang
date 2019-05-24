@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="canonical" href="https://chodocu.com/Content/Style/images/icon_new.png" />
+    
+    <meta name="google-site-verification" content="yAxv9hRIfYMGaVJqLW_exZQsxT--TBoTMSOSa4J42q0" /> 
+    <meta property="fb:app_id" content="184179181951981">
+
+    <link href="/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link href="/Content/Style/css?v=zB1nX_tI1pQvde36l9OLBXLxO_fSXfXneJZh9b1jbc41" rel="stylesheet"/>
+
+    <!--[if IE 8]>
+    <link href="/Content/Style/iecss?v=Im-fOAlaWhgYy6r3CzAF_HvgvrYzbuSQ5A_td0KDHT01" rel="stylesheet"/>
+
+    <![endif]-->
+    <link href="/Content/Style/jqueryui?v=GiUfyJ5KJ2dNC1lviWNWl-CAtGUeEdPlNqcU-QFZ63c1" rel="stylesheet"/>
+
+
+    <script src="/Script/jquery?v=Q0M7HJkMY5KwPTQaJ1nAESIWD5lWOT-D0NqGYbcbenA1"></script>
+
+    <script src="/bundles/jqueryui?v=-8WPR6XXuM19oWC49VmFxTk62qFGpTRdCO6IL3zZU5g1"></script>
+
+    <script>
+        //GA
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-66147702-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    
+
+</head>
+<body>
+    <div class="wr_header">
+        <div id="header">
+            
+
+<script src="/Script/scroll?v=5-tSzYBCUfD-GC4Kif60sq0f74l5ryvRrhos4jT0qOU1"></script>
+
+
+<link href="/Content/Style/scroll?v=nrirdVnMtj04-0JEj45__XNg0xdB0QPDVd80ufgeUyU1" rel="stylesheet"/>
+
+
+<input type="hidden" value="" id="domainCookie" />
+
+    <input type="hidden" id="hddUserId" value="0" />
+    <div id="top-bar">
+        <div class="main clearfix">
+            <div class="user-title">
+                <span>Xin chào! mời bạn</span>
+                <span class="iframeRegister hyberlink unfixed-register">đăng ký</span>
+                <span class="iframeRegister hyberlink fixed-register">Đăng ký</span>
+                <span>hoặc</span>
+                <span onclick="openLoginBox();" class="hyberlink" id="hplLogin">đăng nhập</span>
+            </div>
+            <div class="topbar-btn-gr">
+
+                <a href="/tin-tuc" title="Tin tức chodocu.com" class="newspaper crl-0776bc">
+                    <i class="icon-newspaper"></i>
+                    Tin tức
+                </a>
+
+                <a href="javascript:openSavedProductBox()" class="saved-items" rel="nofollow">
+                    <i class="icon-download-alt"></i>
+                    <span>Tin đã lưu</span>
+                    <span id="prSaveCount"></span>
+                </a>
+                <a href="/dang-tin" class="post-news">
+                    <i class="icon-pencil-6"></i>
+                    Đăng tin miễn phí
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            var isOtherAccount = '';
+            if (location.href.indexOf("ReturnUrl") >= 0 || isOtherAccount) {
+                $(document).prop("title", "Đăng nhập - chodocu.com");
+                openLoginBox();
+            }
+
+            $("#formId").keypress(function (e) {
+                if (e.which == 13) {
+                    var defaultButtonId = $(this).attr("defaultbutton");
+                    $("#" + defaultButtonId).click();
+                    return false;
+                }
+            });
+
+        });
+    </script>
+    <div class="group-popup" id="div_login" style="display: none; z-index:9999">
+
+        <div class="modal-popup modal-medium">
+            <a class="close-modal" href="javascript:closeLoginBox();">
+                <i class="icon-cancel-7"></i>
+            </a>
+            <div class="modal-header">
+                <h2 class="modal-title">Đăng nhập</h2>
+                <div id="LoginError" style="display:none; color: #f09e29; font-size: 12px;"></div>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+<form action="/Account/Login" defaultbutton="submitButton" id="formId" method="post"><input name="__RequestVerificationToken" type="hidden" value="uOv9X1U6bGgPTRjyTM-ofDatXCljdplaMaRvz7Mlxp9Gy8nlpRQmFpm4LKTCNON2FlwZBT6EVbj5TP1UjIZEy3fN_bc1" />                        <div class="col-gr-50per form-login-left">
+                            <div class="group-form">
+                                <p class="title">Email hoặc số điện thoại</p>
+<input class="form-control valid validHtml required" data-val="true" data-val-required="Vui lòng nhập Email." id="UserName" name="UserName" req="Không được bỏ trống" type="text" value="" />                                <div class="noti-error"></div>
+                            </div>
+                            <div class="group-form">
+                                <p class="title">Mật khẩu</p>
+                                <input class="form-control valid validHtml required" data-val="true" data-val-required="Vui lòng nhập mật khẩu." id="Password" name="Password" req="Không được bỏ trống" type="password" />
+                                <div class="noti-error"></div>
+                            </div>
+                            <div class="group-form">
+                                
+                                <div class="agree-terms icon-not" id="cbRememberPage">
+                                    <i class="icon-ok green-clr"></i>
+                                    <label class="gray-clr" for="cbRememberPage">Ghi nhớ đăng nhập</label>
+                                    <input Value="false" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="hidden" value="False" />
+                                </div>
+                            </div>
+                            <div class="group-form">
+                                <input type="submit" onclick="login(); return false;" class="btn-df btn-green" value="Đăng nhập" id="submitButton">
+                            </div>
+                            <a href="javascript:;" class="iframeLostPassword" rel="nofollow">Bạn quên mật khẩu?</a>
+                        </div>
+</form>
+                    <div class="col-gr-50per form-login-right">
+                        
+<script>
+    var SocialGoogleClientId = '745549184908-fa7l76fusls3vmtrqam1mgh5t3ubs1q7.apps.googleusercontent.com';
+    var SocialStateGoogleLogin = 'XWFOBCSTPGSAF';
+    var SocialReturnUrl = '';
+</script>
+<form ReturnUrl="" action="/Account/ExternalLogin" id="loginFacebook" method="post"><input name="__RequestVerificationToken" type="hidden" value="vQCHzQKMyp0WbzLnuz8FDAiY4ur0FVs7kS4wkBUlj4cXdIlcFxzZHa4-HBaB333UHkxqB6X5NdDpAIBxuy3Vbq73N1E1" />                <div class="group-form">
+                    <p class="title">&nbsp;</p>
+                    
+                        <a href="javascript:document.getElementById('loginFacebook').submit()" class="btn-df btn-blue btn-block lgw-fb">Đăng nhập bằng Facebook</a>
+                    <input id="provider" name="provider" type="hidden" value="facebook" />
+                </div>
+                <div class="group-form">
+                    
+                        <span id="customBtn" class="btn-df btn-gray btn-block lgw-gg">Đăng nhập bằng Google +</span>
+                </div>
+        <script src="https://apis.google.com/js/api:client.js"></script>
+        <script src="/Scripts/LoginBySocial.js"></script>
+</form>
+                        <p>Bạn chưa có tài khoản? Đăng ký miễn phí <a class="disp-ib iframeRegister" href="javascript:;">tại đây</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="div_savedProduct" class="group-popup" style="display: none;">
+    
+</div>
+
+
+
+            
+<div id="top-search">
+    <div class="main">
+        <div class="row clearfix">
+            <div class="col-gr-20per">
+                    <div>
+                        <a href="/" class="head-logo" rel="nofollow">
+                            <img class="logo1" src="/Content/img/logo.png" alt="chodocu.com" />
+                                <img class="logo2" src="/Content/img/logo_neo.png" alt="chodocu.com" />
+                            
+                        </a>
+                    </div>
+            </div>
+            <div class="col-gr-80per">
+                
+<form action="/Home/BoxSearchPost/BoxHomeSearch" method="post">    <div class="input-group-search">
+        <input data-val="true" data-val-number="The field CateId must be a number." data-val-required="The CateId field is required." id="hddCateId" name="CateId" type="hidden" value="0" />
+            <div class="group-action" id="div_area">
+                <a href="javascript:" class="btn">
+                    <span id="label_area">Toàn quốc</span>
+                    <span class="caret"></span>
+                </a>
+                
+<input type="hidden" id="hddCateCityDistrictAlias" />
+<input type="hidden" id="hddTextSearch" />
+<input type="hidden" id="hddTagAlias" />
+
+    <ul class="dropdown-menu location">
+        <li><a id="City_All" href="javascript:">Toàn quốc</a></li>
+            <li><a id="City_50" href="javascript:;">TP Hồ Ch&#237; Minh</a></li>
+            <li><a id="City_26" href="javascript:;">H&#224; Nội</a></li>
+            <li><a id="City_2" href="javascript:;">B&#236;nh Dương</a></li>
+            <li><a id="City_17" href="javascript:;">Đ&#224; Nẵng</a></li>
+            <li><a id="City_28" href="javascript:;">Hải Ph&#242;ng</a></li>
+            <li><a id="City_34" href="javascript:;">Long An</a></li>
+            <li><a id="City_63" href="javascript:;">B&#224; Rịa Vũng T&#224;u</a></li>
+            <li><a id="City_1" href="javascript:;">An Giang</a></li>
+            <li><a id="City_4" href="javascript:;">Bắc Giang</a></li>
+            <li><a id="City_5" href="javascript:;">Bắc Kạn</a></li>
+            <li><a id="City_6" href="javascript:;">Bạc Li&#234;u</a></li>
+            <li><a id="City_7" href="javascript:;">Bắc Ninh</a></li>
+            <li><a id="City_10" href="javascript:;">Bến Tre</a></li>
+            <li><a id="City_3" href="javascript:;">B&#236;nh Định</a></li>
+            <li><a id="City_8" href="javascript:;">B&#236;nh Phước</a></li>
+            <li><a id="City_9" href="javascript:;">B&#236;nh Thuận  </a></li>
+            <li><a id="City_12" href="javascript:;">C&#224; Mau</a></li>
+            <li><a id="City_14" href="javascript:;">Cần Thơ</a></li>
+            <li><a id="City_11" href="javascript:;">Cao Bằng</a></li>
+            <li><a id="City_16" href="javascript:;">Đắk Lắk</a></li>
+            <li><a id="City_20" href="javascript:;">Đắk N&#244;ng</a></li>
+            <li><a id="City_15" href="javascript:;">Điện Bi&#234;n</a></li>
+            <li><a id="City_19" href="javascript:;">Đồng Nai</a></li>
+            <li><a id="City_18" href="javascript:;">Đồng Th&#225;p</a></li>
+            <li><a id="City_21" href="javascript:;">Gia Lai</a></li>
+            <li><a id="City_24" href="javascript:;">H&#224; Giang</a></li>
+            <li><a id="City_27" href="javascript:;">H&#224; Nam</a></li>
+            <li><a id="City_29" href="javascript:;">H&#224; Tĩnh</a></li>
+            <li><a id="City_23" href="javascript:;">Hải Dương</a></li>
+            <li><a id="City_25" href="javascript:;">Hậu Giang</a></li>
+            <li><a id="City_22" href="javascript:;">H&#242;a B&#236;nh</a></li>
+            <li><a id="City_30" href="javascript:;">Hưng Y&#234;n</a></li>
+            <li><a id="City_32" href="javascript:;">Kh&#225;nh H&#242;a</a></li>
+            <li><a id="City_31" href="javascript:;">Ki&#234;n Giang</a></li>
+            <li><a id="City_33" href="javascript:;">Kon Tum</a></li>
+            <li><a id="City_36" href="javascript:;">Lai Ch&#226;u</a></li>
+            <li><a id="City_37" href="javascript:;">L&#226;m Đồng</a></li>
+            <li><a id="City_38" href="javascript:;">Lạng Sơn</a></li>
+            <li><a id="City_35" href="javascript:;">L&#224;o Cai</a></li>
+            <li><a id="City_41" href="javascript:;">Nam Định</a></li>
+            <li><a id="City_39" href="javascript:;">Nghệ An</a></li>
+            <li><a id="City_40" href="javascript:;">Ninh B&#236;nh</a></li>
+            <li><a id="City_42" href="javascript:;">Ninh Thuận</a></li>
+            <li><a id="City_43" href="javascript:;">Ph&#250; Thọ</a></li>
+            <li><a id="City_44" href="javascript:;">Ph&#250; Y&#234;n</a></li>
+            <li><a id="City_45" href="javascript:;">Quảng B&#236;nh</a></li>
+            <li><a id="City_46" href="javascript:;">Quảng Nam</a></li>
+            <li><a id="City_47" href="javascript:;">Quảng Ng&#227;i</a></li>
+            <li><a id="City_48" href="javascript:;">Quảng Ninh</a></li>
+            <li><a id="City_49" href="javascript:;">Quảng Trị</a></li>
+            <li><a id="City_52" href="javascript:;">S&#243;c Trăng</a></li>
+            <li><a id="City_51" href="javascript:;">Sơn La</a></li>
+            <li><a id="City_57" href="javascript:;">T&#226;y Ninh</a></li>
+            <li><a id="City_53" href="javascript:;">Th&#225;i B&#236;nh</a></li>
+            <li><a id="City_56" href="javascript:;">Th&#225;i Nguy&#234;n</a></li>
+            <li><a id="City_55" href="javascript:;">Thanh H&#243;a</a></li>
+            <li><a id="City_59" href="javascript:;">Thừa Thi&#234;n Huế</a></li>
+            <li><a id="City_54" href="javascript:;">Tiền Giang</a></li>
+            <li><a id="City_60" href="javascript:;">Tr&#224; Vinh</a></li>
+            <li><a id="City_58" href="javascript:;">Tuy&#234;n Quang</a></li>
+            <li><a id="City_61" href="javascript:;">Vĩnh Long</a></li>
+            <li><a id="City_62" href="javascript:;">Vĩnh Ph&#250;c</a></li>
+            <li><a id="City_64" href="javascript:;">Y&#234;n B&#225;i</a></li>
+    </ul>
+
+            </div>
+        <input id="hddAreaId" name="AreaId" type="hidden" value="" />
+        <input id="CurrentUrl" name="CurrentUrl" type="hidden" value="" />
+        <div class="group-search">
+            <input autocomplete="off" class="form-control no-left-radius" id="KeywordSearch" maxlength="100" name="KeywordSearch" placeholder="Xu hướng tìm kiếm: Iphone, Ipad, Tai nghe,..." type="text" value="" />
+        </div>
+        <div class="btn-sumbit">
+            <input type="submit" class="submit" value="Tìm kiếm" id="btnHomeBoxSearch" onclick="return EncodeTextSearch();" rel="nofollow" />
+        </div>
+    </div>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    
+
+    <div id="wrapper">
+        <div class="main">
+            
+
+<div class="errow-404-box">
+    Rất tiếc, nội dung bạn tìm kiếm không tồn tại hoặc đã quá cũ.
+    <br>
+    Vui lòng trở về trang  chủ hoặc sử dụng công cụ tìm kiếm để được kết quả mong muốn.
+</div>
+
+            <div id="footerNews" class="box_content">
+                
+            </div>
+
+            <div class="box-regis-email">
+                <div class="form-regis-email">
+                    <div class="title-box">
+                        <p class="sm-tit">
+                            Cập nhật
+                            <span>Tin rao mới nhất</span>
+                        </p>
+                        <p class="lg-tit">
+                            <span>Hấp dẫn nhất</span>
+                            của chodocu.com
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="input-group-search">
+                            <div class="group-search">
+
+                                <input type="text" class="form-control nl_Text" placeholder="Nhập địa chỉ email của bạn" name="nl_text" maxlength="100" autocomplete="off"  />
+                            </div>
+                            <div class="btn-sumbit">
+                                <input id="RegisterNewsletter" type="button" class="submit nl_Submit" onclick="Newsletter()" value="Đăng ký" rel="nofollow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+<div class="folder-title">
+    <h4 class="f-normal">Liên kết nổi bật</h4>
+</div>
+
+<div class="panel-list-prd">
+    <ul class="list-bl-prd bl-4cl list-link clearfix">
+                <li><h3><a href="/ban-dien-thoai-htc-one-m7-dual" title="HTC One M7 Dual cũ ">HTC One M7 Dual cũ </a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-asus-zenfone-c" title="Asus Zenfone C cũ ">Asus Zenfone C cũ </a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-htc-one-s" title="HTC One S">HTC One S</a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-lenovo-k3" title="Lenovo K3 cũ ">Lenovo K3 cũ </a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-nokia-lumia-920" title="Nokia Lumia 920">Nokia Lumia 920</a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-blackberry-9780" title="Blackberry 9780 cũ ">Blackberry 9780 cũ </a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-nokia-112" title="Nokia 112">Nokia 112</a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-sony-xperia-c" title="Sony Xperia C cũ ">Sony Xperia C cũ </a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-nokia-2700" title="Nokia 2700">Nokia 2700</a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-sony-xperia-e1" title="Sony Xperia E1">Sony Xperia E1</a></h3></li>
+                <li><h3><a href="/ban-dien-thoai-nokia-lumia-640-xl" title="Nokia Lumia 640 XL">Nokia Lumia 640 XL</a></h3></li>
+                <li><h3><a href="/ban-may-tinh-ban-intel-celeron" title="B&#225;n m&#225;y t&#237;nh b&#224;n chip Celeron cũ ">B&#225;n m&#225;y t&#237;nh b&#224;n chip Celeron cũ </a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-nikon-af-micro-nikkor-60mm-f-2-8d" title="B&#225;n ống k&#237;nh Nikon AF Micro-Nikkor 60mm f/2.8D cũ ">B&#225;n ống k&#237;nh Nikon AF Micro-Nikkor 60mm f/2.8D cũ </a></h3></li>
+                <li><h3><a href="/ban-may-anh-canon-eos-7d" title="B&#225;n m&#225;y ảnh Canon EOS 7D">B&#225;n m&#225;y ảnh Canon EOS 7D</a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-nikon-af-s-dx-nikkor-18-55mm-f-3-5-5-6g-vr-ii" title="B&#225;n ống k&#237;nh Nikon AF-S DX Nikkor 18-55mm f/3.5-5.6G VR II">B&#225;n ống k&#237;nh Nikon AF-S DX Nikkor 18-55mm f/3.5-5.6G VR II</a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-nikon-af-s-nikkor-50mm-f-1-8g-special-edition" title="B&#225;n ống k&#237;nh Nikon AF-S Nikkor 50mm f/1.8G Special Edition">B&#225;n ống k&#237;nh Nikon AF-S Nikkor 50mm f/1.8G Special Edition</a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-four-thirds" title="B&#225;n ống k&#237;nh Four Thirds">B&#225;n ống k&#237;nh Four Thirds</a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-tonika-tokina-at-x-pro-11-16mm-f-2-8-dx-ii" title="B&#225;n ống k&#237;nh Tokina AT-X Pro 11-16mm f/2.8 DX II cũ ">B&#225;n ống k&#237;nh Tokina AT-X Pro 11-16mm f/2.8 DX II cũ </a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-fujifilm-xf-18mm-f2-r" title="B&#225;n ống k&#237;nh Fujifilm XF 18mm F2 R cũ ">B&#225;n ống k&#237;nh Fujifilm XF 18mm F2 R cũ </a></h3></li>
+                <li><h3><a href="/ban-ong-kinh-canon-ef-m-22mm-f-2-stm" title="B&#225;n ống k&#237;nh Canon EF-M 22mm f/2 STM">B&#225;n ống k&#237;nh Canon EF-M 22mm f/2 STM</a></h3></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="main">
+    <div class="foot-row row clearfix">
+        <div class="foot-col col-gr-22per">
+            <h4 class="foot-title">Bản quyền thuộc về</h4>
+            <a class="foot-logo" href="/" rel="nofollow">
+                <img src="/Content/img/logo.png" alt="chodocu.com"/>
+            </a>
+        </div>
+        <div class="foot-col col-gr-20per">
+            <h4 class="foot-title">Kết nối với chúng tôi</h4>
+            <ul class="list-social">
+                <li>
+                    <a href="https://www.facebook.com/chodocudv/" target="_blank" rel="nofollow" class="bg-fb">
+                        <i class="icon-facebook"></i>
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/u/1/104806853836798344594" target="_blank" rel="nofollow" class="bg-gg">
+                        <i class="icon-gplus"></i>
+                        Google +
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="foot-col col-gr-20per">
+            <h4 class="foot-title">Hỗ trợ</h4>
+            <div class="row">
+                <ul class="list-bl-prd bl-1cl list-link clearfix">
+                    <li><a href="/gioi-thieu" rel="nofollow" title="Giới thiệu">Về chúng tôi</a></li>
+                    <li><a href="/quy-dinh-dang-tin" rel="nofollow" title="Quy định đăng tin">Quy định đăng tin</a></li>
+                    <li><a href="/dieu-khoan-su-dung" rel="nofollow" title="Điều khoản sử dụng">Điều khoản sử dụng</a></li>
+                    <li><a href="/mua-ban-an-toan" rel="nofollow" title="Mua bán an toàn">Mua bán an toàn</a></li>
+                    <li><a href="/site-map" rel="nofollow" title="Site map">Site map</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-gr-23per">
+            <h4 class="foot-title">Liên hệ</h4>
+            <div class="row">
+                <ul class="list-bl-prd bl-1cl list-contact clearfix">
+                    <li>Email: <a href="mailto:cskh@chodocu.com" title="Gửi mail cho bộ phận hỗ trợ chodocu.com">cskh@chodocu.com</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    </div>
+    <script src="/Script/cdcjs?v=O2Awm3PCi46WALvGBNQg7NEgdmJ8T3zv8I5ROYMETNc1"></script>
+
+
+    
+
+    
+    <div id="div_messageBox">
+
+    </div>
+</body>
+</html>
