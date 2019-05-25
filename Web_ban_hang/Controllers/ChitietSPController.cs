@@ -13,7 +13,7 @@ namespace Web_ban_hang.Controllers
         public ActionResult Index(int id)
         {
             var newdao = new NewDao();
-            var Ctiet = newdao.ViewDetail(id);
+            var Ctiet = newdao.ViewBT(id);
             ViewBag.AnhCT = newdao.ListAnh(id);
             //ViewBag.SPLQ= newdao.
             return View(Ctiet);

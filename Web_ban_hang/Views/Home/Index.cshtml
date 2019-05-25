@@ -1,5 +1,4 @@
-﻿@using System.Text.RegularExpressions;
-@{
+﻿@{
 
     ViewBag.Title = "Trang Chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -91,49 +90,26 @@
         <div class="clear"></div>
     </div>
     <div class="section group">
-        @{
-            Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]*\.?[0-9]+$");
+        @{            
             foreach (var item in TinNew)
             {
                 var url = "/chi-tiet/" + item.SanPham.TieuDe + "-" + item.MaSP;
 
-                if (regex.IsMatch(item.SanPham.GiaBan) == true)
-                {
-
-                    <div class="grid_1_of_4 images_1_of_4">
-                        <a href="@url" class="item-sp" style="text-decoration:none">
-                            <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
-                            <h2>@item.SanPham.TenSP</h2>
-                            <div class="price-details">
-                                <div class="price-number">
-                                    <span class="rupees">@item.SanPham.GiaBan đ</span>
-                                </div>
-                                <div class="add-cart">
-                                    <span>@item.Khuvuc.TenKV</span>
-                                </div>
-                                <div class="clear"></div>
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@url" class="item-sp" style="text-decoration:none">
+                        <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
+                        <h2>@item.SanPham.TenSP</h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <span class="rupees">@(item.SanPham.GiaBan > 0 ? item.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span>
                             </div>
-                        </a>
-                    </div>
-                }
-                else
-                {
-                    <div class="grid_1_of_4 images_1_of_4">
-                        <a href="@url" class="item-sp" style="text-decoration:none">
-                            <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
-                            <h2>@item.SanPham.TenSP</h2>
-                            <div class="price-details">
-                                <div class="price-number">
-                                    <span class="rupees">@item.SanPham.GiaBan </span>
-                                </div>
-                                <div class="add-cart">
-                                    <span>@item.Khuvuc.TenKV</span>
-                                </div>
-                                <div class="clear"></div>
+                            <div class="add-cart">
+                                <span>@item.Khuvuc.TenKV</span>
                             </div>
-                        </a>
-                    </div>
-                }
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+                </div>
 
             }
         }
@@ -149,46 +125,27 @@
         <div class="clear"></div>
     </div>
     <div class="section group">
-        @{            
+        @{
             foreach (var item in HotSP)
             {
                 var url = "/chi-tiet/" + item.SanPham.TieuDe + "-" + item.MaSP;
-                if (regex.IsMatch(item.SanPham.GiaBan) == true)
-                {
-                    <div class="grid_1_of_4 images_1_of_4">
-                        <a href="@url" class="item-sp" style="text-decoration:none">
-                            <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
-                            <h2>@item.SanPham.TenSP</h2>
-                            <div class="price-details">
-                                <div class="price-number">
-                                    <span class="rupees">@item.SanPham.GiaBan đ</span>
-                                </div>
-                                <div class="add-cart">
-                                    <span>@item.Khuvuc.TenKV</span>
-                                </div>
-                                <div class="clear"></div>
+
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@url" class="item-sp" style="text-decoration:none">
+                        <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
+                        <h2>@item.SanPham.TenSP</h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <span class="rupees">@(item.SanPham.GiaBan > 0 ? item.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span>
                             </div>
-                        </a>
-                    </div>
-                }
-                else
-                {
-                    <div class="grid_1_of_4 images_1_of_4">
-                        <a href="@url" class="item-sp" style="text-decoration:none">
-                            <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
-                            <h2>@item.SanPham.TenSP</h2>
-                            <div class="price-details">
-                                <div class="price-number">
-                                    <span class="rupees">@item.SanPham.GiaBan </span>
-                                </div>
-                                <div class="add-cart">
-                                    <span>@item.Khuvuc.TenKV</span>
-                                </div>
-                                <div class="clear"></div>
+                            <div class="add-cart">
+                                <span>@item.Khuvuc.TenKV</span>
                             </div>
-                        </a>
-                    </div>
-                }
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+                </div>
+
             }
         }
         <ul class="homeproduct "></ul>

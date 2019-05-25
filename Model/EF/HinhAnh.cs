@@ -23,6 +23,7 @@
         [StringLength(100)]
         [Display(Name = "Hình ảnh:")]
         public string Link { get; set; }
+      
 
         public bool? AnhFull { get; set; }
 

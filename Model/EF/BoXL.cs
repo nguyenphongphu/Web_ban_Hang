@@ -18,7 +18,7 @@ namespace Model.EF
         [Key]
         public int ID_BXL { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string Ten_BXL { get; set; }
 
         public int? MaLSP { get; set; }

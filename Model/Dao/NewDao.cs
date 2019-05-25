@@ -46,10 +46,10 @@ namespace Model.Dao
         {
             return db.SanPhams.Find(id);
         }
-        //public DangBT ViewBT(int id)
-        //{         
-        //    return db.DangBTs.Where(x=>x.MaSP==id).Fin;
-        //}
+        public List<DangBT> ViewBT(int id)
+        {
+            return db.DangBTs.Where(x => x.MaSP == id).ToList();
+        }
         public long Tong()
         {
             var tong = db.SanPhams.LongCount();

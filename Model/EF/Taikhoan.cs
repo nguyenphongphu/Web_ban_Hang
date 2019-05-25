@@ -13,6 +13,7 @@
         public Taikhoan()
         {
             DangBTs = new HashSet<DangBT>();
+            GioHangs = new HashSet<GioHang>();
         }
 
         [Key]
@@ -63,5 +64,8 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DangBT> DangBTs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GioHang> GioHangs { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace Model.EF
         public Khuvuc()
         {
             DangBTs = new HashSet<DangBT>();
+            GioHangs = new HashSet<GioHang>();
         }
 
         [Key]
@@ -26,5 +27,8 @@ namespace Model.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DangBT> DangBTs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GioHang> GioHangs { get; set; }
     }
 }

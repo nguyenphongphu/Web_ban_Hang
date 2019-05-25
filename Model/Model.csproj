@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\GioHangDao.cs" />
     <Compile Include="Dao\KhuvucDao.cs" />
     <Compile Include="Dao\MenuDao.cs" />
     <Compile Include="Dao\NewDao.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="EF\DangBT.cs" />
     <Compile Include="EF\DoiSX.cs" />
     <Compile Include="EF\DoPhangia.cs" />
+    <Compile Include="EF\GioHang.cs" />
     <Compile Include="EF\Hang.cs" />
     <Compile Include="EF\HeDieuHanh.cs" />
     <Compile Include="EF\HinhAnh.cs" />

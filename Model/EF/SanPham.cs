@@ -13,6 +13,7 @@
         public SanPham()
         {
             DangBTs = new HashSet<DangBT>();
+            GioHangs = new HashSet<GioHang>();
             Slides = new HashSet<Slide>();
         }
 
@@ -30,9 +31,9 @@
         [Display(Name = "Mô Tả:")]
         public string Mota { get; set; }
 
-        [StringLength(20)]
+        
         [Display(Name = "Giá Bán:")]
-        public string GiaBan { get; set; }
+        public decimal? GiaBan { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Hình Ảnh:")]
@@ -111,6 +112,9 @@
         public virtual DoiSX DoiSX { get; set; }
 
         public virtual DoPhangia DoPhangia { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GioHang> GioHangs { get; set; }
 
         public virtual Hang Hang { get; set; }
 

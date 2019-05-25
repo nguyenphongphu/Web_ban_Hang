@@ -1,5 +1,4 @@
-﻿@model Model.EF.SanPham
-@using System.Text.RegularExpressions;
+﻿@model List<Model.EF.DangBT>
 @{
     ViewBag.Title = "Chi Tiet San Phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,8 +26,8 @@
     <div class="content_top">
         <div class="back-links " style="width:50%">
             <p>
-                <a href="/">Trang chủ</a> >> <a href="/san-pham/@Model.LoaiSanPham.TenLSP">@Model.LoaiSanPham.TenLSP</a>>>
-                <a href="/san-pham/@Model.LoaiSanPham.TenLSP/@Model.TieuDe">@Model.TenSP</a>
+                <a href="/">Trang chủ</a> >> <a href="/san-pham/@Model[0].SanPham.LoaiSanPham.TenLSP">@Model[0].SanPham.LoaiSanPham.TenLSP</a>>>
+                <a href="/san-pham/@Model[0].SanPham.LoaiSanPham.TenLSP/@Model[0].SanPham.TieuDe">@Model[0].SanPham.TenSP</a>
             </p>
         </div>
         <div class="clear"></div>
@@ -58,23 +57,14 @@
                     </div>
                 </div>
                 <div class="desc span_3_of_2 ">
-                    <h2>@Model.TenSP </h2>
-                    <p>@Model.TieuDe</p>
+                    <h2>@Model[0].SanPham.TenSP </h2>
+                    <div><p>@Model[0].Taikhoan.HovaTen</p>@Model[0].Taikhoan.Phone</div>
                     @{
-                        Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]|[-+]?[0-9]*\.?[0-9]*\.?[0-9]*\.?[0-9]+$");
-                        if (regex.IsMatch(Model.GiaBan) == true)
-                        {
-                            <div class="row-info-prd price">
-                                <h5>Giá Bán:</h5>
-                                <p> <span>@Model.GiaBan đ</span></p>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="row-info-prd price">
-                                <p><span>@Model.GiaBan </span></p>
-                            </div>
-                        }
+                        <div class="row-info-prd price">
+                            <h5>Giá Bán:</h5>
+                            <p> <span>@(Model[0].SanPham.GiaBan > 0 ? Model[0].SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></p>
+                        </div>
+                       
                     }
                     <div class="share-desc">
                         <div class="share">

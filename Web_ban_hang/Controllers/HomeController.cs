@@ -47,7 +47,7 @@ namespace Web_ban_hang.Controllers
                 list = (List<CartItem>)cart;
             }
 
-            return PartialView();
+            return PartialView(list);
         }
         [ChildActionOnly]
         public ActionResult Footer()

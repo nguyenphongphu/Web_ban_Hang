@@ -17,10 +17,9 @@ namespace Model.EF
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IDHang { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string TenHang { get; set; }
 
         public int? MaLSP { get; set; }

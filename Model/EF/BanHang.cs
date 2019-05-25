@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class BanHang : DbContext
     {
         public BanHang()
-            : base("name=BanHang")
+            : base("name=BanHang1")
         {
         }
 
@@ -23,6 +23,7 @@ namespace Model.EF
         public virtual DbSet<DangBT> DangBTs { get; set; }
         public virtual DbSet<DoiSX> DoiSXes { get; set; }
         public virtual DbSet<DoPhangia> DoPhangias { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<Hang> Hangs { get; set; }
         public virtual DbSet<HeDieuHanh> HeDieuHanhs { get; set; }
         public virtual DbSet<HinhAnh> HinhAnhs { get; set; }
@@ -49,18 +50,14 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BoXL>()
-                .Property(e => e.Ten_BXL)
-                .IsFixedLength();
-
             modelBuilder.Entity<ChucVu>()
                 .HasMany(e => e.Taikhoans)
                 .WithRequired(e => e.ChucVu)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Hang>()
-                .Property(e => e.TenHang)
-                .IsFixedLength();
+            modelBuilder.Entity<GioHang>()
+                .Property(e => e.Gia)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<HeDieuHanh>()
                 .Property(e => e.Ten_HDH)
@@ -77,7 +74,7 @@ namespace Model.EF
 
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaBan)
-                .IsFixedLength();
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<SanPham>()
                 .HasMany(e => e.DangBTs)
