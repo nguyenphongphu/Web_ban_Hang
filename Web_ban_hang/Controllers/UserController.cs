@@ -239,21 +239,17 @@ namespace Web_ban_hang.Controllers
         {
             try
             {
-                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
                 if (file != null)
                 {
-                    if (!System.IO.Directory.Exists("~/ assets / client / images / img / " + session.UserName))
-                    {
-                        System.IO.Directory.CreateDirectory(Server.MapPath("~/assets/client/images/img/" + session.UserName));
-                    }
+
                     int fileSize = file.ContentLength;
                     string fileName = file.FileName;
                     string mimeType = file.ContentType;
                     System.IO.Stream fileContent = file.InputStream;
                     var date = DateTime.Now.ToString("dd-MM-yyyy");
-                    file.SaveAs(Server.MapPath("~/assets/client/images/img/" + session.UserName + "/") + date + "-" + fileName);
+                    file.SaveAs(Server.MapPath("~/assets/client/images/img/" ) + date + "-" + fileName);
 
-                    return "/assets/client/images/img/" + session.UserName + "/" + date + "-" + fileName;
+                    return "/assets/client/images/img/" + date + "-" + fileName;
                 }
                 else
                 {
