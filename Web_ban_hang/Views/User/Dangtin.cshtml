@@ -65,8 +65,11 @@
                                 <p class="hint">Được phép đăng tối đa 6 ảnh, mỗi ảnh không quá 4Mb</p>
                                 <div id="fileupload">
                                     <link href="/Assets/client/css/css.css" rel="stylesheet" />
-
+                                    <script src="/assets/client/js/controller/dangtin.js"></script>
                                     <ul id="uploadimage" class="form-upload-image clearfix">
+                                        <input id="InputUpload" name="InputUpload" type="hidden" value="" />
+                                    </ul>
+                                    @*<ul id="uploadimage" class="form-upload-image clearfix">
                                         <li>
                                             <div class="upload-item working-upload-item upload ">
                                                 <label for="files" class="browse-img-upload">
@@ -76,7 +79,14 @@
                                                 <input id='files' type='file' name='files' style="visibility:hidden" multiple />
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul>*@
+                                    <script>
+                                        $("#uploadimage").upload({                                            
+                                            target: "InputUpload",
+                                            maxFiles: 6 
+                                        });
+                                    </script>
+
                                 </div>
                             </div>
                         </div>
@@ -217,7 +227,7 @@
 
             </div>
 
-            <script src="/assets/client/js/controller/dangtin.js"></script>
+            
         }
     </div>
 
@@ -256,6 +266,14 @@
     $("#id-ten-t>li>a").on('click', function () {
         var val = $(this).html();
         $("#tinh").html(val);
+    })
+    $("#btnBackPost").on('click', function () {
+        $(".review-news-box").css("display", "none");
+        $("#dangtin").removeAttr('style');
+    })
+    $("#btnReview").on('click', function () {
+        $("#dangtin").css("display", "none");
+        $(".review-news-box").removeAttr('style');
     })
 </script>
 
