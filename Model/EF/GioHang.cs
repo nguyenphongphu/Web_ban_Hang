@@ -21,7 +21,7 @@ namespace Model.EF
 
         public decimal? Gia { get; set; }
 
-        public int? soluong { get; set; }
+        public int soluong { get; set; }
 
         public int? MaKV { get; set; }
 

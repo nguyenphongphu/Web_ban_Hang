@@ -49,10 +49,6 @@ namespace Web_ban_hang.Controllers
             Session[CommonConstants.USER_SESSION] = null;
             return Redirect("/");
         }
-        public ActionResult GioHang()
-        {
-            return View();
-        }
 
 
         [HttpPost]

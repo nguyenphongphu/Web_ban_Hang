@@ -87,7 +87,7 @@ namespace Web_ban_hang
             routes.MapRoute(
                 name: "gio hang",
                 url: "gio-hang",
-                defaults: new { controller = "User", action = "GioHang", id = UrlParameter.Optional },
+                defaults: new { controller = "GioHang", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Web_ban_hang.Controllers" }
             );
 

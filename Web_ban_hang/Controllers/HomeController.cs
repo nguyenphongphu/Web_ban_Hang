@@ -42,6 +42,18 @@ namespace Web_ban_hang.Controllers
         {
             var cart = Session[CommonConstants.CartSession];
             var list = new List<CartItem>();
+            var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+            if (user != null)
+            {
+                var cartserver = new GioHangDao().Listall(user.UserName);
+                foreach (var item in cartserver)
+                {
+                    var cartiem = new CartItem();
+                    cartiem.sanpham = item.SanPham;
+                    cartiem.Quantity = item.soluong;
+                    list.Add(cartiem);
+                }
+            }            
             if (cart != null)
             {
                 list = (List<CartItem>)cart;

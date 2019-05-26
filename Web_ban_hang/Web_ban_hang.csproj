@@ -3160,7 +3160,6 @@
     <Content Include="Views\SanPham\Sanpham_hang.cshtml" />
     <Content Include="Views\SanPham\Sanpham_ALL.cshtml" />
     <Content Include="Views\SanPham\Sanpham.cshtml" />
-    <Content Include="Views\User\GioHang.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

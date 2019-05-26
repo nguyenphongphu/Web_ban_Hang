@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class BanHang : DbContext
     {
         public BanHang()
-            : base("name=BanHang1")
+            : base("name=BanHang")
         {
         }
 
