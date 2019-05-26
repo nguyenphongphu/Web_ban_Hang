@@ -2929,6 +2929,7 @@
     <Content Include="assets\client\js\script.js" />
     <Content Include="assets\client\js\slides.min.jquery.js" />
     <Content Include="assets\client\js\startstop-slider.js" />
+    <Content Include="assets\client\template\neworder.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3161,6 +3162,8 @@
     <Content Include="Views\SanPham\Sanpham_ALL.cshtml" />
     <Content Include="Views\SanPham\Sanpham.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\GioHang\Payment.cshtml" />
+    <Content Include="Views\GioHang\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

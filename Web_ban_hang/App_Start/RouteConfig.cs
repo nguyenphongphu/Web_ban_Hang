@@ -97,7 +97,24 @@ namespace Web_ban_hang
                 defaults: new { controller = "User", action = "Dangtin", id = UrlParameter.Optional },
                 namespaces: new[] { "Web_ban_hang.Controllers" }
             );
-
+                  routes.MapRoute(
+                 name: "Payment",
+                 url: "thanh-toan",
+                 defaults: new { controller = "GioHang", action = "Payment", id = UrlParameter.Optional },
+                 namespaces: new[] { "Web_ban_hang.Controllers" }
+             );
+                    routes.MapRoute(
+                    name: "Add Cart",
+                    url: "them-gio-hang",
+                    defaults: new { controller = "GioHang", action = "AddItem", id = UrlParameter.Optional },
+                    namespaces: new[] { "Web_ban_hang.Controllers" }
+                );
+                    routes.MapRoute(
+                  name: "Payment Success",
+                  url: "hoan-thanh",
+                  defaults: new { controller = "GioHang", action = "Success", id = UrlParameter.Optional },
+                  namespaces: new[] { "Web_ban_hang.Controllers" }
+              );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

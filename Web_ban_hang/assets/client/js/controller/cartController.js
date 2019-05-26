@@ -22,7 +22,7 @@
             });
 
             $.ajax({
-                url: '/Cart/Update',
+                url: '/GioHang/Update',
                 data: { cartModel: JSON.stringify(cartList) },
                 dataType: 'json',
                 type: 'POST',
@@ -38,7 +38,7 @@
 
 
             $.ajax({
-                url: '/Cart/DeleteAll',
+                url: '/GioHang/DeleteAll',
                 dataType: 'json',
                 type: 'POST',
                 success: function (res) {
@@ -53,7 +53,7 @@
             e.preventDefault();
             $.ajax({
                 data: { id: $(this).data('id') },
-                url: '/Cart/Delete',
+                url: '/GioHang/Delete',
                 dataType: 'json',
                 type: 'POST',
                 success: function (res) {
@@ -66,3 +66,21 @@
     }
 }
 cart.init();
+$('input[type="checkbox"]').change(function () {
+    var checkbox = $(this);
+    var state = checkbox.prop('checked');
+    var tr = checkbox.parents('tr').attr('id');
+    if (state) {       
+        $.ajax({
+            data: { id: tr },
+            url: '/GioHang/Check',
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true) {
+                    alert(tr);
+                }
+            }
+        })
+    } 
+})

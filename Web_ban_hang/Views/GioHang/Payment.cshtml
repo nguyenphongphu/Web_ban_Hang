@@ -1,11 +1,7 @@
 ﻿@model List<Web_ban_hang.Models.CartItem>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thanh toán";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@section jsFooter{
-    <script src="/assets/client/js/controller/cartController.js"></script>
 }
 <div class="content">
     <div class="section group">
@@ -13,8 +9,7 @@
         {
             <table class="table">
                 <thead>
-                    <tr>
-                        <td>Chọn</td>
+                    <tr>                        
                         <td>STT</td>
                         <td>Tên SP</td>
                         <td>Ảnh SP</td>
@@ -27,9 +22,8 @@
                 <tbody>
                     @for (int i = 0; i < Model.Count; i++)
                     {
-                        <tr id="@Model[i].sanpham.MaSP">
-                            <td><input type="checkbox" /></td>
-                            <td>@(i+1)</td>
+                        <tr>
+                            <td>@(i + 1)</td>
                             <td>@Model[i].sanpham.TenSP</td>
                             <td><img src="@Model[i].sanpham.AnhTDe" width="100" /></td>
                             <td><input type="text" class="txtQuantity" data-id="@Model[i].sanpham.MaSP" value="@Model[i].Quantity" /></td>
@@ -38,18 +32,38 @@
                             <td><a href="#" data-id="@Model[i].sanpham.MaSP" class="btn-delete">Xoá</a></td>
                         </tr>
                     }
-                    
                 </tbody>
             </table>
+        }
+    </div>
+    <div class="section group">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Payment", "GioHang", FormMethod.Post))
+            {
+                var user=(Model.EF.Taikhoan)ViewBag.user;
+                if (user != null)
+                {
+                    <div class="form-group">
+                        <label>Người nhận</label>
+                        <input name="shipName" class="form-control" value="@user.HovaTen"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        <input name="mobile" class="form-control" value="@user.Phone"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input name="address" class="form-control" value="@user.DiaChi"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" class="form-control" value="@user.Email"/>
+                    </div>
+                    <button type="submit" class="btn">Gửi đơn hàng</button>
+                }
+                
+            }
+        </div>
 
-            <button id="btnContinue" class="btn">Tiếp tục mua hàng</button>
-            <button id="btnUpdate" class="btn">Cập nhật giỏ hàng</button>
-            <button id="btnDeleteAll" class="btn">Xoá giỏ hàng</button>
-            <button id="btnPayment" class="btn">Thanh toán</button>
-        }
-        else
-        {
-            <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
-        }
     </div>
 </div>

@@ -42,21 +42,42 @@ namespace Web_ban_hang.Controllers
         {
             var cart = Session[CommonConstants.CartSession];
             var list = new List<CartItem>();
-            var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
-            if (user != null)
-            {
-                var cartserver = new GioHangDao().Listall(user.UserName);
-                foreach (var item in cartserver)
-                {
-                    var cartiem = new CartItem();
-                    cartiem.sanpham = item.SanPham;
-                    cartiem.Quantity = item.soluong;
-                    list.Add(cartiem);
-                }
-            }            
+            var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];           
             if (cart != null)
             {
-                list = (List<CartItem>)cart;
+                list = (List<CartItem>)cart;                
+            }
+            else
+            {
+                if (user != null)
+                {
+                    var cartserver = new GioHangDao().Listall(user.UserName);
+                    if (cartserver.Count > 0)
+                    {
+                        var danhsach = (List<CartItem>)Session[CommonConstants.CartSession];
+                        foreach (var item in cartserver)
+                        {
+                            var cartiem = new CartItem();
+                            cartiem.sanpham = item.SanPham;
+                            cartiem.Quantity = item.soluong;
+                            if (danhsach!=null)
+                            {
+                                foreach (var item1 in danhsach)
+                                {
+                                    if (item1.sanpham.MaSP != item.MaSP)
+                                    {
+                                        list.Add(cartiem);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                list.Add(cartiem);
+                            }
+                        }
+                        Session[CommonConstants.CartSession] = list;
+                    }
+                }
             }
 
             return PartialView(list);

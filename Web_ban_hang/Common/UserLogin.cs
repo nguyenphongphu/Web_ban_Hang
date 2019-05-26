@@ -8,7 +8,7 @@ namespace Web_ban_hang
     [Serializable]
     public class UserLogin
     {
-        public long UserID { set; get; }
+        public int UserID { set; get; }
         public string UserName { set; get; }
         public string ChucVu { set; get; }
     }

@@ -1,7 +1,9 @@
-﻿using Model.Dao;
+﻿using Common;
+using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,23 +20,44 @@ namespace Web_ban_hang.Controllers
         {
             var cart = Session[CartSession];
             var list = new List<CartItem>();
-            var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
-            if (user != null)
-            {
-                var cartserver = new GioHangDao().Listall(user.UserName);
-                foreach (var item in cartserver)
-                {
-                    var cartiem = new CartItem();
-                    cartiem.sanpham = item.SanPham;
-                    cartiem.Quantity = item.soluong;
-                    list.Add(cartiem);
-                }
-            }
+            var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];            
             if (cart != null)
             {                
-                list = (List<CartItem>)cart;
+                list = (List<CartItem>)cart;               
             }
-            
+            else
+            {
+                if (user != null)
+                {
+                    var cartserver = new GioHangDao().Listall(user.UserName);
+                    if (cartserver.Count > 0)
+                    {                        
+                        var danhsach = (List<CartItem>)Session[CartSession];
+                        foreach (var item in cartserver)
+                        {
+                            var cartiem = new CartItem();                            
+                            cartiem.sanpham = item.SanPham;
+                            cartiem.Quantity = item.soluong;
+                            cartiem.check = false;
+                            if (danhsach!=null)
+                            {
+                                foreach (var item1 in danhsach)
+                                {
+                                    if (item1.sanpham.MaSP != item.MaSP)
+                                    {
+                                        list.Add(cartiem);
+                                    }                                  
+                                }
+                            }
+                            else
+                            {
+                                list.Add(cartiem);
+                            }                           
+                        }                        
+                        Session[CartSession] = list;                       
+                    }
+                }
+            }            
             return View(list);
         }
 
@@ -100,6 +123,7 @@ namespace Web_ban_hang.Controllers
                     var item = new CartItem();
                     item.sanpham = product;
                     item.Quantity = quantity;
+                    item.check = false;
                     list.Add(item);
                 }
                 //Gán vào session
@@ -111,6 +135,7 @@ namespace Web_ban_hang.Controllers
                 var item = new CartItem();
                 item.sanpham = product;
                 item.Quantity = quantity;
+                item.check = false;
                 var list = new List<CartItem>();
                 list.Add(item);
                 //Gán vào session
@@ -123,63 +148,100 @@ namespace Web_ban_hang.Controllers
         {
             var cart = Session[CartSession];
             var list = new List<CartItem>();
+            var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+            ViewBag.user = new UserDao().GetById(session.UserName);
             if (cart != null)
             {
-                list = (List<CartItem>)cart;
+                foreach (var item in (List<CartItem>)cart)
+                {
+                    if (item.check)
+                    {
+                        var item1 = new CartItem();
+                        item1.sanpham = item.sanpham;
+                        item1.Quantity =item.Quantity;
+                        item1.check = true;
+                        list.Add(item1);
+                    }
+                }
+                
+
             }
             return View(list);
         }
 
-        //[HttpPost]
-        //public ActionResult Payment(string shipName, string mobile, string address, string email)
-        //{
-        //    var order = new GioHang();
-        //    order.CreatedDate = DateTime.Now;
-        //    order.ShipAddress = address;
-        //    order.ShipMobile = mobile;
-        //    order.ShipName = shipName;
-        //    order.ShipEmail = email;
+        [HttpPost]
+        public ActionResult Payment(string shipName, string mobile, string address, string email)
+        {
+            var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+            try
+            {                
+                var cart = (List<CartItem>)Session[CartSession];                              
+                decimal total = 0;
+                foreach (var item in cart)
+                {
+                    if (item.check)
+                    {
+                        var gioHang = new GioHang();
+                        gioHang.MaSP = item.sanpham.MaSP;
+                        gioHang.date = DateTime.Now;
+                        gioHang.Gia = item.sanpham.GiaBan;
+                        gioHang.soluong = item.Quantity;
+                        var chek = new NewDao().ViewDetail(item.sanpham.MaSP);
+                        if (chek != null)
+                        {
+                            new GioHangDao().update(chek.MaSP);
+                        }
+                        else
+                        {
+                            new GioHangDao().insert(gioHang);
+                        }
+                        total += (item.sanpham.GiaBan.GetValueOrDefault(0) * item.Quantity);
+                    }
 
-        //    try
-        //    {
-        //        var id = new OrderDao().Insert(order);
-        //        var cart = (List<CartItem>)Session[CartSession];
-        //        var detailDao = new Model.Dao.OrderDetailDao();
-        //        decimal total = 0;
-        //        foreach (var item in cart)
-        //        {
-        //            var orderDetail = new OrderDetail();
-        //            orderDetail.ProductID = item.Product.ID;
-        //            orderDetail.OrderID = id;
-        //            orderDetail.Price = item.Product.Price;
-        //            orderDetail.Quantity = item.Quantity;
-        //            detailDao.Insert(orderDetail);
+                }
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
 
-        //            total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
-        //        }
-        //        string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
+                content = content.Replace("{{CustomerName}}", shipName);
+                content = content.Replace("{{Phone}}", mobile);
+                content = content.Replace("{{Email}}", email);
+                content = content.Replace("{{Address}}", address);
+                content = content.Replace("{{Total}}", total.ToString("N0"));
+                var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
 
-        //        content = content.Replace("{{CustomerName}}", shipName);
-        //        content = content.Replace("{{Phone}}", mobile);
-        //        content = content.Replace("{{Email}}", email);
-        //        content = content.Replace("{{Address}}", address);
-        //        content = content.Replace("{{Total}}", total.ToString("N0"));
-        //        var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
-
-        //        new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
-        //        new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //ghi log
-        //        return Redirect("/loi-thanh-toan");
-        //    }
-        //    return Redirect("/hoan-thanh");
-        //}
+                new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);
+            }
+            catch (Exception ex)
+            {
+                //ghi log
+                return Redirect("/loi-thanh-toan");
+            }
+            return Redirect("/hoan-thanh");
+        }
 
         public ActionResult Success()
         {
             return View();
+        }
+        public bool Check(int id)
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+                foreach (var item in list)
+                {
+                    if (item.sanpham.MaSP == id)
+                    {
+                        item.check = true;
+                    }                   
+                }
+                Session[CartSession] = list;
+                return true;
+            }
+            return false;
+            
         }
     }
 }

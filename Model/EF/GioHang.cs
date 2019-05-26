@@ -25,6 +25,10 @@ namespace Model.EF
 
         public int? MaKV { get; set; }
 
+        public bool thanhtoan { get; set; }
+
+        public bool thanhcong { get; set; }
+
         public virtual Khuvuc Khuvuc { get; set; }
 
         public virtual SanPham SanPham { get; set; }

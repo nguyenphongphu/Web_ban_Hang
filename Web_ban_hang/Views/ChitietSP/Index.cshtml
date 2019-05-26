@@ -66,17 +66,28 @@
                         </div>
                        
                     }
-                    <div class="share-desc">
-                        <div class="share">
-                            <p>Chia sẻ :</p>
-                            <ul>
-                                <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
-                                <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
-                            </ul>
+                        <div class="share-desc">
+                            <div class="share">
+                                <p>Chia sẻ :</p>
+                                <ul>
+                                    <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
+                                    <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
+                                </ul>
+                            </div>
+                            @{
+                                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+                                if (session != null)
+                                {
+                                    <div class="button"><span><a href="/them-gio-hang?productId=@Model[0].SanPham.MaSP&quantity=1">Thêm vào giỏ</a></span></div>
+                                }
+                                else
+                                {
+                                    <div class="button"><span><a href="/dang-nhap">Thêm vào giỏ</a></span></div>
+                                }
+                            }
+                            
+                            <div class="clear"></div>
                         </div>
-                        <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
-                        <div class="clear"></div>
-                    </div>
                     <div class="wish-list">
                         <ul>
                             <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
