@@ -15,8 +15,8 @@
             $.each(listProduct, function (i, item) {
                 cartList.push({
                     Quantity: $(item).val(),
-                    Product: {
-                        ID: $(item).data('id')
+                    sanpham: {
+                        MaSP: $(item).data('id')
                     }
                 });
             });

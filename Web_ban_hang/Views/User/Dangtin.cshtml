@@ -9,7 +9,7 @@
 
 <div class="content">
     <div class="section group ">
-        @using (Html.BeginForm("Dangtin", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Dangtin", "User", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <div class="section group " id="dangtin">
@@ -18,6 +18,7 @@
                         <div class="dropdown">
                             <button class="dropdown-toggl btn btn-danger" data-toggle=dropdown id="bt-tinh">
                                 <span id="tinh">Toàn quốc</span>
+                                @Html.TextBoxFor(model=>model.MaKV, htmlAttributes: new { @style = "visibility:visible" })
                                 <span class="caret"></span>
                             </button>
 
@@ -68,18 +69,7 @@
                                     <script src="/assets/client/js/controller/dangtin.js"></script>
                                     <ul id="uploadimage" class="form-upload-image clearfix">
                                         <input id="InputUpload" name="InputUpload" type="hidden" value="" />
-                                    </ul>
-                                    @*<ul id="uploadimage" class="form-upload-image clearfix">
-                                        <li>
-                                            <div class="upload-item working-upload-item upload ">
-                                                <label for="files" class="browse-img-upload">
-                                                    <i class="fa fa-file-image-o"></i>
-                                                    Tải ảnh lên
-                                                </label>
-                                                <input id='files' type='file' name='files' style="visibility:hidden" multiple />
-                                            </div>
-                                        </li>
-                                    </ul>*@
+                                    </ul>                                 
                                     <script>
                                         $("#uploadimage").upload({                                            
                                             target: "InputUpload",
@@ -121,97 +111,53 @@
 
                 <div class="panel-body">
                     <div class="preview-news">
-                        <div class="row clearfix">
-                            <div class="col-gr-60per">
+                        <div class="product-details">
+                            <div class="grid images_3_of_2">
+                                <div id="container">
+                                    <div id="products_example">
+                                        <div id="products">
+                                            <div class="slides_container">
 
-                                <div class="group-image-prd">
-                                </div>
-                            </div>
-                            <div class="col-gr-40per">
-                                <div class="group-info-detail-prd">
-                                    <div class="row-info-prd" style="margin-bottom: 10px">
-                                        <h1 class="title-name" id="viewTitle"></h1>
-                                        <p class="if-more">
-                                            <span> @DateTime.Now.ToString("dd/MM/yyyy")</span>
-                                            <span id="viewPlace"></span>
-                                        </p>
-                                    </div>
-                                    <div class="row-info-prd price" style="margin-bottom: 15px;">
-                                        <span id="viewPrice"></span>
-                                        <span class="unit">đ</span>
-                                    </div>
+                                            </div>
+                                            <ul class="pagination">
 
-                                    <div class="row-info-prd">
-                                        <div class="author">
-                                            <span class="pull-left">
-                                                <i class="icon-user"></i>
-                                                <span id="tempUser"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <i class="icon-mobile-1"></i>
-                                                <span id="tempMobile"></span>
-                                            </span>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <ul class="table-info-detail-prd" id="viewProperties"></ul>
-                        <div class="intro-detail-prd">
-                            <p id="viewDesc"></p>
-                        </div>
-                    </div>
-                    <!--
-                <div class="product-details">
-                    <div class="grid images_3_of_2">
-                        <div id="container">
-                            <div id="products_example">
-                                <div id="products">
-                                    <div class="slides_container">
+                            <div class="desc span_3_of_2 ">
 
+                                        <div class="row-info-prd price">
+                                            <h5>Giá Bán:</h5>
+                                            <p> <span>gia đ</span></p>
+                                        </div>
+                                    
+                                        <div class="row-info-prd price">
+                                            <p><span> </span></p>
+                                        </div>
+                                <div class="share-desc">
+                                    <div class="share">
+                                        <p>Chia sẻ :</p>
+                                        <ul>
+                                            <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
+                                            <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
+                                        </ul>
                                     </div>
-                                    <ul class="pagination">
-
+                                    <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="wish-list">
+                                    <ul>
+                                        <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
+                                        <li class="compare"><a href="#">So sánh</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="desc span_3_of_2 ">
-
-                                <div class="row-info-prd price">
-                                    <h5>Giá Bán:</h5>
-                                    <p> <span>gia đ</span></p>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="row-info-prd price">
-                                    <p><span> </span></p>
-                                </div>
-                            }
-                        }
-                        <div class="share-desc">
-                            <div class="share">
-                                <p>Chia sẻ :</p>
-                                <ul>
-                                    <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
-                                    <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
-                                </ul>
-                            </div>
-                            <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
+                            </div>                            
                             <div class="clear"></div>
                         </div>
-                        <div class="wish-list">
-                            <ul>
-                                <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
-                                <li class="compare"><a href="#">So sánh</a></li>
-                            </ul>
-                        </div>
                     </div>
-                    <!--AA
-                    <div class="clear"></div>
-                </div>-->
+                    
                     <div class="text-center">
                         <input type="submit" value="Đăng tin" class="btn btn-default" />
                         <input id="btnBackPost" type="button" class="btn-df btnReview" rel="nofollow" value="Quay lại" />

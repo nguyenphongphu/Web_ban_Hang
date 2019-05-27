@@ -70,8 +70,7 @@ namespace Model.Dao
             try
             {
                 var gh = db.GioHangs.SingleOrDefault(x=>x.MaSP==giohang);
-                gh.thanhtoan = true;
-                db.GioHangs.Add(gh);
+                gh.thanhtoan = true;                
                 db.SaveChanges();
                 return true;
             }

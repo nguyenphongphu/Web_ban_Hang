@@ -214,23 +214,6 @@ namespace Web_ban_hang.Controllers
                 status = true
             });
         }
-        public JsonResult Upload()
-        {
-            var date = DateTime.Now.ToString("dd-MM-yyyy");
-            for (int i = 0; i < Request.Files.Count; i++)
-            {
-                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
-                                                            //Use the following properties to get file's name, size and MIMEType
-                int fileSize = file.ContentLength;
-                string fileName = file.FileName;
-                string mimeType = file.ContentType;
-                System.IO.Stream fileContent = file.InputStream;
-                //To save file, use SaveAs method
-
-                file.SaveAs(Server.MapPath("~/assets/client/images/img/") + date + "-" + fileName); //File will be saved in application root
-            }
-            return Json("/assets/client/images/img/" + date + "-" + Request.Files[0].FileName);
-        }
         public string Temp(HttpPostedFileBase file)
         {
             try

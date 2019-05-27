@@ -208,8 +208,8 @@ namespace Web_ban_hang.Controllers
                 content = content.Replace("{{Total}}", total.ToString("N0"));
                 var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
 
-                new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
-                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);
+                new MailHelper().SendMail(email, "Đơn hàng mới từ Shop Bán Đồ Củ", content);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ Shop Bán Đồ Củ", content);
             }
             catch (Exception ex)
             {
