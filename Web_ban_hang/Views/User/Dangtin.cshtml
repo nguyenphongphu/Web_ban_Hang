@@ -17,15 +17,17 @@
                     <div class="nav" style="padding:10px">
                         <div class="dropdown">
                             <button class="dropdown-toggl btn btn-danger" data-toggle=dropdown id="bt-tinh">
-                                <span id="tinh">Toàn quốc</span>
-                                @Html.TextBoxFor(model=>model.MaKV, htmlAttributes: new { @style = "visibility:visible" })
+                               <span id="tinh">Toàn quốc</span>                               
                                 <span class="caret"></span>
                             </button>
-
+                            <div class="an_top1">
+                                
+                                @Html.TextBoxFor(model => model.MaKV, htmlAttributes: new { @id = "tinh1" })
+                            </div>
                             <ul class=" dropdown-menu btn-toolbar menu-tinh" role="toolbar" id="id-ten-t">
                                 @foreach (var item in tinh)
                                 {
-                                    <li class="btn-group" role="group"><a href="javascript:" id="City_@item.MaKV" style="padding:8px 15px;">@item.TenKV</a></li>
+                                    <li class="btn-group" role="group"><a href="javascript:" id="City_@item.MaKV" style="padding:8px 15px;" rel="@item.MaKV">@item.TenKV</a></li>
                                 }
 
                             </ul>
@@ -212,6 +214,7 @@
     $("#id-ten-t>li>a").on('click', function () {
         var val = $(this).html();
         $("#tinh").html(val);
+        $("#tinh1").val($(this).attr('rel'));
     })
     $("#btnBackPost").on('click', function () {
         $(".review-news-box").css("display", "none");

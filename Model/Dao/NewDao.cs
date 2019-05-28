@@ -202,5 +202,21 @@ namespace Model.Dao
             }
             
         }
+        public bool Them(DangBT dangBT)
+        {
+            try
+            {
+                db.DangBTs.Add(dangBT);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
+            
+        }
+       
     }
 }

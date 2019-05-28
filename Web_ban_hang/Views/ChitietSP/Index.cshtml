@@ -62,7 +62,7 @@
                     @{
                         <div class="row-info-prd price">
                             <h5>Giá Bán:</h5>
-                            <p> <span>@(Model[0].SanPham.GiaBan > 0 ? Model[0].SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></p>
+                            <p> <span>@(Model[0].SanPham.GiaBan.HasValue ? Model[0].SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></p>
                         </div>
                        
                     }

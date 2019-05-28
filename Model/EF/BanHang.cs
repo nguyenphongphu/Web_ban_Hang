@@ -12,16 +12,16 @@ namespace Model.EF
         {
         }
 
-        public virtual DbSet<BoNho> BoNhoes { get; set; }
+        public virtual DbSet<BoNho> BoNhos { get; set; }
         public virtual DbSet<BoXL> BoXLs { get; set; }
         public virtual DbSet<Camera> Cameras { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Case> Cases { get; set; }
-        public virtual DbSet<ChatLieu> ChatLieux { get; set; }
+        public virtual DbSet<ChatLieu> ChatLieus { get; set; }
         public virtual DbSet<ChoNgoi> ChoNgois { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<DangBT> DangBTs { get; set; }
-        public virtual DbSet<DoiSX> DoiSXes { get; set; }
+        public virtual DbSet<DoiSX> DoiSXs { get; set; }
         public virtual DbSet<DoPhangia> DoPhangias { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<Hang> Hangs { get; set; }
@@ -70,7 +70,7 @@ namespace Model.EF
             modelBuilder.Entity<LoaiSanPham>()
                 .HasMany(e => e.Muas)
                 .WithOptional(e => e.LoaiSanPham)
-                .HasForeignKey(e => e.MaSLP);
+                .HasForeignKey(e => e.MaLSP);
 
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaBan)

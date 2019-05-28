@@ -101,7 +101,7 @@
                         <h2>@item.SanPham.TenSP</h2>
                         <div class="price-details">
                             <div class="price-number">
-                                <span class="rupees">@(item.SanPham.GiaBan > 0 ? item.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span>
+                                <span class="rupees">@(item.SanPham.GiaBan.HasValue ? item.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span>
                             </div>
                             <div class="add-cart">
                                 <span>@item.Khuvuc.TenKV</span>
@@ -136,7 +136,7 @@
                         <h2>@item.SanPham.TenSP</h2>
                         <div class="price-details">
                             <div class="price-number">
-                                <span class="rupees">@(item.SanPham.GiaBan > 0 ? item.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span>
+                                <span class="rupees">@(item.SanPham.GiaBan.HasValue ? item.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span>
                             </div>
                             <div class="add-cart">
                                 <span>@item.Khuvuc.TenKV</span>

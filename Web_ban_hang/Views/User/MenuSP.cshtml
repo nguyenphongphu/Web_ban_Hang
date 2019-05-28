@@ -3,8 +3,6 @@
 <ul class="nav">
     <h3>Danh Mục Sản Phẩm</h3>
     @{
-        /**/
-
         foreach (var item in Model.Where(x => x.MenuParentID == null))
         {
             var child = Model.Where(x => x.MenuParentID == item.ID).OrderBy(x => x.STTID);

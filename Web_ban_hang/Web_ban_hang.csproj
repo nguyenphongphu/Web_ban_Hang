@@ -148,6 +148,7 @@
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\ChitietSPController.cs" />
+    <Compile Include="Controllers\DangTinController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GioithieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3164,6 +3165,7 @@
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\GioHang\Payment.cshtml" />
     <Content Include="Views\GioHang\Success.cshtml" />
+    <Content Include="Views\DangTin\Dangtin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3173,11 +3175,11 @@
     <Folder Include="assets\client\images\am-thanh\" />
     <Folder Include="assets\client\images\dien-thoai\" />
     <Folder Include="assets\client\images\do-noi-that\" />
-    <Folder Include="assets\client\images\img\" />
     <Folder Include="assets\client\images\khac\" />
     <Folder Include="assets\client\images\laptop\" />
     <Folder Include="assets\client\images\may-tinh-de-ban\" />
     <Folder Include="assets\client\images\sach-bao-nghe-thuat\" />
+    <Folder Include="assets\client\images\Temp\" />
     <Folder Include="assets\client\images\the-thao\" />
     <Folder Include="assets\client\images\thoi-trang\" />
     <Folder Include="assets\client\images\tivi\" />

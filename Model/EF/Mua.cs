@@ -21,7 +21,7 @@ namespace Model.EF
         [StringLength(50)]
         public string Ten_M { get; set; }
 
-        public int? MaSLP { get; set; }
+        public int? MaLSP { get; set; }
 
         public virtual LoaiSanPham LoaiSanPham { get; set; }
 

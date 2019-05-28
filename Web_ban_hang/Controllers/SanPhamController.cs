@@ -57,7 +57,7 @@ namespace Web_ban_hang.Controllers
             ViewBag.Prev = page - 1;
             return View(ListALL);
         }
-        public ActionResult Sanpham_ALL( int page = 1, int pageSize = 2)
+        public ActionResult Sanpham_ALL( int page = 1, int pageSize = 9)
         {
             var newdao = new NewDao();            
             int totalRecord_hang = 0;

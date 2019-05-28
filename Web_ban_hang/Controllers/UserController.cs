@@ -141,6 +141,19 @@ namespace Web_ban_hang.Controllers
         [HttpPost]
         public ActionResult Dangtin(DangBT dangBT)
         {
+            if (ModelState.IsValid)
+            {
+                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+                if (session != null)
+                {
+                    var newdao = new NewDao();
+                    dangBT.UserID = session.UserID;
+                    dangBT.SanPham.Date = DateTime.Now;
+                    dangBT.SanPham.AnhTDe = "~/ assets / client / images /" + dangBT.SanPham.LoaiSanPham.TenLSP+"/";
+                    newdao.Them(dangBT); 
+                }
+            }
+            
             return View("Index");
         }
 
@@ -218,17 +231,21 @@ namespace Web_ban_hang.Controllers
         {
             try
             {
+                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
                 if (file != null)
                 {
-
+                    if (!System.IO.Directory.Exists("~/ assets / client / images / Temp / " + session.UserName))
+                    {
+                        System.IO.Directory.CreateDirectory(Server.MapPath("~/assets/client/images/Temp/" + session.UserName));
+                    }
                     int fileSize = file.ContentLength;
                     string fileName = file.FileName;
                     string mimeType = file.ContentType;
                     System.IO.Stream fileContent = file.InputStream;
                     var date = DateTime.Now.ToString("dd-MM-yyyy");
-                    file.SaveAs(Server.MapPath("~/assets/client/images/img/" ) + date + "-" + fileName);
+                    file.SaveAs(Server.MapPath("~/assets/client/images/Temp/"+ session.UserName + "/") + date + "-" + fileName);
 
-                    return "/assets/client/images/img/" + date + "-" + fileName;
+                    return "/assets/client/images/Temp/"+ session.UserName + "/" + date + "-" + fileName;
                 }
                 else
                 {
