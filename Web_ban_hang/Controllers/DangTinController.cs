@@ -54,7 +54,7 @@ namespace Web_ban_hang.Controllers
         public void data(int malsp)
         {
             var dao = new DangtinDao();
-                ViewBag."SanPham.IDHang" = new SelectList(dao.hang(malsp), "IDHang", "TenHang","");
+                ViewBag.IDHang = new SelectList(dao.hang(malsp), "IDHang", "TenHang","");
                 ViewBag.ID_BN = new SelectList(dao.bonho(malsp), "ID_BN", "DungLuong","");
                 ViewBag.ID_BXL = new SelectList(dao.boxuly(malsp), "ID_BXL", "Ten_BXL","");
                 ViewBag.ID_Camera = new SelectList(dao.camera(malsp), "ID_Camera", "Ten_Camera","");

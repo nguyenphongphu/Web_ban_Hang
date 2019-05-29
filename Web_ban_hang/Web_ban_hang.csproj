@@ -2823,6 +2823,7 @@
     <Content Include="assets\client\css\easy-responsive-tabs.css" />
     <Content Include="assets\client\css\font-awesome.min.css" />
     <Content Include="assets\client\css\global.css" />
+    <Content Include="assets\client\css\jquery-ui.css" />
     <Content Include="assets\client\css\slider.css" />
     <Content Include="assets\client\css\style.css" />
     <Content Include="assets\client\data\Provinces_Data.xml" />
@@ -2923,6 +2924,7 @@
     <Content Include="assets\client\js\jquery-3.3.1.slim.js" />
     <Content Include="assets\client\js\jquery-3.3.1.slim.min.js" />
     <Content Include="assets\client\js\jquery-3.3.1.slim.min.map" />
+    <Content Include="assets\client\js\jquery-ui.js" />
     <Content Include="assets\client\js\jquery.accordion.js" />
     <Content Include="assets\client\js\jquery.easing.js" />
     <Content Include="assets\client\js\move-top.js" />
@@ -3166,6 +3168,7 @@
     <Content Include="Views\GioHang\Payment.cshtml" />
     <Content Include="Views\GioHang\Success.cshtml" />
     <Content Include="Views\DangTin\Dangtin.cshtml" />
+    <Content Include="Views\Home\timkiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

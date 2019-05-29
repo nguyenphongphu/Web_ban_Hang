@@ -20,18 +20,21 @@ namespace Web_ban_hang.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600 * 24)]
         public ActionResult MainMenu()
         {
             var model = new MenuDao().ListByGroupId(2);
             return PartialView(model);
         }
         [ChildActionOnly]
+        [OutputCache(Duration = 3600 * 24)]
         public ActionResult TopMenu()
         {
             var model = new MenuDao().ListByGroupId(1);
             return PartialView(model);
         }
         [ChildActionOnly]
+        [OutputCache(Duration = 3600 * 24)]
         public ActionResult MenuSanPham()
         {
             var model = new MenuDao().ListByGroupId(3);
@@ -83,10 +86,41 @@ namespace Web_ban_hang.Controllers
             return PartialView(list);
         }
         [ChildActionOnly]
+        [OutputCache(Duration = 3600 * 24)]
         public ActionResult Footer()
         {
             //var model = new FooterDao().GetFooter();
             return PartialView();
+        }
+        public ActionResult timkiem(string keyword, int page = 1, int pageSize = 1)
+        {
+            int totalRecord = 0;
+            var model = new NewDao().Search(keyword, ref totalRecord, page, pageSize);
+
+            ViewBag.Total = totalRecord;
+            ViewBag.Page = page;
+            ViewBag.Keyword = keyword;
+            int maxPage = 5;
+            int totalPage = 0;
+
+            totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
+            ViewBag.TotalPage = totalPage;
+            ViewBag.MaxPage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
+
+            return View(model);
+        }
+        public JsonResult ListName(string q)
+        {
+            var data = new NewDao().ListName(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

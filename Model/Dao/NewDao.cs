@@ -217,6 +217,21 @@ namespace Model.Dao
             }
             
         }
-       
+        public List<DangBT> Search(string keyword, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
+        {
+            totalRecord = db.SanPhams.Where(x => x.TenSP == keyword).Count();
+            var sanpham = db.DangBTs.Where(x => x.SanPham.TenSP==keyword).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            foreach (var item in sanpham)
+            {
+                string anh = item.SanPham.AnhTDe;
+                item.SanPham.AnhTDe = anh.Replace(" ", "");
+            }
+            return sanpham;
+
+        }
+        public List<string> ListName(string keyword)
+        {
+            return db.SanPhams.Where(x => x.TenSP.Contains(keyword)).Select(x => x.TenSP).ToList();
+        }
     }
 }
