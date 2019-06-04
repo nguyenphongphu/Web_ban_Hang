@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,6 +16,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Đời sản xuất:")]
         public int ID_Doi { get; set; }
 
         [StringLength(50)]

@@ -7,6 +7,9 @@
     var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
 }
 
+@section jsFooter{
+    <script src="/assets/client/js/controller/DangtinController.js"></script>
+}
 <div class="content">
     <div class="section group ">
         @using (Html.BeginForm("Dangtin", "User", FormMethod.Post))
@@ -57,7 +60,7 @@
                                 @Html.ValidationMessageFor(model => model.SanPham.Mota, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="group-form">
+                        <div class="group-form form-group">
                             @Html.LabelFor(model => model.SanPham.HinhAnh.Link, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
 
@@ -82,164 +85,35 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.IDHang, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.IDHang,null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.IDHang, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_BN, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_BN, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_BN, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_BXL, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_BXL, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_BXL, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_Camera, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_Camera, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_Camera, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_Card, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_Card, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_Card, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_Case, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_Case, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_Case, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_CL, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_CL, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_CL, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_CN, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_CN, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_CN, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_Doi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_Doi, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_Doi, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_DPG, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_DPG, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_DPG, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_HDH, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_HDH, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_HDH, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_HS, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_HS, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_HS, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_KD, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_KD, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_KD, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_KT, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_KT, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_KT, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_LTR, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_LTR, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_LTR, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_M, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_M, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_M, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_MS, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_MS, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_MS, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_PB, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_PB, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_PB, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_Pin, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_Pin, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_Pin, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_PK, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_PK, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_PK, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_QD, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_QD, null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_QD, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.SanPham.ID_R, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class=" from-table">
-                                        @Html.DropDownListFor(model => model.SanPham.ID_R,null, htmlAttributes: new { @class = "form-control-1" })
-                                        @Html.ValidationMessageFor(model => model.SanPham.ID_R, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
+                            <div class="form-row" id="phantu">
+
                             </div>
                         </div>
-                        
+                        <div class="form-group" style="display: none;">
+                            @Html.TextBoxFor(model => model.SanPham.IDHang, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_BN, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_BXL, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_Camera, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_Card, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_Case, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_CL, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_CN, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_HDH, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_DPG, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_Doi, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_HS, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_KD, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_KT, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_LTR, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_M, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_MS, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_PB, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_Pin, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_QD, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_PK, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.SanPham.ID_R, htmlAttributes: new { @class = "form-control-1" })                           
+                        </div>
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.SanPham.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class=" from-table">
@@ -350,22 +224,8 @@
         }
     </style>
 
-
-
-
-
 </div>
 <script type="text/javascript">
-        //$(document).ready(function () {
-        //    $("#anh").click(function () {
-        //        var fileder = new CKFinder();
-        //        fileder.selectActionFuntion = function (fileUrl) {
-        //            $("#link").val(fileUrl)
-        //        }
-        //        fileder.popup();
-        //    });
-        // });
-
     $("#id-ten-t>li>a").on('click', function () {
         var val = $(this).html();
         $("#tinh").html(val);

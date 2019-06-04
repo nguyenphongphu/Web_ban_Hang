@@ -16,6 +16,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Case:")]
         public int ID_Case { get; set; }
 
         [StringLength(50)]

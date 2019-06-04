@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,6 +16,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Kiểu dáng")]
         public int ID_KD { get; set; }
 
         [StringLength(50)]

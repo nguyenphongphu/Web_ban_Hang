@@ -27,7 +27,6 @@ namespace Web_ban_hang.Controllers
             return PartialView(model);
         }
         [ChildActionOnly]
-        [OutputCache(Duration = 3600 * 24)]
         public ActionResult TopMenu()
         {
             var model = new MenuDao().ListByGroupId(1);

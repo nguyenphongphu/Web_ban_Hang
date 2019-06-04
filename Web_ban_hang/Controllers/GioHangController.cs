@@ -199,17 +199,54 @@ namespace Web_ban_hang.Controllers
                     }
 
                 }
-                string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
+                string content = null;
+                foreach (var item in cart)
+                {
+                    total += (item.sanpham.GiaBan.GetValueOrDefault(0) * item.Quantity);
+                    content = content + "<tr>" +
+                             "<td>" + item.sanpham.MaSP + "</td>" +
+                             "<td>" + item.sanpham.TenSP + "</td>" +
+                             "<td><img src='https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/MinhHieu/huong-dan-cach-tao-link-download-truc-tiep-tu-google-driver-1.png' width='100' /></td>" +
+                    "<td>" + item.Quantity + "</td>" +
+                             "<td>" + total + "</td>" +
+                         "</tr>";
+                }
+                string body = "<!DOCTYPE html>" +
+                            "<html>" +
+                            "<head>" +
+                               "<meta name='viewport' content='width = device - width' />" +
+                                "<title>Thông tin đơn hàng mới từ khách hàng:" + shipName + "</title>" +
+                            "</head>" +
+                            "<body>" +
+                                "Thông tin đơn hàng mới từ khách hàng: " + shipName + "<br />" +
+                                "Điện thoại: " + mobile + " <br />" +
+                                "Email: " + email + "<br />" +
+                                "Địa chỉ: " + address + "<br />" +
+                                "<div class='content'>" +
+                                "<div class='section group'>" +
+                                    "<table class='table'>" +
+                                            "<thead>" +
+                                                "<tr>" +
+                                                    "<td>Số Thứ Tự</td>" +
+                                                    "<td>Tên Sản Phẩm</td>" +
+                                                    "<td>Ảnh Sản Phẩm</td>" +
+                                                    "<td>Số lượng</td>" +
+                                                    "<td>Thành tiền</td>" +
+                                                "</tr>" +
+                                            "</thead>" +
+                                            "<tbody>" +
+                                            content +
+                                            "</tbody>" +
+                                     "</table>" +
 
-                content = content.Replace("{{CustomerName}}", shipName);
-                content = content.Replace("{{Phone}}", mobile);
-                content = content.Replace("{{Email}}", email);
-                content = content.Replace("{{Address}}", address);
-                content = content.Replace("{{Total}}", total.ToString("N0"));
+                                  "</div>" +
+                                "</div>" +
+                           "</body>" +
+                       "</html>";
                 var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
 
-                new MailHelper().SendMail(email, "Đơn hàng mới từ Shop Bán Đồ Củ", content);
-                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ Shop Bán Đồ Củ", content);
+                new MailHelper().SendMail(email, "Đơn hàng mới từ Shop Bán Đồ Củ", body);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ Shop Bán Đồ Củ", body);
             }
             catch (Exception ex)
             {

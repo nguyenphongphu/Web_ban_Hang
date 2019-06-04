@@ -16,6 +16,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Pin:")]
         public int ID_Pin { get; set; }
 
         [StringLength(50)]

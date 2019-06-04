@@ -10,6 +10,7 @@ namespace Model.EF
     public partial class Model
     {
         [Key]
+        [Display(Name = "Model:")]
         public int ID_Mdel { get; set; }
 
         [StringLength(50)]

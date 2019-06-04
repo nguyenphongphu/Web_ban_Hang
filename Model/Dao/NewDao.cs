@@ -220,7 +220,7 @@ namespace Model.Dao
         public List<DangBT> Search(string keyword, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {
             totalRecord = db.SanPhams.Where(x => x.TenSP == keyword).Count();
-            var sanpham = db.DangBTs.Where(x => x.SanPham.TenSP==keyword).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            var sanpham = db.DangBTs.Where(x => x.SanPham.TenSP.Contains(keyword)).OrderByDescending(x=>x.MaSP).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
             foreach (var item in sanpham)
             {
                 string anh = item.SanPham.AnhTDe;

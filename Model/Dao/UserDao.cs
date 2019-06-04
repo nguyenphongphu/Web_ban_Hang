@@ -150,45 +150,7 @@ namespace Model.Dao
             db.SaveChanges();
             return user.Status;
         }
-        //public List<string> GetListCredential(string userName)
-        //{
-        //    var user = db.TaiKhoans.Single(x => x.Username == userName);
-        //    var data = (from a in db.Credentials
-        //                join b in db.UserGroups on a.UserGroupID equals b.ID
-        //                join c in db.Roles on a.RoleID equals c.ID
-        //                where b.ID == user.GroupID
-        //                select new
-        //                {
-        //                    RoleID = a.RoleID,
-        //                    UserGroupID = a.UserGroupID
-        //                }).AsEnumerable().Select(x => new Credential()
-        //                {
-        //                    RoleID = x.RoleID,
-        //                    UserGroupID = x.UserGroupID
-        //                });
-        //    return data.Select(x => x.RoleID).ToList();
-
-        //}
-
-        //public List<string> GetListCredential(string userName)
-        //{
-        //    var user = db.TaiKhoans.Single(x => x.Username == userName);
-        //    var data = (from a in db.Credentials
-        //                join b in db.UserGroups on a.UserGroupID equals b.ID
-        //                join c in db.Roles on a.RoleID equals c.ID
-        //                where b.ID == user.GroupID
-        //                select new
-        //                {
-        //                    RoleID = a.RoleID,
-        //                    UserGroupID = a.UserGroupID
-        //                }).AsEnumerable().Select(x => new Credential()
-        //                {
-        //                    RoleID = x.RoleID,
-        //                    UserGroupID = x.UserGroupID
-        //                });
-        //    return data.Select(x => x.RoleID).ToList();
-
-        //}
+        
         public IEnumerable<Taikhoan> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<Taikhoan> model = db.Taikhoans;
@@ -207,6 +169,10 @@ namespace Model.Dao
         public bool CheckEmail(string email)
         {
             return db.Taikhoans.Count(x => x.Email == email) > 0;
+        }
+        public List<ChucVu> chucVus()
+        {
+            return db.ChucVus.ToList();
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name ="Hãng sản xuất")]
         public int IDHang { get; set; }
 
         [StringLength(50)]

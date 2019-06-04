@@ -2820,6 +2820,7 @@
     <Content Include="assets\client\css\bootstrap.css" />
     <Content Include="assets\client\css\bootstrap.css.map" />
     <Content Include="assets\client\css\bootstrap.min.css" />
+    <Content Include="assets\client\css\css.css" />
     <Content Include="assets\client\css\easy-responsive-tabs.css" />
     <Content Include="assets\client\css\font-awesome.min.css" />
     <Content Include="assets\client\css\global.css" />
@@ -2913,6 +2914,7 @@
     <Content Include="assets\client\js\controller\cartController.js" />
     <Content Include="assets\client\js\controller\contactController.js" />
     <Content Include="assets\client\js\controller\dangtin.js" />
+    <Content Include="assets\client\js\controller\DangtinController.js" />
     <Content Include="assets\client\js\controller\userController.js" />
     <Content Include="assets\client\js\easing.js" />
     <Content Include="assets\client\js\easyResponsiveTabs.js" />
@@ -3187,6 +3189,7 @@
     <Folder Include="assets\client\images\thoi-trang\" />
     <Folder Include="assets\client\images\tivi\" />
     <Folder Include="assets\client\images\xe-co\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -16,6 +16,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Camera:")]
         public int ID_Camera { get; set; }
 
         [StringLength(50)]

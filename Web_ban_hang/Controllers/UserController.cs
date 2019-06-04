@@ -149,7 +149,7 @@ namespace Web_ban_hang.Controllers
                     var newdao = new NewDao();
                     dangBT.UserID = session.UserID;
                     dangBT.SanPham.Date = DateTime.Now;
-                    dangBT.SanPham.AnhTDe = "~/ assets / client / images /" + dangBT.SanPham.LoaiSanPham.TenLSP+"/";
+                    dangBT.SanPham.AnhTDe = "/ Upload/ Temp /" + dangBT.SanPham.LoaiSanPham.TenLSP+"/";
                     newdao.Them(dangBT); 
                 }
             }
@@ -234,18 +234,18 @@ namespace Web_ban_hang.Controllers
                 var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
                 if (file != null)
                 {
-                    if (!System.IO.Directory.Exists("~/ assets / client / images / Temp / " + session.UserName))
+                    if (!System.IO.Directory.Exists("~/ Upload/ Temp / " + session.UserName))
                     {
-                        System.IO.Directory.CreateDirectory(Server.MapPath("~/assets/client/images/Temp/" + session.UserName));
+                        System.IO.Directory.CreateDirectory(Server.MapPath("~/ Upload/ Temp /" + session.UserName));
                     }
                     int fileSize = file.ContentLength;
                     string fileName = file.FileName;
                     string mimeType = file.ContentType;
                     System.IO.Stream fileContent = file.InputStream;
                     var date = DateTime.Now.ToString("dd-MM-yyyy");
-                    file.SaveAs(Server.MapPath("~/assets/client/images/Temp/"+ session.UserName + "/") + date + "-" + fileName);
+                    file.SaveAs(Server.MapPath("~/ Upload/ Temp /"+ session.UserName + "/") + date + "-" + fileName);
 
-                    return "/assets/client/images/Temp/"+ session.UserName + "/" + date + "-" + fileName;
+                    return "/ Upload/ Temp /" + session.UserName + "/" + date + "-" + fileName;
                 }
                 else
                 {

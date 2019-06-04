@@ -1,6 +1,6 @@
 ﻿@model List<Model.EF.Menu>
 
-<ul class="nav">
+<ul class="nav" id="sanpham">
     <h3>Danh Mục Sản Phẩm</h3>
     @{
         foreach (var item in Model.Where(x => x.MenuParentID == null))

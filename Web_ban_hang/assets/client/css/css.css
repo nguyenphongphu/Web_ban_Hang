@@ -1,0 +1,84 @@
+﻿.upload-item {
+    position: relative;
+}
+
+    /*.upload-item .upload-item-delete,*/
+    .upload-item .upload-item-rotate {
+        position: absolute;
+    }
+
+/*.default-theme .upload-item {
+    width: 72px;
+    height: 72px;
+    overflow: hidden;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}*/
+
+.default-theme #secleimg {
+    text-indent: -99999px;
+    z-index: -99;
+    width: 0;
+    height: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+/*.default-theme .working-upload-item {
+    background: url('images/bg_upload.png') no-repeat 0px 0px;
+    width: 266px;
+    height: 32px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    color: #fff;
+    padding-left: 38px;
+    line-height: 30px;
+    cursor: pointer;
+    float: none;
+}*/
+
+
+.default-theme .upload-item-loading {
+    background: url("/Images/upload-loading.gif") no-repeat scroll center;
+}
+
+/*.default-theme .upload-item .upload-item-delete {
+    background: url('images/upload-delete.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    right: -3px;
+    top: 1px;
+    border: 0;
+}*/
+
+.default-theme .upload-item .upload-item-rotate {
+    background: url('images/upload-tool-rotation.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    left: 1px;
+    top: 1px;
+    border: 0;
+}
+
+.formIE7 {
+    position: relative;
+}
+
+    .formIE7 .fileuploadie7 {
+        position: absolute;
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);
+        height: 0;
+        width: 0;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .formIE7 .browse-img-upload {
+    }
+
+/*for ie7*/

@@ -94,7 +94,7 @@ namespace Web_ban_hang
             routes.MapRoute(
                 name: "dangtin",
                 url: "dang-tin",
-                defaults: new { controller = "User", action = "Dangtin", id = UrlParameter.Optional },
+                defaults: new { controller = "DangTin", action = "Dangtin", id = UrlParameter.Optional },
                 namespaces: new[] { "Web_ban_hang.Controllers" }
             );
                   routes.MapRoute(

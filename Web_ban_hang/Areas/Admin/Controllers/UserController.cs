@@ -26,11 +26,13 @@ namespace Web_ban_hang.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.MACV = new SelectList(new UserDao().chucVus(), "MaCV", "TenCV", "");
             return View();
         }
 
         public ActionResult Edit(int ID)
         {
+            ViewBag.MACV = new SelectList(new UserDao().chucVus(), "MaCV", "TenCV", "");
             var user = new UserDao().ViewDetail(ID);
             return View(user);
         }

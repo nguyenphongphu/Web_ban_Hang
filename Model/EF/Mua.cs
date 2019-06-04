@@ -16,6 +16,7 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Mùa:")]
         public int ID_M { get; set; }
 
         [StringLength(50)]
