@@ -9,6 +9,11 @@ namespace Model.EF
     [Table("Model")]
     public partial class Model
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Model()
+        {
+            SanPhams = new HashSet<SanPham>();
+        }
         [Key]
         [Display(Name = "Model:")]
         public int ID_Mdel { get; set; }
@@ -19,5 +24,8 @@ namespace Model.EF
         public int? IDHang { get; set; }
 
         public virtual Hang Hang { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

@@ -11,13 +11,10 @@ namespace Web_ban_hang.Areas.Admin.Controllers
     {
         // GET: Admin/New
         [HttpGet]
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 1)
+        public ActionResult Index()
         {
             var dao = new NewDao();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
-
-            ViewBag.SearchString = searchString;
-
+            var model = dao.ListAllPaging();           
             return View(model);
         }
         
@@ -27,9 +24,10 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             return View(user);
         }
 
-        public ActionResult UploatSP()
+        public ActionResult ALLSP()
         {
-            return View();
+            var data = new NewDao().listAll();
+            return View(data);
         }
 
         [HttpDelete]

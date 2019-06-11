@@ -109,7 +109,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 //logging
@@ -151,15 +151,10 @@ namespace Model.Dao
             return user.Status;
         }
         
-        public IEnumerable<Taikhoan> ListAllPaging(string searchString, int page, int pageSize)
+        public List<Taikhoan> ListAllPaging()
         {
-            IQueryable<Taikhoan> model = db.Taikhoans;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(x => x.Username.Contains(searchString) || x.HovaTen.Contains(searchString));
-            }
 
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return db.Taikhoans.ToList();
         }
 
         public bool CheckUserName(string userName)

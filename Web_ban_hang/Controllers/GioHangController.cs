@@ -186,6 +186,7 @@ namespace Web_ban_hang.Controllers
                         gioHang.date = DateTime.Now;
                         gioHang.Gia = item.sanpham.GiaBan;
                         gioHang.soluong = item.Quantity;
+                        gioHang.UserID = session.UserID;
                         var chek = new NewDao().ViewDetail(item.sanpham.MaSP);
                         if (chek != null)
                         {
@@ -248,7 +249,7 @@ namespace Web_ban_hang.Controllers
                 new MailHelper().SendMail(email, "Đơn hàng mới từ Shop Bán Đồ Củ", body);
                 new MailHelper().SendMail(toEmail, "Đơn hàng mới từ Shop Bán Đồ Củ", body);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //ghi log
                 return Redirect("/loi-thanh-toan");
@@ -278,6 +279,33 @@ namespace Web_ban_hang.Controllers
                 return true;
             }
             return false;
+            
+        }
+        public void upload()
+        {
+            var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+            var cart = (List<CartItem>)Session[CartSession];
+            if (cart != null)
+            {
+                foreach (var item in cart)
+                {                  
+                        var gioHang = new GioHang();
+                        gioHang.MaSP = item.sanpham.MaSP;
+                        gioHang.date = DateTime.Now;
+                        gioHang.Gia = item.sanpham.GiaBan;
+                        gioHang.soluong = item.Quantity;
+                        gioHang.UserID = session.UserID;
+                        var chek = new NewDao().ViewDetail(item.sanpham.MaSP);
+                        if (chek != null)
+                        {
+                            new GioHangDao().updategh(chek.MaSP, item.Quantity);
+                        }
+                        else
+                        {
+                            new GioHangDao().insert(gioHang);
+                        }                                      
+                }
+            }
             
         }
     }

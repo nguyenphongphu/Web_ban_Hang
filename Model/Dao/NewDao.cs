@@ -17,15 +17,9 @@ namespace Model.Dao
         {
             db = new BanHang();
         }
-        public IEnumerable<DangBT> ListAllPaging(string searchString, int page, int pageSize)
+        public List<DangBT> ListAllPaging()
         {
-            IQueryable<DangBT> model = db.DangBTs;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(x => x.MaSP.Equals(searchString) || x.UserID.Equals(searchString));
-            }
-
-            return model.OrderByDescending(x => x.STT).ToPagedList(page, pageSize);
+            return db.DangBTs.ToList();
         }
 
         public bool Delete(int id)

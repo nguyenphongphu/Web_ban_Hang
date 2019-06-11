@@ -102,6 +102,12 @@
                 menutop.classList.add('an_top1');
         }
         document.addEventListener('scroll', onScroll);
+        $(window).on('beforeunload', function () {
+            var URL = "/GioHang/upload";
+            var data = "";
+            navigator.sendBeacon(URL, data);
+        });
+   
     </script>
     <script src="/assets/client/js/controller/baseController.js"></script>
     @RenderSection("jsFooter", required: false)

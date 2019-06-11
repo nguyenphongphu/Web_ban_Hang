@@ -114,6 +114,9 @@
         [Display(Name = "Hộp số:")]
         public int? ID_HS { get; set; }
 
+        [Display(Name = "Model:")]
+        public int? ID_Mdel { get; set; }
+
         public virtual BoNho BoNho { get; set; }
 
         
@@ -168,6 +171,8 @@
         public virtual Quangduong Quangduong { get; set; }
 
         public virtual Ram Ram { get; set; }
+
+        public virtual Model Model { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Slide> Slides { get; set; }

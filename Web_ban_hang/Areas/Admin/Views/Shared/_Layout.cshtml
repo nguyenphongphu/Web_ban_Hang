@@ -24,7 +24,7 @@
         @RenderPage("_LeftMenu.cshtml")
         <div id="content-wrapper">
             <div class="container-fluid">
-                <h1 class="page-header">@RenderSection("header", required: true)</h1>
+                <h1 class="page-header">@RenderSection("header", required: false)</h1>
 
                 <!-- Icon Cards-->
                 @if (TempData["AlertMessage"] != null)
@@ -78,14 +78,12 @@
     <!-- Core plugin JavaScript-->
     <script src="/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="/assets/admin/vendor/chart.js/Chart.min.js"></script>
     <script src="/assets/admin/vendor/datatables/jquery.dataTables.js"></script>
     <script src="/assets/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="/assets/admin/js/sb-admin.min.js"></script>
+    @*<script src="/assets/admin/js/sb-admin.min.js"></script>*@
     <!-- Demo scripts for this page-->
     <script src="/assets/admin/js/demo/datatables-demo.js"></script>
-    <script src="/assets/admin/js/demo/chart-area-demo.js"></script>
     @RenderSection("jsFooter",required:false)
 </body>
 </html>

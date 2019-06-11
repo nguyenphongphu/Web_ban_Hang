@@ -144,51 +144,48 @@
 
                 <div class="panel-body">
                     <div class="preview-news">
-                        <div class="product-details">
-                            <div class="grid images_3_of_2">
-                                <div id="container">
-                                    <div id="products_example">
-                                        <div id="products">
-                                            <div class="slides_container">
+                        <div class="row clearfix">
+                            <div class="col-gr-60per">
+                                <link href="/assets/client/css/Gallery.css" rel="stylesheet" />
+                                <script src="/assets/client/js/ScriptsGallery.js"></script>
 
-                                            </div>
-                                            <ul class="pagination"></ul>
+                                <div class="group-image-prd">
+                                </div>
+                            </div>
+                            <div class="col-gr-40per">
+                                <div class="group-info-detail-prd">
+                                    <div class="row-info-prd" style="margin-bottom: 10px">
+                                        <h1 class="title-name" id="viewTitle"></h1>
+                                        <p class="if-more">
+                                            <span>08/06/2019</span>
+                                            <span id="viewPlace"></span>
+                                        </p>
+                                    </div>
+                                    <div class="row-info-prd price" style="margin-bottom: 15px;">
+                                        <span id="viewPrice"></span>
+                                        <span class="unit">đ</span>
+                                    </div>
+
+                                    <div class="row-info-prd">
+                                        <div class="author">
+                                            <span class="pull-left">
+                                                <i class="icon-user"></i>
+                                                <span id="tempUser"></span>
+                                            </span>
+                                            <span class="pull-left">
+                                                <i class="icon-mobile-1"></i>
+                                                <span id="tempMobile"></span>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="desc span_3_of_2 ">
-
-                                <div class="row-info-prd price">
-                                    <h5>Giá Bán:</h5>
-                                    <p> <span>gia đ</span></p>
-                                </div>
-
-                                <div class="row-info-prd price">
-                                    <p><span> </span></p>
-                                </div>
-                                <div class="share-desc">
-                                    <div class="share">
-                                        <p>Chia sẻ :</p>
-                                        <ul>
-                                            <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
-                                            <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="wish-list">
-                                    <ul>
-                                        <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
-                                        <li class="compare"><a href="#">So sánh</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clear"></div>
+                        </div>
+                        <ul class="table-info-detail-prd" id="viewProperties"></ul>
+                        <div class="intro-detail-prd">
+                            <p id="viewDesc"></p>
                         </div>
                     </div>
-
                     <div class="text-center">
                         <input type="submit" value="Đăng tin" class="btn btn-default" />
                         <input id="btnBackPost" type="button" class="btn-df btnReview" rel="nofollow" value="Quay lại" />

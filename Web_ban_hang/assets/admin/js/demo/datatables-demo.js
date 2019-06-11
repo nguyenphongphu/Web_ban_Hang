@@ -1,4 +1,30 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#dataTable').DataTable();
+    $('#dataram').DataTable();
+    $('#databonho').DataTable();
+    $('#databoxl').DataTable();
+    $('#datacard').DataTable();
+    $('#datacamera').DataTable();
+    $('#datacase').DataTable();
+    $('#datachatlieu').DataTable();
+    $('#datachongoi').DataTable();
+    $('#datadoisx').DataTable();
+    $('#datadophangia').DataTable();
+    $('#datahang').DataTable();
+    $('#dataHDH').DataTable();
+    $('#datahopso').DataTable();
+    $('#datakichthuoc').DataTable();
+    $('#datakieudang').DataTable();
+    $('#dataloaiTR').DataTable();
+    $('#datamausac').DataTable();
+    $('#datamodel').DataTable();
+    $('#datamua').DataTable();
+    $('#dataphienban').DataTable();
+    $('#dataphukien').DataTable();
+    $('#datapin').DataTable();
+    $('#dataquangduong').DataTable();
+    $('#datadangbt').DataTable();
+    $('#datauser').DataTable();
+    $('#dataLSP').DataTable();
+    $('#dataSanPham').DataTable();
 });

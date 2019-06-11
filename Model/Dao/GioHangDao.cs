@@ -80,5 +80,20 @@ namespace Model.Dao
 
             }
         }
+        public bool updategh(int giohang,int soluong)
+        {
+            try
+            {
+                var gh = db.GioHangs.SingleOrDefault(x => x.MaSP == giohang);
+                gh.soluong=soluong;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+
+            }
+        }
     }
 }

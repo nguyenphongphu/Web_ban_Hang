@@ -14,13 +14,10 @@ namespace Web_ban_hang.Areas.Admin.Controllers
     {
         // GET: Admin/User
         [HttpGet]
-        public ActionResult Index(string searchString,int page =1, int pageSize=10)
+        public ActionResult Index()
         {
             var dao = new UserDao();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
-
-            ViewBag.SearchString = searchString;
-
+            var model = dao.ListAllPaging();           
             return View(model);
         }
         [HttpGet]

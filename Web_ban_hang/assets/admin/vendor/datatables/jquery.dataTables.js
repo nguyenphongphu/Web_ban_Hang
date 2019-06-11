@@ -11707,7 +11707,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "Tìm Kiếm:",
 	
 	
 			/**

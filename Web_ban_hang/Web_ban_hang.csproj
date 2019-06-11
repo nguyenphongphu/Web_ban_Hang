@@ -2824,6 +2824,7 @@
     <Content Include="assets\client\css\css.css" />
     <Content Include="assets\client\css\easy-responsive-tabs.css" />
     <Content Include="assets\client\css\font-awesome.min.css" />
+    <Content Include="assets\client\css\Gallery.css" />
     <Content Include="assets\client\css\global.css" />
     <Content Include="assets\client\css\jquery-ui.css" />
     <Content Include="assets\client\css\slider.css" />
@@ -2908,7 +2909,6 @@
     <Content Include="assets\admin\model\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\admin\model\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="assets\admin\model\ckfinder\userfiles\.htaccess" />
-    <Content Include="Areas\Admin\Views\New\UploatSP.cshtml" />
     <Content Include="assets\client\js\bootstrap.js" />
     <Content Include="assets\client\js\bootstrap.min.js" />
     <Content Include="assets\client\js\controller\baseController.js" />
@@ -2933,6 +2933,7 @@
     <Content Include="assets\client\js\move-top.js" />
     <Content Include="assets\client\js\npm.js" />
     <Content Include="assets\client\js\script.js" />
+    <Content Include="assets\client\js\ScriptsGallery.js" />
     <Content Include="assets\client\js\slides.min.jquery.js" />
     <Content Include="assets\client\js\startstop-slider.js" />
     <Content Include="assets\client\template\neworder.html" />
@@ -3122,7 +3123,6 @@
     <Content Include="assets\client\font\glyphicons-halflings-regular.woff" />
     <Content Include="assets\client\font\glyphicons-halflings-regular.woff2" />
     <Content Include="libman.json" />
-    <Content Include="Areas\Admin\Views\Data\Data.cshtml" />
     <Content Include="Areas\Admin\Views\Data\BoNho.cshtml" />
     <Content Include="Areas\Admin\Views\Data\BoXL.cshtml" />
     <Content Include="Areas\Admin\Views\Data\Camera.cshtml" />
@@ -3146,6 +3146,8 @@
     <Content Include="Areas\Admin\Views\Data\Pin.cshtml" />
     <Content Include="Areas\Admin\Views\Data\QuangDuong.cshtml" />
     <Content Include="Areas\Admin\Views\Data\Ram.cshtml" />
+    <Content Include="Areas\Admin\Views\Data\LoaiSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\New\ALLSP.cshtml" />
     <None Include="assets\client\js\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
