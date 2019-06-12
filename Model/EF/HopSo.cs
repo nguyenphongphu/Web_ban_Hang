@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,10 @@
         }
 
         [Key]
-        [Display(Name = "Hộp số:")]
         public int ID_HS { get; set; }
 
         [StringLength(50)]
-        public string Ten_HS { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

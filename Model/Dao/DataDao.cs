@@ -18,13 +18,26 @@ namespace Model.Dao
         {
             return db.LoaiSanPhams.ToList();
         }
-        public List<LoaiSanPham> loaiSanPhams()
+        //public List<LoaiSanPham> loaiSanPhams()
+        //{
+        //    return db.LoaiSanPhams.Where(x=>x.LSPParentID==null).ToList();
+        //}
+        //public List<LoaiSanPham> loaiSanPhamsiem(int id)
+        //{
+        //    return db.LoaiSanPhams.Where(x => x.LSPParentID == id).ToList();
+        //}
+        public bool LoaiSanPham(LoaiSanPham loaiSanPham)
         {
-            return db.LoaiSanPhams.Where(x=>x.LSPParentID==null).ToList();
-        }
-        public List<LoaiSanPham> loaiSanPhamsiem(int id)
-        {
-            return db.LoaiSanPhams.Where(x => x.LSPParentID == id).ToList();
+            try
+            {
+                db.LoaiSanPhams.Add(loaiSanPham);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool Ram(Ram  ram)
         {
@@ -43,7 +56,7 @@ namespace Model.Dao
         {
             try
             {
-                db.BoNhos.Add(boNho);
+                db.BoNhoes.Add(boNho);
                 db.SaveChanges();
                 return true;
             }
@@ -108,7 +121,7 @@ namespace Model.Dao
         {
             try
             {
-                db.ChatLieus.Add(chatLieu);
+                db.ChatLieux.Add(chatLieu);
                 db.SaveChanges();
                 return true;
             }
@@ -134,7 +147,7 @@ namespace Model.Dao
         {
             try
             {
-                db.DoiSXs.Add(doiSX);
+                db.DoiSXes.Add(doiSX);
                 db.SaveChanges();
                 return true;
             }
@@ -331,7 +344,7 @@ namespace Model.Dao
         }
         public List<BoNho> BoNholist()
         {
-            return db.BoNhos.ToList();
+            return db.BoNhoes.ToList();
         }
         public List<BoXL> BoXLlist()
         {
@@ -351,7 +364,7 @@ namespace Model.Dao
         }
         public List<ChatLieu> Chatlieulist()
         {
-            return db.ChatLieus.ToList();
+            return db.ChatLieux.ToList();
         }
         public List<ChoNgoi> ChoNgoilsit()
         {
@@ -359,7 +372,7 @@ namespace Model.Dao
         }
         public List<DoiSX> DoiSXlist()
         {
-            return db.DoiSXs.ToList();
+            return db.DoiSXes.ToList();
         }
         public List<DoPhangia> Dophangialist()
         {
@@ -418,6 +431,10 @@ namespace Model.Dao
         {
             return db.Quangduongs.ToList();
         }
-
+        public List<Hang> HangLSP(int id)
+        {
+            return db.Hangs.Where(x => x.MaLSP == id).ToList();
+        }
+        
     }
 }

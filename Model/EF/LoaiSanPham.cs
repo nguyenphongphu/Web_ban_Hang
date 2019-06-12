@@ -46,8 +46,6 @@ namespace Model.EF
         [StringLength(50)]
         public string Link { get; set; }
 
-        public int? LSPParentID { get; set; }
-
         public bool Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

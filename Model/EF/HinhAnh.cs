@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -21,9 +21,7 @@
         public int? MASP { get; set; }
 
         [StringLength(100)]
-        [Display(Name = "Hình ảnh:")]
         public string Link { get; set; }
-      
 
         public bool? AnhFull { get; set; }
 

@@ -117,38 +117,24 @@ namespace Model.Dao
             }
             return hinh;
         }
-        public List<DangBT> sanP(int sp, ref int totalRecord3, int pageIndex , int pageSize )
+        public List<DangBT> sanP_sp(int sp, ref int totalRecord3, int pageIndex , int pageSize )
         {
-            if (sp < 11)
+            var check = db.Menus.SingleOrDefault(x => x.ID == sp);
+            totalRecord3 = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.Link == check.Link).Count();
+            var sanpham = db.DangBTs.Where(x=>x.SanPham.LoaiSanPham.Link==check.Link).OrderByDescending(x => x.MaSP).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            foreach (var item in sanpham)
             {
-                totalRecord3 = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.LSPParentID == sp).Count();
-                var sanpham = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.LSPParentID == sp).OrderByDescending(x => x.MaSP).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-                foreach (var item in sanpham)
-                {
-                    string anh = item.SanPham.AnhTDe;
-                    item.SanPham.AnhTDe = anh.Replace(" ", "");
-                }
-                return sanpham;
+                string anh = item.SanPham.AnhTDe;
+                item.SanPham.AnhTDe = anh.Replace(" ", "");
             }
-            else
-            {
-                totalRecord3 = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.MaLSP == sp).Count();
-                var sanpham = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.MaLSP == sp).OrderByDescending(x => x.MaSP).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-                foreach (var item in sanpham)
-                {
-                    string anh = item.SanPham.AnhTDe;
-                    item.SanPham.AnhTDe = anh.Replace(" ", "");
-                }
-                return sanpham;
-            }
-
+            return sanpham;
         }
-        public List<DangBT> sanPH(string sp, string hang, ref int totalRecord_hang, int pageIndex , int pageSize )
+        public List<DangBT> sanPH_sp_hang(string sp, string hang, ref int totalRecord_hang, int pageIndex , int pageSize )
         {
             if (sp != null && hang != null)
             {
-                totalRecord_hang = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.Link == sp && x.SanPham.Hang.TenHang == hang).Count();
-                var sanpham = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.Link == sp && x.SanPham.Hang.TenHang == hang).OrderByDescending(x => x.MaSP).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                totalRecord_hang = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.Link == sp && x.SanPham.Hang.Ten == hang).Count();
+                var sanpham = db.DangBTs.Where(x => x.SanPham.LoaiSanPham.Link == sp && x.SanPham.Hang.Ten == hang).OrderByDescending(x => x.MaSP).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
                 foreach (var item in sanpham)
                 {
                     string anh = item.SanPham.AnhTDe;
@@ -170,7 +156,7 @@ namespace Model.Dao
 
         }
 
-        public List<DangBT> sanPham( string ma, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
+        public List<DangBT> sanPhamHot( string ma, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {
             if (ma == "hot")
             {

@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,10 @@
         }
 
         [Key]
-        [Display(Name = "Bộ xử lý:")]
         public int ID_BXL { get; set; }
 
         [StringLength(50)]
-        public string Ten_BXL { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

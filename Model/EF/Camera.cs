@@ -16,11 +16,10 @@ namespace Model.EF
         }
 
         [Key]
-        [Display(Name = "Camera:")]
         public int ID_Camera { get; set; }
 
         [StringLength(50)]
-        public string Ten_Camera { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

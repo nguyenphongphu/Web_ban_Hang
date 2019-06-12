@@ -10,14 +10,14 @@ namespace Web_ban_hang.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
-        public ActionResult Index(int cateId, int page = 1, int pageSize = 1)
+        public ActionResult Index(int cateId, int page = 1, int pageSize = 10)
         {
             var newdao = new NewDao();
             var menu = new MenuDao();
 
             ViewBag.header = menu.header(cateId);
             int totalRecord3 = 0;
-            var ListALL = newdao.sanP(cateId, ref totalRecord3, page, pageSize);
+            var ListALL = newdao.sanP_sp(cateId, ref totalRecord3, page, pageSize);
 
             ViewBag.Total = totalRecord3;
             ViewBag.Page = page;
@@ -40,7 +40,7 @@ namespace Web_ban_hang.Controllers
             var menu = new MenuDao();
             ViewBag.header = menu.header_hang(metatitle, hang);
             int totalRecord_hang = 0;
-            var ListALL = newdao.sanPH(metatitle, hang, ref totalRecord_hang, page, pageSize);
+            var ListALL = newdao.sanPH_sp_hang(metatitle, hang, ref totalRecord_hang, page, pageSize);
 
             ViewBag.Total = totalRecord_hang;
             ViewBag.Page = page;
@@ -57,11 +57,11 @@ namespace Web_ban_hang.Controllers
             ViewBag.Prev = page - 1;
             return View(ListALL);
         }
-        public ActionResult Sanpham_ALL( int page = 1, int pageSize = 9)
+        public ActionResult Sanpham_ALL( int page = 1, int pageSize = 10)
         {
             var newdao = new NewDao();            
             int totalRecord_hang = 0;
-            var ListALL = newdao.sanPH(null, null, ref totalRecord_hang, page, pageSize);
+            var ListALL = newdao.sanPH_sp_hang(null, null, ref totalRecord_hang, page, pageSize);
 
             ViewBag.Total = totalRecord_hang;
             ViewBag.Page = page;
@@ -78,12 +78,12 @@ namespace Web_ban_hang.Controllers
             ViewBag.Prev = page - 1;
             return View(ListALL);
         }
-        public ActionResult Sanpham( string metatitle, int page = 1, int pageSize = 10)
+        public ActionResult SanphamHot_New( string metatitle, int page = 1, int pageSize = 10)
         {
                 var newdao = new NewDao();
                 ViewBag.header = metatitle;
                 int totalRecord = 0;
-                var ListALL = newdao.sanPham(metatitle, ref totalRecord, page, pageSize);
+                var ListALL = newdao.sanPhamHot(metatitle, ref totalRecord, page, pageSize);
 
                 ViewBag.Total = totalRecord;
                 ViewBag.Page = page;
@@ -98,9 +98,7 @@ namespace Web_ban_hang.Controllers
                 ViewBag.Last = totalPage;
                 ViewBag.Next = page + 1;
                 ViewBag.Prev = page - 1;
-                return View(ListALL);
-            
-            
+                return View(ListALL);                  
         }
     }
 }

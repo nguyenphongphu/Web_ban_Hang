@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Sanpham";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var header =ViewBag.header;
+    var header = ViewBag.header;
 
 }
 
@@ -27,7 +27,7 @@
         </div>
         <div class="header_bottom_right">
             <div class="section group ">
-                @{                    
+                @{
                     foreach (var item in Model)
                     {
                         var url = "/chi-tiet/" + item.SanPham.TieuDe + "-" + item.MaSP;
@@ -102,9 +102,3 @@
 
     </div>
 </div>
-
-
-
-
-
-

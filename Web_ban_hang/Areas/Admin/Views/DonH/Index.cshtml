@@ -1,0 +1,65 @@
+﻿@model  List<Model.EF.DonHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <hr />
+            <div class="panel-body">
+                <div class="col-md-5"> <h4>Danh sách</h4></div>
+                <div class="table-responsive ">
+                    <table class="table table-striped table-bordered table-hover" id="dataram">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên Sản phẩm</th>
+                                <th>Khu Vực</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                                <th>Ngày Tháng Năm</th>
+                                <th>Tên Người Nhận</th>
+                                <th>Điện Thoại</th>
+                                <th>Địa Chỉ</th>
+                                <th>Email</th>
+                                <th>Tài Khoản</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr id="row_@item.ID_DH">
+                                <td>@item.ID_DH</td>
+                                <td>@item.SanPham.TenSP</td>
+                                <td>@item.Khuvuc.TenKV</td>
+                                <td>@item.soluong</td>
+                                <td>@item.Gia</td>
+                                <td>@item.date</td>
+                                <td>@item.Name</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Diachi</td>
+                                <td>@item.email</td>
+                                <td>@item.Taikhoan.Username</td>
+                                <td>
+                                    @Ajax.ActionLink("Gữi", "GuiHang", new { @id = item.ID_DH }, new AjaxOptions
+                                    {
+                                   Confirm = "Bạn có muốn xoá bản ghi này?",                                   
+                                   HttpMethod = "Delete"
+                                    })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+

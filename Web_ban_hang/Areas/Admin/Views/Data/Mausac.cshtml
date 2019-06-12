@@ -9,26 +9,27 @@
 @section header{
     Thêm người dùng
 }
-
+@section jsFooter{
+    <script src="/assets/admin/js/controller/datacontroller.js"></script>
+}
 @using (Html.BeginForm("Mausac", "Data", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>MauSac</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Ten_MS, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ten_MS, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ten_MS, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.MaLSP, "MaLSP", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-5">
                 @Html.DropDownList("MaLSP", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MaLSP, "", new { @class = "text-danger" })
             </div>
@@ -36,63 +37,64 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+                <input type="button" value="Sữa" class="btn btn-danger" />
             </div>
         </div>
     </div>
 }
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-lg-12">
+    <div class="col-lg-12">
 
-            <div class="panel panel-default">
-                <!-- /.panel-heading -->
-                <hr />
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <hr />
 
-                <div class="panel-body">
-                    <div class="col-md-5"> <h4>Danh sách dung lượng Ram</h4></div>
-                    <div class="table-responsive col-5">
-                        <table class="table table-striped table-bordered table-hover" id="datamausac">
-                            <thead>
-                                <tr>
+            <div class="panel-body">
+                <div class="col-md-5"> <h4>Danh sách</h4></div>
+                <div class="table-responsive ">
+                    <table class="table table-striped table-bordered table-hover" id="datamausac">
+                        <thead>
+                            <tr>
 
-                                    <th>STT</th>
-                                    <th>Dung lượng</th>
-                                    <th>Loai sản phẩn</th>
-                                    <th>#</th>
+                                <th>STT</th>
+                                <th>Dung lượng</th>
+                                <th>Loai sản phẩn</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in mauSacs)
+                            {
+                                <tr id="row_@item.ID_MS">
+                                    <td>@item.ID_MS</td>
+                                    <td>@item.Ten</td>
+                                    <td id="@item.LoaiSanPham.MaLSP">@item.LoaiSanPham.TenLSP</td>
+                                    <td>
+                                        <a href="javascript:" id="suaid">Sửa</a>
+                                        |
+                                        @Ajax.ActionLink("Xoá", "Delete", new { @id = item.ID_MS }, new AjaxOptions
+                                   {
+                                       Confirm = "Bạn có muốn xoá bản ghi này?",
+                                       OnComplete = "$('#row_" + @item.ID_MS + "').remove()",
+                                       HttpMethod = "Delete"
+                                   })
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in mauSacs)
-                                {
-                                    <tr id="row_@item.ID_MS">
-                                        <td>@item.ID_MS</td>
-                                        <td>@item.Ten_MS</td>
-                                        <td>@item.LoaiSanPham.TenLSP</td>
-                                        <td>
-                                            <a href="/Admin/User/Edit/@item.ID_MS">Sửa</a>
-                                            |
-                                            @Ajax.ActionLink("Xoá", "Delete", new { @id = item.ID_MS }, new AjaxOptions
-                                       {
-                                           Confirm = "Bạn có muốn xoá bản ghi này?",
-                                           OnComplete = "$('#row_" + @item.ID_MS + "').remove()",
-                                           HttpMethod = "Delete"
-                                       })
-                                        </td>
-                                    </tr>
-                                }
+                            }
 
 
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
 
-                    </div>
-                    <!-- /.table-responsive -->
                 </div>
-
-                <!-- /.panel-body -->
+                <!-- /.table-responsive -->
             </div>
 
+            <!-- /.panel-body -->
         </div>
+
     </div>
+</div>

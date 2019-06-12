@@ -10,9 +10,13 @@ namespace Model.EF
     public partial class GioHang
     {
         [Key]
+        [Column(Order = 0)]
         public int ID_GH { get; set; }
 
-        public int? MaSP { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MaSP { get; set; }
 
         public int? UserID { get; set; }
 
@@ -21,13 +25,12 @@ namespace Model.EF
 
         public decimal? Gia { get; set; }
 
+        [Key]
+        [Column(Order = 2)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int soluong { get; set; }
 
         public int? MaKV { get; set; }
-
-        public bool thanhtoan { get; set; }
-
-        public bool thanhcong { get; set; }
 
         public virtual Khuvuc Khuvuc { get; set; }
 

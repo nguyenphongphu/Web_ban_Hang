@@ -16,11 +16,10 @@ namespace Model.EF
         }
 
         [Key]
-        [Display(Name = "Case:")]
         public int ID_Case { get; set; }
 
         [StringLength(50)]
-        public string Ten_Case { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

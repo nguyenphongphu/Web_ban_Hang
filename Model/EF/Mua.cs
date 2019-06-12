@@ -16,11 +16,10 @@ namespace Model.EF
         }
 
         [Key]
-        [Display(Name = "Mùa:")]
         public int ID_M { get; set; }
 
         [StringLength(50)]
-        public string Ten_M { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

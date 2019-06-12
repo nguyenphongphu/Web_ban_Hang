@@ -57,6 +57,10 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             }
             return View("Index");
         }
+        public ActionResult Reset_Password()
+        {
+            return View();
+        }
     }
 
 }

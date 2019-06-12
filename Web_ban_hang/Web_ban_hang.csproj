@@ -138,12 +138,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CheckDataController.cs" />
     <Compile Include="Areas\Admin\Controllers\DataController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UpdateDataController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\Hang.cs" />
+    <Compile Include="Areas\Admin\Models\LoaiSanPham.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Models\ModelData.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
@@ -187,6 +193,7 @@
     <Content Include="assets\admin\dist\css\sb-admin-2.css" />
     <Content Include="assets\admin\dist\css\timeline.css" />
     <Content Include="assets\admin\dist\js\sb-admin-2.js" />
+    <Content Include="assets\admin\js\controller\datacontroller.js" />
     <Content Include="assets\admin\js\controller\userController.js" />
     <Content Include="assets\admin\js\demo\chart-area-demo.js" />
     <Content Include="assets\admin\js\demo\chart-bar-demo.js" />
@@ -2916,6 +2923,7 @@
     <Content Include="assets\client\js\controller\contactController.js" />
     <Content Include="assets\client\js\controller\dangtin.js" />
     <Content Include="assets\client\js\controller\DangtinController.js" />
+    <Content Include="assets\admin\js\controller\Modelcontroller.js" />
     <Content Include="assets\client\js\controller\userController.js" />
     <Content Include="assets\client\js\easing.js" />
     <Content Include="assets\client\js\easyResponsiveTabs.js" />
@@ -3148,6 +3156,8 @@
     <Content Include="Areas\Admin\Views\Data\Ram.cshtml" />
     <Content Include="Areas\Admin\Views\Data\LoaiSanPham.cshtml" />
     <Content Include="Areas\Admin\Views\New\ALLSP.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Reset_Password.cshtml" />
+    <Content Include="Areas\Admin\Views\DonH\Index.cshtml" />
     <None Include="assets\client\js\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3192,12 +3202,12 @@
     <Content Include="Views\User\MenuSP.cshtml" />
     <Content Include="Views\SanPham\Sanpham_hang.cshtml" />
     <Content Include="Views\SanPham\Sanpham_ALL.cshtml" />
-    <Content Include="Views\SanPham\Sanpham.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\GioHang\Payment.cshtml" />
     <Content Include="Views\GioHang\Success.cshtml" />
     <Content Include="Views\DangTin\Dangtin.cshtml" />
     <Content Include="Views\Home\timkiem.cshtml" />
+    <Content Include="Views\SanPham\SanphamHot_New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3216,7 +3226,7 @@
     <Folder Include="assets\client\images\thoi-trang\" />
     <Folder Include="assets\client\images\tivi\" />
     <Folder Include="assets\client\images\xe-co\" />
-    <Folder Include="Upload\" />
+    <Folder Include="Upload\Temp\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

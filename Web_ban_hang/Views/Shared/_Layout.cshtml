@@ -54,7 +54,7 @@
                     @{Html.RenderAction("TopMenu", "Home"); }
                     <div class="clear"></div>
                 </div>
-                <div>
+                <div style="top:10px">
                     <div class="header_bottom" style="width:94%;float:left">
                         <div class="menu">
                             @{Html.RenderAction("MainMenu", "Home"); }
@@ -103,9 +103,9 @@
         }
         document.addEventListener('scroll', onScroll);
         $(window).on('beforeunload', function () {
-            var URL = "/GioHang/upload";
-            var data = "";
-            navigator.sendBeacon(URL, data);
+                var URL = "/GioHang/upload";
+                var data = "";
+                navigator.sendBeacon(URL, data);          
         });
    
     </script>

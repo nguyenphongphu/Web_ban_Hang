@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,6 @@
         }
 
         [Key]
-        [Display(Name = "Loại thời trang:")]
         public int ID_LTR { get; set; }
 
         [StringLength(50)]

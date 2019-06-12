@@ -28,6 +28,10 @@ namespace Model.Dao
 
             }
         }
+        public GioHang getID(int id)
+        {
+            return db.GioHangs.SingleOrDefault(x => x.MaSP == id);
+        }
         public bool deleteid(int id)
         {
             try
@@ -63,14 +67,24 @@ namespace Model.Dao
         }
         public List<GioHang> Listall( string name)
         {
-            return db.GioHangs.Where(x => x.Taikhoan.Username==name&&x.thanhtoan==false).ToList();
+            return db.GioHangs.ToList();
         }
-        public bool update(int giohang)
+        public bool insertdonhang(GioHang giohang, string shipName, string mobile, string address, string email)
         {
             try
             {
-                var gh = db.GioHangs.SingleOrDefault(x=>x.MaSP==giohang);
-                gh.thanhtoan = true;                
+                var donhang = new DonHang();
+                donhang.MaSP = giohang.MaSP;
+                donhang.date = DateTime.Now;
+                donhang.Diachi = address;
+                donhang.Name = shipName;
+                donhang.Phone = mobile;
+                donhang.email = email;
+                donhang.MaKV = giohang.MaKV;
+                donhang.soluong = giohang.soluong;
+                donhang.Gia = giohang.Gia;
+                db.DonHangs.Add(donhang);
+                db.GioHangs.Remove(giohang);                                                             
                 db.SaveChanges();
                 return true;
             }

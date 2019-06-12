@@ -14,12 +14,12 @@ namespace Model.EF
         {
             SanPhams = new HashSet<SanPham>();
         }
+
         [Key]
-        [Display(Name = "Model:")]
         public int ID_Mdel { get; set; }
 
         [StringLength(50)]
-        public string Ten_Model { get; set; }
+        public string Ten { get; set; }
 
         public int? IDHang { get; set; }
 

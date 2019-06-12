@@ -16,7 +16,6 @@ namespace Model.EF
         }
 
         [Key]
-        [Display(Name = "Card:")]
         public int ID_Card { get; set; }
 
         [StringLength(50)]

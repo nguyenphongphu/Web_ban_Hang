@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,10 @@
         }
 
         [Key]
-        [Display(Name = "Đời sản xuất:")]
         public int ID_Doi { get; set; }
 
         [StringLength(50)]
-        public string Nam { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

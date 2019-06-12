@@ -2,6 +2,7 @@
 using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -49,8 +50,6 @@ namespace Web_ban_hang.Controllers
             Session[CommonConstants.USER_SESSION] = null;
             return Redirect("/");
         }
-
-
         [HttpPost]
         public ActionResult DangKy(RegisterModel model)
         {
@@ -144,11 +143,19 @@ namespace Web_ban_hang.Controllers
             if (ModelState.IsValid)
             {
                 var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+                var image = (List<Image>)Session[CommonConstants.IMAGE_SESSION];
                 if (session != null)
                 {
                     var newdao = new NewDao();
                     dangBT.UserID = session.UserID;
                     dangBT.SanPham.Date = DateTime.Now;
+                    if (image != null)
+                    {
+                        foreach (var item in image)
+                        {
+
+                        }
+                    }
                     dangBT.SanPham.AnhTDe = "/ Upload/ Temp /" + dangBT.SanPham.LoaiSanPham.TenLSP+"/";
                     newdao.Them(dangBT); 
                 }
@@ -234,18 +241,21 @@ namespace Web_ban_hang.Controllers
                 var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
                 if (file != null)
                 {
-                    if (!System.IO.Directory.Exists("~/ Upload/ Temp / " + session.UserName))
+                    if (!Directory.Exists(Server.MapPath("~/Upload/Temp/") + session.UserName))
                     {
-                        System.IO.Directory.CreateDirectory(Server.MapPath("~/ Upload/ Temp /" + session.UserName));
+                        Directory.CreateDirectory(Server.MapPath("~/Upload/Temp/") + session.UserName);
                     }
                     int fileSize = file.ContentLength;
                     string fileName = file.FileName;
-                    string mimeType = file.ContentType;
-                    System.IO.Stream fileContent = file.InputStream;
                     var date = DateTime.Now.ToString("dd-MM-yyyy");
-                    file.SaveAs(Server.MapPath("~/ Upload/ Temp /"+ session.UserName + "/") + date + "-" + fileName);
 
-                    return "/ Upload/ Temp /" + session.UserName + "/" + date + "-" + fileName;
+                    file.SaveAs(Path.Combine(Server.MapPath("~/Upload/Temp/" + session.UserName + "/"), date + "-" + fileName));
+                    var image = (List<Image>)Session[CommonConstants.IMAGE_SESSION];
+                    Image images = new Image();
+                    images.image = "/Upload/Temp/" + session.UserName + "/" + date + "-" + fileName;
+                    images.ten = session.UserID;
+                    image.Add(images);
+                    return "/Upload/Temp/" + session.UserName + "/" + date + "-" + fileName;
                 }
                 else
                 {

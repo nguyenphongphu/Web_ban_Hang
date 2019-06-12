@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,10 @@
         }
 
         [Key]
-        [Display(Name = "Dung lượng Ram: ")]
         public int ID_R { get; set; }
 
         [StringLength(50)]
-        public string Ten_R { get; set; }
+        public string Ten { get; set; }
 
         public int? MaLSP { get; set; }
 

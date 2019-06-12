@@ -66,7 +66,7 @@ namespace Model.Dao
         }
         public List<DoiSX> doisanxuat(int malsp)
         {
-            return db.DoiSXs.Where(x => x.MaLSP == malsp).ToList();
+            return db.DoiSXes.Where(x => x.MaLSP == malsp).ToList();
         }
         public List<Card> card(int malsp)
         {
@@ -78,7 +78,7 @@ namespace Model.Dao
         }
         public List<ChatLieu> Chatlieu(int malsp)
         {
-            return db.ChatLieus.Where(x => x.MaLSP == malsp).ToList();
+            return db.ChatLieux.Where(x => x.MaLSP == malsp).ToList();
         }
         public List<PhienBan> phienban(int malsp)
         {
@@ -98,7 +98,7 @@ namespace Model.Dao
         }
         public List<BoNho> bonho(int malsp)
         {
-            return db.BoNhos.Where(x => x.MaLSP == malsp).ToList();
+            return db.BoNhoes.Where(x => x.MaLSP == malsp).ToList();
         }
         public List<HopSo> hopso(int malsp)
         {

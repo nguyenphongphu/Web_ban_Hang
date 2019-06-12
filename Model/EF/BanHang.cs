@@ -12,18 +12,18 @@ namespace Model.EF
         {
         }
 
-        public virtual DbSet<BoNho> BoNhos { get; set; }
+        public virtual DbSet<BoNho> BoNhoes { get; set; }
         public virtual DbSet<BoXL> BoXLs { get; set; }
         public virtual DbSet<Camera> Cameras { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Case> Cases { get; set; }
-        public virtual DbSet<ChatLieu> ChatLieus { get; set; }
+        public virtual DbSet<ChatLieu> ChatLieux { get; set; }
         public virtual DbSet<ChoNgoi> ChoNgois { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<DangBT> DangBTs { get; set; }
-        public virtual DbSet<DoiSX> DoiSXs { get; set; }
+        public virtual DbSet<DoiSX> DoiSXes { get; set; }
+        public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<DoPhangia> DoPhangias { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<Hang> Hangs { get; set; }
         public virtual DbSet<HeDieuHanh> HeDieuHanhs { get; set; }
         public virtual DbSet<HinhAnh> HinhAnhs { get; set; }
@@ -47,6 +47,7 @@ namespace Model.EF
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Taikhoan> Taikhoans { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -55,22 +56,26 @@ namespace Model.EF
                 .WithRequired(e => e.ChucVu)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<GioHang>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.Gia)
                 .HasPrecision(18, 0);
 
+            modelBuilder.Entity<DonHang>()
+                .Property(e => e.Phone)
+                .IsFixedLength();
+
             modelBuilder.Entity<HeDieuHanh>()
-                .Property(e => e.Ten_HDH)
+                .Property(e => e.Ten)
                 .IsFixedLength();
 
             modelBuilder.Entity<HinhAnh>()
                 .Property(e => e.Link)
                 .IsFixedLength();
 
-            modelBuilder.Entity<LoaiSanPham>()
-                .HasMany(e => e.Muas)
-                .WithOptional(e => e.LoaiSanPham)
-                .HasForeignKey(e => e.MaLSP);
+            modelBuilder.Entity<Model>()
+                .HasMany(e => e.SanPhams)
+                .WithOptional(e => e.Model)
+                .HasForeignKey(e => e.ID_Model);
 
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaBan)
@@ -78,6 +83,11 @@ namespace Model.EF
 
             modelBuilder.Entity<SanPham>()
                 .HasMany(e => e.DangBTs)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.GioHangs)
                 .WithRequired(e => e.SanPham)
                 .WillCascadeOnDelete(false);
 
@@ -110,6 +120,10 @@ namespace Model.EF
                 .HasMany(e => e.DangBTs)
                 .WithRequired(e => e.Taikhoan)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GioHang>()
+                .Property(e => e.Gia)
+                .HasPrecision(18, 0);
         }
     }
 }

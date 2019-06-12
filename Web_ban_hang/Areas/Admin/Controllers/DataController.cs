@@ -292,21 +292,7 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
         public ActionResult Model()
         {
             var dao = new DataDao();
-            ViewBag.modeles = dao.Modelslist();
-            ViewBag.MaLSP = new SelectList(new List<SelectListItem>
-            {
-                new SelectListItem { Value = "1", Text = "Điện Thoại" },
-                 new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
-                 new SelectListItem { Value = "3", Text = "Laptop" },
-                 new SelectListItem { Value = "4", Text = "Xe Cộ" },
-                 new SelectListItem { Value = "5", Text = "Thể Thao" },
-                 new SelectListItem { Value = "6", Text = "Thời Trang" },
-                 new SelectListItem { Value = "7", Text = "Đồ Nội Thất" },
-                 new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
-                 new SelectListItem { Value = "9", Text = "Tivi" },
-                 new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
-            }, "Value", "Text");
+            ViewBag.modeles = dao.Modelslist();                    
             return View();
         }
         public ActionResult PhuKien()
@@ -682,11 +668,14 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
             return View("PhienBan");
         }
         [HttpPost]
-        public ActionResult Model(Model.EF.Model model)
+        public ActionResult Model(Admin.Models.ModelData model)
         {
             if (ModelState.IsValid)
             {
-                bool check = new DataDao().Models(model);
+                var data = new Model.EF.Model();
+                data.Ten = model.Ten;
+                data.IDHang = model.IDHang;
+                bool check = new DataDao().Models(data);
                 if (check)
                 {
                     SetAlert("thêm thành công", "success");
@@ -788,6 +777,60 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                 TempData["AlertType"] = "alert-danger";
             }
 
+        }
+        public JsonResult LoadLSP()
+        {
+            var LSP = new DataDao().loaiSanPhamall();
+            var danhsach = new List<Models.LoaiSanPham>();
+            Models.LoaiSanPham loaiSanPham = null;
+            foreach (var item in LSP)
+            {
+                loaiSanPham = new Models.LoaiSanPham();
+                loaiSanPham.MaLSP = item.MaLSP;
+                loaiSanPham.Ten = item.TenLSP;
+                danhsach.Add(loaiSanPham);
+            }
+            return Json(new
+            {
+                data = danhsach,
+                status = true
+            });
+        }
+        public JsonResult LoadHang(int MaLSP)
+        {
+            var Hang = new DataDao().HangLSP(MaLSP);
+            var danhsach = new List<Models.Hang>();
+            Models.Hang hang = null;
+            foreach (var item in Hang)
+            {
+                hang = new Models.Hang();
+                hang.IDHang = item.IDHang;
+                hang.Ten = item.Ten;
+                danhsach.Add(hang);
+            }
+            return Json(new
+            {
+                data = danhsach,
+                status = true
+            });
+        }
+        [HttpPost]
+        public ActionResult LoaiSanPham(LoaiSanPham loaiSanPham )
+        {
+            if (ModelState.IsValid)
+            {
+                bool check = new DataDao().LoaiSanPham(loaiSanPham);
+                if (check)
+                {
+                    SetAlert("thêm thành công", "success");
+                    return RedirectToAction("LoaiSanPham", "Data");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Thêm không thành công");
+                }
+            }
+            return View("LoaiSanPham");
         }
     }
 }

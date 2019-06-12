@@ -85,7 +85,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.IDHang;
-                    province.Name = item.TenHang;
+                    province.Name = item.Ten;
                     hangs.Add(province);
                 }
             }
@@ -96,7 +96,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_BN;
-                    province.Name = item.DungLuong;
+                    province.Name = item.Ten;
                     bonhos.Add(province);
                 }
             }
@@ -107,7 +107,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_BXL;
-                    province.Name = item.Ten_BXL;
+                    province.Name = item.Ten;
                     boxulys.Add(province);
                 }
             }
@@ -118,7 +118,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_Camera;
-                    province.Name = item.Ten_Camera;
+                    province.Name = item.Ten;
                     cameras.Add(province);
                 }
             }
@@ -140,7 +140,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_Case;
-                    province.Name = item.Ten_Case;
+                    province.Name = item.Ten;
                     cameras.Add(province);
                 }
             }
@@ -162,7 +162,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_CN;
-                    province.Name = item.So;
+                    province.Name = item.Ten;
                     chongois.Add(province);
                 }
             }
@@ -173,7 +173,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_Doi;
-                    province.Name = item.Nam;
+                    province.Name = item.Ten;
                     doisanxuats.Add(province);
                 }
             }
@@ -195,7 +195,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_HDH;
-                    province.Name = item.Ten_HDH;
+                    province.Name = item.Ten;
                     hedieuhanhs.Add(province);
                 }
             }
@@ -206,7 +206,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_HS;
-                    province.Name = item.Ten_HS;
+                    province.Name = item.Ten;
                     hopsos.Add(province);
                 }
             }
@@ -228,7 +228,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_KD;
-                    province.Name = item.Ten_KD;
+                    province.Name = item.Ten;
                     kieudangs.Add(province);
                 }
             }
@@ -250,7 +250,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_MS;
-                    province.Name = item.Ten_MS;
+                    province.Name = item.Ten;
                     mausacs.Add(province);
                 }
             }
@@ -261,7 +261,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_M;
-                    province.Name = item.Ten_M;
+                    province.Name = item.Ten;
                     Muas.Add(province);
                 }
             }
@@ -272,7 +272,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_PB;
-                    province.Name = item.Ten_PB;
+                    province.Name = item.Ten;
                     phienbans.Add(province);
                 }
             }
@@ -294,7 +294,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_Pin;
-                    province.Name = item.Dungluong;
+                    province.Name = item.Ten;
                     pins.Add(province);
                 }
             }
@@ -305,7 +305,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_QD;
-                    province.Name = item.So;
+                    province.Name = item.Ten;
                     quangduongs.Add(province);
                 }
             }
@@ -316,7 +316,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_R;
-                    province.Name = item.Ten_R;
+                    province.Name = item.Ten;
                     rams.Add(province);
                 }
             }
@@ -327,7 +327,7 @@ namespace Web_ban_hang.Controllers
                 {
                     province = new ProvinceModel();
                     province.ID = item.ID_Mdel;
-                    province.Name = item.Ten_Model;
+                    province.Name = item.Ten;
                     hangs.Add(province);
                 }
             }           

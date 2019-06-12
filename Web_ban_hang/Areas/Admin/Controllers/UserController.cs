@@ -26,7 +26,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             ViewBag.MACV = new SelectList(new UserDao().chucVus(), "MaCV", "TenCV", "");
             return View();
         }
-
+        [HttpGet]
         public ActionResult Edit(int ID)
         {
             ViewBag.MACV = new SelectList(new UserDao().chucVus(), "MaCV", "TenCV", "");
@@ -66,9 +66,9 @@ namespace Web_ban_hang.Areas.Admin.Controllers
        
 
         [HttpPost]
-        public ActionResult Edit(Taikhoan user)
+        public ActionResult Edits(Taikhoan user)
         {
-            if (ModelState.IsValid)
+            if (ModelState.Values.Count()>0)
             {
                 var dao = new UserDao();
                 if (!string.IsNullOrEmpty(user.Password))
@@ -76,8 +76,6 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                     var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
                     user.Password = encryptedMd5Pas;
                 }
-
-
                 var result = dao.Update(user);
                 if (result)
                 {

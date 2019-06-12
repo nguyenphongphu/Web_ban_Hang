@@ -187,15 +187,7 @@ namespace Web_ban_hang.Controllers
                         gioHang.Gia = item.sanpham.GiaBan;
                         gioHang.soluong = item.Quantity;
                         gioHang.UserID = session.UserID;
-                        var chek = new NewDao().ViewDetail(item.sanpham.MaSP);
-                        if (chek != null)
-                        {
-                            new GioHangDao().update(chek.MaSP);
-                        }
-                        else
-                        {
-                            new GioHangDao().insert(gioHang);
-                        }
+                        new GioHangDao().insertdonhang(gioHang, shipName, mobile, address, email);                        
                         total += (item.sanpham.GiaBan.GetValueOrDefault(0) * item.Quantity);
                     }
 
@@ -285,7 +277,7 @@ namespace Web_ban_hang.Controllers
         {
             var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
             var cart = (List<CartItem>)Session[CartSession];
-            if (cart != null)
+            if (cart != null && session != null)
             {
                 foreach (var item in cart)
                 {                  
@@ -295,7 +287,7 @@ namespace Web_ban_hang.Controllers
                         gioHang.Gia = item.sanpham.GiaBan;
                         gioHang.soluong = item.Quantity;
                         gioHang.UserID = session.UserID;
-                        var chek = new NewDao().ViewDetail(item.sanpham.MaSP);
+                        var chek = new GioHangDao().getID(item.sanpham.MaSP) ;
                         if (chek != null)
                         {
                             new GioHangDao().updategh(chek.MaSP, item.Quantity);
