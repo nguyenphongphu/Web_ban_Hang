@@ -832,5 +832,19 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
             }
             return View("LoaiSanPham");
         }
+        [HttpDelete]
+        public ActionResult DeleteBoNho(int id)
+        {
+            var check = new CheckData().BoNho(id);
+            if (check)
+            {
+                new DeleteData().DeleteBoNho(id);
+                return RedirectToAction("BoNho");
+            }
+            else
+            {
+                return RedirectToAction("BoNho");
+            }
+        }
     }
 }

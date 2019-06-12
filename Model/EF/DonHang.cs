@@ -23,6 +23,10 @@ namespace Model.EF
 
         public int soluong { get; set; }
 
+        public int? Thanhtien { get; set; }
+
+        public bool? Status { get; set; }
+
         public int? MaKV { get; set; }
 
         [StringLength(50)]

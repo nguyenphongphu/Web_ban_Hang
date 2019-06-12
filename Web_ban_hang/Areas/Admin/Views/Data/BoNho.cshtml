@@ -9,7 +9,7 @@
 @section header{
     Thêm thông tin dung lượng bộ nhớ các loại sản phẩn
 }
-@section jsFooter{
+@section jsFooter{    
     <script src="/assets/admin/js/controller/datacontroller.js"></script>
 }
 @using (Html.BeginForm("BoNho", "Data", FormMethod.Post))
@@ -38,7 +38,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Thêm" class="btn btn-primary" />
-                <input type="button" value="Sữa" class="btn btn-danger" />
+                <input type="button" value="Sữa" class="btn btn-danger" id="btn_suabonho" />
             </div>
         </div>
     </div>

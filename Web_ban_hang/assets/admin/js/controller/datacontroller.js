@@ -1,6 +1,7 @@
-﻿var user = {
+﻿var data = {
     init: function () {
-        user.registerEvents();
+        data.registerEvents();
+        data.updatedata();
     },
     registerEvents: function () {      
         $(document).on('click', '#suaid', function () {
@@ -26,6 +27,14 @@
             $("#Ten").val(id);
             $("#IDHang").val(tenhang[0].id);
             $("#MaLSP").val(tenlsp[0].id);
+        })
+    },
+    updatedata: function () {
+        $(document).on('click', '#btn_suabonho', function () {
+            var ten = $('#Ten').text();
+            var ma = $('#MaLSP').val();
+            console.log(ten + ma);
+           
         })
     }
 }
