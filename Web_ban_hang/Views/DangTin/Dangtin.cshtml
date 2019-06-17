@@ -1,10 +1,9 @@
-﻿@model Model.EF.DangBT
+﻿@model Web_ban_hang.Models.NewModel
 
 @{
     ViewBag.Title = "Đăng ban tin";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var tinh = (List<Model.EF.Khuvuc>)ViewBag.Tinh;
-    var user = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
 }
 
 @section jsFooter{
@@ -12,7 +11,7 @@
 }
 <div class="content">
     <div class="section group ">
-        @using (Html.BeginForm("Dangtin", "User", FormMethod.Post))
+        @using (Html.BeginForm("Dangtin", "Dangtin", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <div class="section group " id="dangtin">
@@ -31,7 +30,6 @@
                                 {
                                     <li class="btn-group" role="group"><a href="javascript:" id="City_@item.MaKV" style="padding:8px 15px;" rel="@item.MaKV">@item.TenKV</a></li>
                                 }
-
                             </ul>
 
                         </div>
@@ -46,24 +44,22 @@
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
-                            @Html.LabelFor(model => model.SanPham.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SanPham.TieuDe, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.SanPham.TieuDe, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.TieuDe, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.SanPham.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.SanPham.Mota, htmlAttributes: new { @class = "form-control textarea-nd" })
-                                @Html.ValidationMessageFor(model => model.SanPham.Mota, "", new { @class = "text-danger" })
+                                @Html.TextAreaFor(model => model.Mota, htmlAttributes: new { @class = "form-control textarea-nd" })
+                                @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="group-form form-group">
-                            @Html.LabelFor(model => model.SanPham.HinhAnh.Link, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-
+                            <div class="col-md-10" style="left:10%">
                                 <p class="title large">
                                     Hình ảnh sản phẩm
                                 </p>
@@ -90,118 +86,74 @@
                             </div>
                         </div>
                         <div class="form-group" style="display: none;">
-                            @Html.TextBoxFor(model => model.SanPham.IDHang, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_BN, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_BXL, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_Camera, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_Card, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_Case, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_CL, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_CN, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_HDH, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_DPG, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_Doi, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_HS, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_KD, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_KT, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_LTR, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_M, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_MS, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_PB, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_Pin, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_QD, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_PK, htmlAttributes: new { @class = "form-control-1" })
-                            @Html.TextBoxFor(model => model.SanPham.ID_R, htmlAttributes: new { @class = "form-control-1" })                           
+                            @Html.TextBoxFor(model => model.IDHang, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_BN, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_BXL, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_Camera, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_Card, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_Case, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_CL, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_CN, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_HDH, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_DPG, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_Doi, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_HS, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_KD, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_KT, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_LTR, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_M, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_MS, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_PB, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_Pin, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_QD, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_PK, htmlAttributes: new { @class = "form-control-1" })
+                            @Html.TextBoxFor(model => model.ID_R, htmlAttributes: new { @class = "form-control-1" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SanPham.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="form-group" style="left:2%">
+                            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class=" from-table">
-                                @Html.TextBoxFor(model => model.SanPham.GiaBan, htmlAttributes: new { @class = "form-control-1" })
+                                @Html.TextBoxFor(model => model.GiaBan, htmlAttributes: new { @class = "form-control-1" })
                                 <div class="gia">
                                     đ
                                 </div>
-                                @Html.ValidationMessageFor(model => model.SanPham.GiaBan, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Đăng tin" class="btn btn-default" />
-                                <input id="btnReview" type="button" class="btn-df btnReview" rel="nofollow" value="Xem trước" />
+                        @{ 
 
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="panel review-news-box" style="display: none;">
-
-                <div class="panel-header">
-                    <h2 class="panel-title text-center text-uppercase">Xem trước tin đăng</h2>
-                </div>
-
-                <div class="panel-body">
-                    <div class="preview-news">
-                        <div class="row clearfix">
-                            <div class="col-gr-60per">
-                                <link href="/assets/client/css/Gallery.css" rel="stylesheet" />
-                                <script src="/assets/client/js/ScriptsGallery.js"></script>
-
-                                <div class="group-image-prd">
+                            var user = (Model.EF.Taikhoan)ViewBag.user;
+                            if (user != null)
+                            {
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Người đăng </label>
+                                    <div class="col-md-5">
+                                        <input name="shipName" class="form-control" value="@user.HovaTen" />
+                                    </div>                    
                                 </div>
-                            </div>
-                            <div class="col-gr-40per">
-                                <div class="group-info-detail-prd">
-                                    <div class="row-info-prd" style="margin-bottom: 10px">
-                                        <h1 class="title-name" id="viewTitle"></h1>
-                                        <p class="if-more">
-                                            <span>08/06/2019</span>
-                                            <span id="viewPlace"></span>
-                                        </p>
-                                    </div>
-                                    <div class="row-info-prd price" style="margin-bottom: 15px;">
-                                        <span id="viewPrice"></span>
-                                        <span class="unit">đ</span>
-                                    </div>
-
-                                    <div class="row-info-prd">
-                                        <div class="author">
-                                            <span class="pull-left">
-                                                <i class="icon-user"></i>
-                                                <span id="tempUser"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <i class="icon-mobile-1"></i>
-                                                <span id="tempMobile"></span>
-                                            </span>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Điện thoại</label>
+                                    <div class="col-md-5"> 
+                                        <input name="mobile" class="form-control" value="@user.Phone" />
+                                    </div>                                      
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Email</label>
+                                    <div class="col-md-5">
+                                         <input name="email" class="form-control" value="@user.Email" />
+                                    </div>                                        
+                                </div>
+                            }
+                       }
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Đăng tin" class="btn btn-default" />
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="table-info-detail-prd" id="viewProperties"></ul>
-                        <div class="intro-detail-prd">
-                            <p id="viewDesc"></p>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <input type="submit" value="Đăng tin" class="btn btn-default" />
-                        <input id="btnBackPost" type="button" class="btn-df btnReview" rel="nofollow" value="Quay lại" />
                     </div>
 
                 </div>
-
-                <style>
-                    .review-news-box {
-                        width: 1150px !important;
-                    }
-                </style>
-
             </div>
-
-
         }
     </div>
 
@@ -237,4 +189,3 @@
         $(".review-news-box").removeAttr('style');
     })
 </script>
-

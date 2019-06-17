@@ -40,9 +40,9 @@ namespace Model.Dao
         {
             return db.SanPhams.Find(id);
         }
-        public List<DangBT> ViewBT(int id)
+        public DangBT ViewBT(int id)
         {
-            return db.DangBTs.Where(x => x.MaSP == id).ToList();
+            return db.DangBTs.SingleOrDefault(x => x.MaSP == id);
         }
         public long Tong()
         {

@@ -45,6 +45,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>assets\admin\model\ckfinder\bin\Debug\CKFinder.dll</HintPath>
+    </Reference>
+    <Reference Include="CKFinder_FileEditor, Version=2.1.0.1132, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>assets\admin\model\ckfinder\bin\Debug\CKFinder_FileEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CKFinder_ImageResize, Version=2.1.0.1132, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>assets\admin\model\ckfinder\bin\Debug\CKFinder_ImageResize.dll</HintPath>
+    </Reference>
+    <Reference Include="CKFinder_Watermark, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>assets\admin\model\ckfinder\bin\Debug\CKFinder_Watermark.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -138,9 +154,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CheckDataController.cs" />
     <Compile Include="Areas\Admin\Controllers\DataController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HinhAnhController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewController.cs" />
@@ -170,6 +186,7 @@
     <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\NewModel.cs" />
     <Compile Include="Models\ProvinceModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2839,14 +2856,25 @@
     <Content Include="assets\client\data\Provinces_Data.xml" />
     <Content Include="assets\client\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\client\font\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\client\images\404-img.png" />
+    <Content Include="assets\client\images\404-number.png" />
     <Content Include="assets\client\images\about_img.jpg" />
     <Content Include="assets\client\images\arrow-next.png" />
     <Content Include="assets\client\images\arrow-prev.png" />
+    <Content Include="assets\client\images\arrow-show-more-prd.png" />
     <Content Include="assets\client\images\arrow_up.png" />
+    <Content Include="assets\client\images\bg-agreement-box.png" />
+    <Content Include="assets\client\images\bg-box-regis-email.png" />
+    <Content Include="assets\client\images\bg-head-search.png" />
+    <Content Include="assets\client\images\bg-noimage-detail-box.png" />
+    <Content Include="assets\client\images\bg-product-slide.png" />
+    <Content Include="assets\client\images\bg-trans-50per.png" />
     <Content Include="assets\client\images\c.jpg" />
     <Content Include="assets\client\images\cart-icon.png" />
     <Content Include="assets\client\images\cart.png" />
     <Content Include="assets\client\images\compare.png" />
+    <Content Include="assets\client\images\confirm_detail.png" />
+    <Content Include="assets\client\images\confirm_lst.png" />
     <Content Include="assets\client\images\delivery-img1.jpg" />
     <Content Include="assets\client\images\delivery-img2.jpg" />
     <Content Include="assets\client\images\delivery-img3.jpg" />
@@ -2859,8 +2887,23 @@
     <Content Include="assets\client\images\feature-pic2.jpg" />
     <Content Include="assets\client\images\feature-pic3.jpg" />
     <Content Include="assets\client\images\feature-pic4.jpg" />
+    <Content Include="assets\client\images\icon-btn-fb.png" />
+    <Content Include="assets\client\images\icon-btn-gg.png" />
+    <Content Include="assets\client\images\icon-logo-facebook.png" />
+    <Content Include="assets\client\images\icon-logo-googleplus.png" />
+    <Content Include="assets\client\images\icon-search.png" />
+    <Content Include="assets\client\images\icon-share-dv-disable.png" />
+    <Content Include="assets\client\images\icon-share-dv.png" />
+    <Content Include="assets\client\images\icon-share-fb-disable.png" />
+    <Content Include="assets\client\images\icon-share-fb.png" />
+    <Content Include="assets\client\images\icon-share-gg-disable.png" />
+    <Content Include="assets\client\images\icon-share-gg.png" />
+    <Content Include="assets\client\images\icon-share-pt-disable.png" />
+    <Content Include="assets\client\images\icon-share-pt.png" />
+    <Content Include="assets\client\images\icon_history.png" />
     <Content Include="assets\client\images\linkedin.png" />
     <Content Include="assets\client\images\list-img.png" />
+    <Content Include="assets\client\images\loading.gif" />
     <Content Include="assets\client\images\logo.png" />
     <Content Include="assets\client\images\new-pic1.jpg" />
     <Content Include="assets\client\images\new-pic2.jpg" />
@@ -2879,6 +2922,8 @@
     <Content Include="assets\client\images\productslide-6.jpg" />
     <Content Include="assets\client\images\quality-rating.png" />
     <Content Include="assets\client\images\search.png" />
+    <Content Include="assets\client\images\shadow-cover.png" />
+    <Content Include="assets\client\images\sharp.png" />
     <Content Include="assets\client\images\shopping-cart.jpg" />
     <Content Include="assets\client\images\skype.png" />
     <Content Include="assets\client\images\slide-1-image.png" />
@@ -2894,6 +2939,8 @@
     <Content Include="assets\client\images\Thumbs.db" />
     <Content Include="assets\client\images\twitter.png" />
     <Content Include="assets\client\images\value-rating.png" />
+    <Content Include="assets\client\images\web_sold.png" />
+    <Content Include="assets\client\images\web_sold_lst.png" />
     <Content Include="assets\client\images\wishlist.png" />
     <Content Include="assets\admin\model\ckeditor\CHANGES.md" />
     <Content Include="assets\admin\model\ckeditor\LICENSE.md" />
@@ -2916,6 +2963,7 @@
     <Content Include="assets\admin\model\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\admin\model\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="assets\admin\model\ckfinder\userfiles\.htaccess" />
+    <Content Include="assets\client\js\addthis_widget.js" />
     <Content Include="assets\client\js\bootstrap.js" />
     <Content Include="assets\client\js\bootstrap.min.js" />
     <Content Include="assets\client\js\controller\baseController.js" />
@@ -3159,6 +3207,8 @@
     <Content Include="Areas\Admin\Views\Login\Reset_Password.cshtml" />
     <Content Include="Areas\Admin\Views\DonH\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DonH\ChoTH.cshtml" />
+    <Content Include="assets\client\js\cdcjs.js" />
+    <Content Include="Areas\Admin\Views\HinhAnh\Index.cshtml" />
     <None Include="assets\client\js\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3199,7 +3249,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\DangKy.cshtml" />
     <Content Include="Views\User\DangNhap.cshtml" />
-    <Content Include="Views\User\Dangtin.cshtml" />
     <Content Include="Views\User\MenuSP.cshtml" />
     <Content Include="Views\SanPham\Sanpham_hang.cshtml" />
     <Content Include="Views\SanPham\Sanpham_ALL.cshtml" />
@@ -3227,6 +3276,9 @@
     <Folder Include="assets\client\images\thoi-trang\" />
     <Folder Include="assets\client\images\tivi\" />
     <Folder Include="assets\client\images\xe-co\" />
+    <Folder Include="Upload\Data\212x212\" />
+    <Folder Include="Upload\Data\480x360\" />
+    <Folder Include="Upload\Data\55x41\" />
     <Folder Include="Upload\Temp\Admin\" />
   </ItemGroup>
   <ItemGroup>

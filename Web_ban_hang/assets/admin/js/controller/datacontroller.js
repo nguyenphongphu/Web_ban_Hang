@@ -1,11 +1,14 @@
-﻿var data = {
+﻿var so = 0;
+var data = {
     init: function () {
         data.registerEvents();
         data.updatedata();
+        
     },
     registerEvents: function () {      
-        $(document).on('click', '#suaid', function () {
+        $(document).on('click', '#suaid', function () {           
             var row = $(this).closest("tr");
+            so = $("td:eq(0)", row).text();
             var id = $("td:eq(1)", row).text();
             var ten = $("td:eq(2)", row).val('id');
             $("#Ten").val(id);
@@ -31,11 +34,51 @@
     },
     updatedata: function () {
         $(document).on('click', '#btn_suabonho', function () {
-            var ten = $('#Ten').text();
+            var ten = $('#Ten').val();
             var ma = $('#MaLSP').val();
-            console.log(ten + ma);
-           
-        })
+            $.ajax({
+                url: "/Admin/UpdateData/UpdateBoNho",
+                data: {
+                    id: so,
+                    ten: ten,
+                    malsp: ma
+                },
+                dataType: "json",
+                type: "POST",
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("da cap nhat thanh cong ");
+                        location.reload();
+                    }
+                    else {
+                        alert("da cap nhat that bai ");
+                    }
+                }
+            });
+        });
+        $(document).on('click', '#btn_suaboxl', function () {
+            var ten = $('#Ten').val();
+            var ma = $('#MaLSP').val();
+            $.ajax({
+                url: "/Admin/UpdateData/UpdateBoXL",
+                data: {
+                    id: so,
+                    ten: ten,
+                    malsp: ma
+                },
+                dataType: "json",
+                type: "POST",
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("da cap nhat thanh cong ");
+                        location.reload();
+                    }
+                    else {
+                        alert("da cap nhat that bai ");
+                    }
+                }
+            });
+        });
     }
 }
-user.init();
+data.init();

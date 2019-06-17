@@ -33,7 +33,7 @@ namespace Model.Dao
         }
         public List<Menu> header_hang(string Link, string hang)
         {
-            int tieude = db.Menus.Where(x => x.Link == Link).ToList()[0].ID;
+            int tieude = db.Menus.SingleOrDefault(x=>x.Link==Link).ID;
             return db.Menus.Where(x => x.Link == Link || (x.Link == hang && x.MenuParentID == tieude)).ToList();
         }
 

@@ -17,8 +17,8 @@ namespace Web_ban_hang.Models
         public string UserName { set; get; }
 
         [Display(Name = "Mật khẩu")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự.")]
         [Required(ErrorMessage = "Yêu cầu nhập mật khẩu")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự.")]
         public string Password { set; get; }
 
         [Display(Name = "Xác nhận mật khẩu")]

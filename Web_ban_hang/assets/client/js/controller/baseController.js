@@ -34,3 +34,9 @@
     }
 }
 common.init();
+function hoverx(n) {
+    $(n).attr("src", $(n).attr("usrc"))
+}
+function unhoverx(n) {
+    $(n).attr("src", $(n).attr("osrc"))
+}

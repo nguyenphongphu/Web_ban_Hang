@@ -14,18 +14,18 @@ namespace Web_ban_hang.Areas.Admin.Controllers
         // GET: Admin/DonH
         public ActionResult Index()
         {
-            //var data = new DonHDao().donHang_TH();
+            var data = new DonHangDao().donHang_TH();
             return View();
         }
         public ActionResult ChoTH()
         {
-            //var data = new DonHDao().donHang_CTH();
+            var data = new DonHangDao().donHang_CTH();
             return View();
         }
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            new DonHDao().Delete(id);
+            new Model.Dao.DonHangDao().Delete(id);
             return RedirectToAction("Inhex");
         }
         

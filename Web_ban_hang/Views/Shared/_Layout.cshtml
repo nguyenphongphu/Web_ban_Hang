@@ -103,13 +103,14 @@
         }
         document.addEventListener('scroll', onScroll);
         $(window).on('beforeunload', function () {
-                var URL = "/GioHang/upload";
-                var data = "";
-                navigator.sendBeacon(URL, data);          
+            var URL = "/GioHang/upload";
+            var data = "";
+            navigator.sendBeacon(URL, data);
         });
-   
+
     </script>
     <script src="/assets/client/js/controller/baseController.js"></script>
+    <script src="/assets/client/js/cdcjs.js"></script>
     @RenderSection("jsFooter", required: false)
 </body>
 

@@ -27,7 +27,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                  new SelectListItem { Value = "3", Text = "Laptop" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -42,7 +42,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "3", Text = "Laptop" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -54,7 +54,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             {
                 new SelectListItem { Value = "1", Text = "Điện Thoại" },
                  new SelectListItem { Value = "3", Text = "Laptop" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -66,7 +66,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             {
                 new SelectListItem { Value = "1", Text = "Điện Thoại" },
                  new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
-                 new SelectListItem { Value = "3", Text = "Laptop" },
+                 new SelectListItem { Value = "3", Text = "Laptop" }
             }, "Value", "Text");
             return View();
         }
@@ -76,7 +76,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             ViewBag.cases = dao.Caselist();
             ViewBag.MaLSP = new SelectList(new List<SelectListItem>
             {
-                 new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
+                 new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" }
             }, "Value", "Text");
             return View();
         }
@@ -96,7 +96,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -106,7 +106,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             ViewBag.chongoi = dao.ChoNgoilsit();
             ViewBag.MaLSP = new SelectList(new List<SelectListItem>
             {
-                 new SelectListItem { Value = "4", Text = "Xe Cộ" },
+                 new SelectListItem { Value = "44", Text = "Xe Cộ - Ô Tô" }
             }, "Value", "Text");
             return View();
         }
@@ -126,7 +126,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -140,7 +140,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                  new SelectListItem { Value = "3", Text = "Laptop" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -153,14 +153,42 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                 new SelectListItem { Value = "1", Text = "Điện Thoại" },
                  new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                  new SelectListItem { Value = "3", Text = "Laptop" },
-                 new SelectListItem { Value = "4", Text = "Xe Cộ" },
-                 new SelectListItem { Value = "5", Text = "Thể Thao" },
-                 new SelectListItem { Value = "6", Text = "Thời Trang" },
-                 new SelectListItem { Value = "7", Text = "Đồ Nội Thất" },
-                 new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
+                 new SelectListItem { Value = "44", Text = "Xe Cộ - Ô Tô" },
+                 new SelectListItem { Value = "46", Text = "Xe Cộ - Xe đạp" },
+                 new SelectListItem { Value = "45", Text = "Xe Cộ - Xe máy" },
+                 new SelectListItem { Value = "47", Text = "Xe Cộ - Phụ tùng, đồ bảo hộ" },
+                 new SelectListItem { Value = "48", Text = "Xe Cộ - Xe chuyên dụng" },
+                 new SelectListItem { Value = "49", Text = "Xe Cộ - Xe máy điện" },
+                 new SelectListItem { Value = "50", Text = "Thể Thao- Máy tập thể thao" },
+                 new SelectListItem { Value = "51", Text = "Thể Thao - Golf" },
+                 new SelectListItem { Value = "52", Text = "Thể Thao - Cầu lông" },
+                 new SelectListItem { Value = "53", Text = "Thể Thao - Bóng bàn" },
+                 new SelectListItem { Value = "54", Text = "Thể Thao - Tennis" },
+                 new SelectListItem { Value = "55", Text = "Thể Thao - Bóng đá" },
+                 new SelectListItem { Value = "56", Text = "Thể Thao - Bơi lội" },
+                 new SelectListItem { Value = "57", Text = "Thể Thao - Môn thể thao khác" },
+                 new SelectListItem { Value = "58", Text = "Thời Trang - Thời trang nữ" },
+                 new SelectListItem { Value = "59", Text = "Thời Trang - Giày dép nữ" },
+                 new SelectListItem { Value = "60", Text = "Thời Trang - Phụ kiện nữ" },
+                 new SelectListItem { Value = "61", Text = "Thời Trang - Thời trang nam" },
+                 new SelectListItem { Value = "62", Text = "Thời Trang - Giày dép nam" },
+                 new SelectListItem { Value = "63", Text = "Thời Trang - Phụ kiện nam" },
+                 new SelectListItem { Value = "64", Text = "Thời Trang - Mỹ phẩm - làm đẹp" },
+                 new SelectListItem { Value = "65", Text = "Đồ Nội Thất - Nội thất phòng khách" },
+                 new SelectListItem { Value = "66", Text = "Đồ Nội Thất - Nội thất phòng bếp" },
+                 new SelectListItem { Value = "67", Text = "Đồ Nội Thất - Nội thất phòng tắm" },
+                 new SelectListItem { Value = "68", Text = "Đồ Nội Thất - Nội thất phòng ngủ" },
+                 new SelectListItem { Value = "69", Text = "Đồ Nội Thất - Nội thất văn phòng, Cửa hàng" },
+                 new SelectListItem { Value = "70", Text = "Sách Báo, Nghệ Thuật - Sách, truyện chữ" },
+                 new SelectListItem { Value = "71", Text = "Sách Báo, Nghệ Thuật - Truyện tranh, tạp chí" },
+                 new SelectListItem { Value = "72", Text = "Sách Báo, Nghệ Thuật - Đồ sưu tầm" },
+                 new SelectListItem { Value = "73", Text = "Sách Báo, Nghệ Thuật - Văn phong phẩm" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
-                 new SelectListItem { Value = "10", Text = "Âm thanh" },
+                 new SelectListItem { Value = "79", Text = "Âm thanh - Loa thùng " },
+                 new SelectListItem { Value = "80", Text = "Âm thanh - Loa keo" },
+                 new SelectListItem { Value = "81", Text = "Âm thanh - Dàn âm thanh" },
                  new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "82", Text = "Phụ Kiện" }
             }, "Value", "Text");
             return View();
         }
@@ -173,7 +201,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                 new SelectListItem { Value = "1", Text = "Điện Thoại" },
                  new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                  new SelectListItem { Value = "3", Text = "Laptop" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -183,7 +211,9 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             ViewBag.hopso = dao.Hopsolsit();           
             ViewBag.MaLSP = new SelectList(new List<SelectListItem>
             {
-                 new SelectListItem { Value = "4", Text = "Xe Cộ" },
+                 new SelectListItem { Value = "44", Text = "Xe Cộ - Ô Tô" },
+                 new SelectListItem { Value = "45", Text = "Xe Cộ - Xe máy" },
+                 new SelectListItem { Value = "48", Text = "Xe Cộ - Xe chuyên dụng" }
             }, "Value", "Text");
             return View();
         }
@@ -203,7 +233,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -223,7 +253,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -232,9 +262,23 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             var dao = new DataDao();
             ViewBag.loaiTR = dao.LoaiTRlist();           
             ViewBag.MaLSP = new SelectList(new List<SelectListItem>
-            {
-                 new SelectListItem { Value = "5", Text = "Thể Thao" },
-                 new SelectListItem { Value = "6", Text = "Thời Trang" },
+            {                              
+                 new SelectListItem { Value = "50", Text = "Thể Thao- Máy tập thể thao" },
+                 new SelectListItem { Value = "51", Text = "Thể Thao - Golf" },
+                 new SelectListItem { Value = "52", Text = "Thể Thao - Cầu lông" },
+                 new SelectListItem { Value = "53", Text = "Thể Thao - Bóng bàn" },
+                 new SelectListItem { Value = "54", Text = "Thể Thao - Tennis" },
+                 new SelectListItem { Value = "55", Text = "Thể Thao - Bóng đá" },
+                 new SelectListItem { Value = "56", Text = "Thể Thao - Bơi lội" },
+                 new SelectListItem { Value = "57", Text = "Thể Thao - Môn thể thao khác" },
+                 new SelectListItem { Value = "58", Text = "Thời Trang - Thời trang nữ" },
+                 new SelectListItem { Value = "59", Text = "Thời Trang - Giày dép nữ" },
+                 new SelectListItem { Value = "60", Text = "Thời Trang - Phụ kiện nữ" },
+                 new SelectListItem { Value = "61", Text = "Thời Trang - Thời trang nam" },
+                 new SelectListItem { Value = "62", Text = "Thời Trang - Giày dép nam" },
+                 new SelectListItem { Value = "63", Text = "Thời Trang - Phụ kiện nam" },
+                 new SelectListItem { Value = "64", Text = "Thời Trang - Mỹ phẩm - làm đẹp" }
+                
             }, "Value", "Text");
             return View();
         }
@@ -254,7 +298,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
                  new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -264,8 +308,21 @@ namespace Web_ban_hang.Areas.Admin.Controllers
             ViewBag.mua = dao.Mualist();
             ViewBag.MaLSP = new SelectList(new List<SelectListItem>
             {
-                 new SelectListItem { Value = "5", Text = "Thể Thao" },
-                 new SelectListItem { Value = "6", Text = "Thời Trang" },
+                 new SelectListItem { Value = "50", Text = "Thể Thao- Máy tập thể thao" },
+                 new SelectListItem { Value = "51", Text = "Thể Thao - Golf" },
+                 new SelectListItem { Value = "52", Text = "Thể Thao - Cầu lông" },
+                 new SelectListItem { Value = "53", Text = "Thể Thao - Bóng bàn" },
+                 new SelectListItem { Value = "54", Text = "Thể Thao - Tennis" },
+                 new SelectListItem { Value = "55", Text = "Thể Thao - Bóng đá" },
+                 new SelectListItem { Value = "56", Text = "Thể Thao - Bơi lội" },
+                 new SelectListItem { Value = "57", Text = "Thể Thao - Môn thể thao khác" },
+                 new SelectListItem { Value = "58", Text = "Thời Trang - Thời trang nữ" },
+                 new SelectListItem { Value = "59", Text = "Thời Trang - Giày dép nữ" },
+                 new SelectListItem { Value = "60", Text = "Thời Trang - Phụ kiện nữ" },
+                 new SelectListItem { Value = "61", Text = "Thời Trang - Thời trang nam" },
+                 new SelectListItem { Value = "62", Text = "Thời Trang - Giày dép nam" },
+                 new SelectListItem { Value = "63", Text = "Thời Trang - Phụ kiện nam" },
+                 new SelectListItem { Value = "64", Text = "Thời Trang - Mỹ phẩm - làm đẹp" }
             }, "Value", "Text");
             return View();
         }
@@ -285,7 +342,7 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                  new SelectListItem { Value = "8", Text = "Sách Báo, Nghệ Thuật" },
                  new SelectListItem { Value = "9", Text = "Tivi" },
                  new SelectListItem { Value = "10", Text = "Âm thanh" },
-                 new SelectListItem { Value = "11", Text = "Khác" },
+                 new SelectListItem { Value = "11", Text = "Khác" }
             }, "Value", "Text");
             return View();
         }
@@ -304,9 +361,23 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                 new SelectListItem { Value = "1", Text = "Điện Thoại" },
                  new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
                  new SelectListItem { Value = "3", Text = "Laptop" },
-                 new SelectListItem { Value = "4", Text = "Xe Cộ" },
-                 new SelectListItem { Value = "5", Text = "Thể Thao" },
-                 new SelectListItem { Value = "10", Text = "Âm thanh" },
+                 new SelectListItem { Value = "44", Text = "Xe Cộ - Ô Tô" },
+                 new SelectListItem { Value = "46", Text = "Xe Cộ - Xe đạp" },
+                 new SelectListItem { Value = "45", Text = "Xe Cộ - Xe máy" },
+                 new SelectListItem { Value = "47", Text = "Xe Cộ - Phụ tùng, đồ bảo hộ" },
+                 new SelectListItem { Value = "48", Text = "Xe Cộ - Xe chuyên dụng" },
+                 new SelectListItem { Value = "49", Text = "Xe Cộ - Xe máy điện" },
+                 new SelectListItem { Value = "50", Text = "Thể Thao- Máy tập thể thao" },
+                 new SelectListItem { Value = "51", Text = "Thể Thao - Golf" },
+                 new SelectListItem { Value = "52", Text = "Thể Thao - Cầu lông" },
+                 new SelectListItem { Value = "53", Text = "Thể Thao - Bóng bàn" },
+                 new SelectListItem { Value = "54", Text = "Thể Thao - Tennis" },
+                 new SelectListItem { Value = "55", Text = "Thể Thao - Bóng đá" },
+                 new SelectListItem { Value = "56", Text = "Thể Thao - Bơi lội" },
+                 new SelectListItem { Value = "57", Text = "Thể Thao - Môn thể thao khác" },
+                 new SelectListItem { Value = "60", Text = "Thời Trang - Phụ kiện nữ" },
+                 new SelectListItem { Value = "63", Text = "Thời Trang - Phụ kiện nam" },
+                 new SelectListItem { Value = "10", Text = "Âm thanh" }
             }, "Value", "Text");
             return View();
         }
@@ -327,7 +398,13 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
             ViewBag.quangduong = dao.QuangDuonglist();
             ViewBag.MaLSP = new SelectList(new List<SelectListItem>
             {
-                new SelectListItem { Value = "4", Text = "Xe Cộ" },
+
+                 new SelectListItem { Value = "44", Text = "Xe Cộ - Ô Tô" },
+                 new SelectListItem { Value = "46", Text = "Xe Cộ - Xe đạp" },
+                 new SelectListItem { Value = "45", Text = "Xe Cộ - Xe máy" },
+                 new SelectListItem { Value = "47", Text = "Xe Cộ - Phụ tùng, đồ bảo hộ" },
+                 new SelectListItem { Value = "48", Text = "Xe Cộ - Xe chuyên dụng" },
+                 new SelectListItem { Value = "49", Text = "Xe Cộ - Xe máy điện" }
             }, "Value", "Text");
             return View();
         }

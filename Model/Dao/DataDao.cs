@@ -435,6 +435,10 @@ namespace Model.Dao
         {
             return db.Hangs.Where(x => x.MaLSP == id).ToList();
         }
-        
+
+        public List<HinhAnh> hinhAnhs()
+        {
+            return db.HinhAnhs.ToList();
+        }
     }
 }

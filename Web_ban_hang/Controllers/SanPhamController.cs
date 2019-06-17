@@ -10,7 +10,7 @@ namespace Web_ban_hang.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
-        public ActionResult Index(int cateId, int page = 1, int pageSize = 10)
+        public ActionResult Index(int cateId, int page = 1, int pageSize = 9)
         {
             var newdao = new NewDao();
             var menu = new MenuDao();
@@ -34,7 +34,7 @@ namespace Web_ban_hang.Controllers
             ViewBag.Prev = page - 1;
             return View(ListALL);
         }
-        public ActionResult Sanpham_hang(string metatitle, string hang, int page = 1, int pageSize = 10)
+        public ActionResult Sanpham_hang(string metatitle, string hang, int page = 1, int pageSize = 9)
         {
             var newdao = new NewDao();
             var menu = new MenuDao();
@@ -57,7 +57,7 @@ namespace Web_ban_hang.Controllers
             ViewBag.Prev = page - 1;
             return View(ListALL);
         }
-        public ActionResult Sanpham_ALL( int page = 1, int pageSize = 10)
+        public ActionResult Sanpham_ALL( int page = 1, int pageSize = 9)
         {
             var newdao = new NewDao();            
             int totalRecord_hang = 0;

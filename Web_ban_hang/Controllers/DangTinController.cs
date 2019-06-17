@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web_ban_hang.Common;
 using Web_ban_hang.Models;
 
 namespace Web_ban_hang.Controllers
@@ -13,16 +14,13 @@ namespace Web_ban_hang.Controllers
     public class DangTinController : Controller
     {
         // GET: DangTin
-        public ActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
         public ActionResult Dangtin()
         {
             var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
             if (session != null)
             {
+                ViewBag.user = new UserDao().GetById(session.UserName);
                 ViewBag.tinh = new KhuvucDao().ListKV();               
                 return View();
                 
@@ -35,22 +33,59 @@ namespace Web_ban_hang.Controllers
 
         }
         [HttpPost]
-        public ActionResult Dangtin(DangBT dangBT)
+        public ActionResult Dangtin(NewModel dangtin_m)
         {
             if (ModelState.IsValid)
             {
                 var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+                var image = (List<Image>)Session[CommonConstants.IMAGE_SESSION];
                 if (session != null)
                 {
                     var newdao = new NewDao();
+                    var dangBT = new DangBT();
                     dangBT.UserID = session.UserID;
-                    dangBT.SanPham.Date = DateTime.Now;
-                    dangBT.SanPham.AnhTDe = "~/ assets / client / images /" + dangBT.SanPham.LoaiSanPham.TenLSP + "/";
+                    dangBT.SanPham.Date = DateTime.Now.Date ;
+                    dangBT.SanPham.TieuDe = dangtin_m.TieuDe;
+                    dangBT.SanPham.TenSP = dangtin_m.TieuDe;
+                    dangBT.SanPham.Mota = dangtin_m.Mota;
+                    dangBT.MaKV = dangtin_m.MaKV;
+                    if (image != null)
+                    {
+                        foreach (var item in image)
+                        {
+
+                        }
+                    }
+                    dangBT.SanPham.AnhTDe = "/Upload/Temp/" + dangBT.SanPham.LoaiSanPham.TenLSP + "/";
+
+                    dangBT.SanPham.IDHang = dangtin_m.IDHang;
+                    dangBT.SanPham.ID_BN = dangtin_m.ID_BN;
+                    dangBT.SanPham.ID_BXL = dangtin_m.ID_BXL;
+                    dangBT.SanPham.ID_Camera = dangtin_m.ID_Camera;
+                    dangBT.SanPham.ID_Card = dangtin_m.ID_Card;
+                    dangBT.SanPham.ID_Case = dangtin_m.ID_Case;
+                    dangBT.SanPham.ID_CL = dangtin_m.ID_CL;
+                    dangBT.SanPham.ID_CN = dangtin_m.ID_CN;
+                    dangBT.SanPham.ID_Doi = dangtin_m.ID_Doi;
+                    dangBT.SanPham.ID_DPG = dangtin_m.ID_DPG;
+                    dangBT.SanPham.ID_HDH = dangtin_m.ID_HDH;
+                    dangBT.SanPham.ID_HS = dangtin_m.ID_HS;
+                    dangBT.SanPham.ID_KD = dangtin_m.ID_KD;
+                    dangBT.SanPham.ID_KT = dangtin_m.ID_KT;
+                    dangBT.SanPham.ID_LTR = dangtin_m.ID_LTR;
+                    dangBT.SanPham.ID_M = dangtin_m.ID_M;
+                    dangBT.SanPham.ID_Model = dangtin_m.ID_Model;
+                    dangBT.SanPham.ID_MS = dangtin_m.ID_MS;
+                    dangBT.SanPham.ID_PB = dangtin_m.ID_PB;
+                    dangBT.SanPham.ID_Pin = dangtin_m.ID_Pin;
+                    dangBT.SanPham.ID_PK = dangtin_m.ID_PK;
+                    dangBT.SanPham.ID_QD = dangtin_m.ID_QD;
+                    dangBT.SanPham.ID_R = dangtin_m.ID_R;
                     newdao.Them(dangBT);
                 }
             }
 
-            return View("Index");
+            return Redirect("/");
         } 
         public JsonResult data(int malsp)
         {

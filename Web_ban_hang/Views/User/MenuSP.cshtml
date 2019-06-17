@@ -7,12 +7,17 @@
         {
             var child = Model.Where(x => x.MenuParentID == item.ID).OrderBy(x => x.STTID);
             var parentClass = child.Count() > 0 ? "class=dropdown-toggle data-toggle=dropdown  " : "";
-            <li class="dropdown" role="presentation">
-                <a href="javascript:" id=" @item.ID" @parentClass style="padding:8px 15px;">@item.Text</a>
+            if (child.Count() == 0)
+            {
+                <li><a href="javascript:" id="@item.ID" style="padding:8px 15px;">@item.Text</a></li>
+            }
+            else
+            {
+                <li class="dropdown" role="presentation">
+                <a href="javascript:" @parentClass style="padding:8px 15px;">@item.Text</a>
                 @if (child.Count() > 0)
                 {
                     <ul class="dropdown-menu" style="top:0px;width:100%">
-                        <li><a href="javascript:" id=" @item.ID" style="background:#B81D22;color: #fff;">@item.Text</a></li>
                         @foreach (var childItem in child)
                         {
                             <li><a href="javascript:" id="@childItem.ID" style="padding:8px 15px;">@childItem.Text</a></li>
@@ -22,6 +27,8 @@
                 }
 
             </li>
+            }
+            
         }
     }
 </ul>

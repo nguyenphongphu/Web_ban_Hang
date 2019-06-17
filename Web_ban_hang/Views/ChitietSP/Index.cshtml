@@ -1,4 +1,4 @@
-﻿@model List<Model.EF.DangBT>
+﻿@model Model.EF.DangBT
 @{
     ViewBag.Title = "Chi Tiet San Phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,7 @@
     $(function () {
         $('#products').slides({
             preload: true,
-            preloadImage: 'img/loading.gif',
+            preloadImage: '/assets/client/images/loading.gif',
             effect: 'slide, fade',
             crossfade: true,
             slideSpeed: 350,
@@ -26,8 +26,8 @@
     <div class="content_top">
         <div class="back-links " style="width:50%">
             <p>
-                <a href="/">Trang chủ</a> >> <a href="/san-pham/@Model[0].SanPham.LoaiSanPham.TenLSP">@Model[0].SanPham.LoaiSanPham.TenLSP</a>>>
-                <a href="/san-pham/@Model[0].SanPham.LoaiSanPham.TenLSP/@Model[0].SanPham.TieuDe">@Model[0].SanPham.TenSP</a>
+                <a href="/">Trang chủ</a> >> <a href="/san-pham/@Model.SanPham.LoaiSanPham.Link-@Model.SanPham.LoaiSanPham.MaLSP">@Model.SanPham.LoaiSanPham.TenLSP</a>>>
+                <a href="/san-pham/@Model.SanPham.LoaiSanPham.Link/@Model.SanPham.Hang.Ten">@Model.SanPham.TenSP</a>
             </p>
         </div>
         <div class="clear"></div>
@@ -56,102 +56,156 @@
                         </div>
                     </div>
                 </div>
-                <div class="desc span_3_of_2 ">
-                    <h2>@Model[0].SanPham.TenSP </h2>
-                    <div><p>@Model[0].Taikhoan.HovaTen</p>@Model[0].Taikhoan.Phone</div>
-                    @{
-                        <div class="row-info-prd price">
-                            <h5>Giá Bán:</h5>
-                            <p> <span>@(Model[0].SanPham.GiaBan.HasValue ? Model[0].SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></p>
-                        </div>
-                       
-                    }
-                        <div class="share-desc">
-                            <div class="share">
-                                <p>Chia sẻ :</p>
-                                <ul>
-                                    <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
-                                    <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
-                                </ul>
+                <div class="desc span_3_of_2 ">                   
+                    <h2>@Model.SanPham.TenSP </h2>
+                    <br />
+                    <div><p>@Model.Taikhoan.HovaTen</p>@Model.Taikhoan.Phone</div>
+                    <div class="row-info-prd price">
+                        <div><b>Giá Bán:</b> <span>@(Model.SanPham.GiaBan.HasValue ? Model.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></div>                           
+                     </div>                    
+                    <div class="share-desc">
+                        <div class="share">
+                            <div class="addthis_toolbox row-info-prd social">
+                                Chia sẻ trên:
+                                &nbsp;
+                                <a class="addthis_button_facebook" rel="nofollow" title="Facebook" href="#">
+                                    <img src="/assets/client/Images/icon-share-fb-disable.png" osrc="/assets/client/Images/icon-share-fb-disable.png" usrc="/assets/client/Images/icon-share-fb.png" onmouseover="hoverx(this);" onmouseout="unhoverx(this);" />
+                                </a>
+                                &nbsp;
+                                <a class="addthis_button_google_plusone_share" rel="nofollow" target="_blank" title="Google+" href="#">
+                                    <img src="/assets/client/Images/icon-share-gg-disable.png" osrc="/assets/client/Images/icon-share-gg-disable.png" usrc="/assets/client/Images/icon-share-gg.png" onmouseover="hoverx(this);" onmouseout="unhoverx(this);" />
+                                </a>
+                                &nbsp;
+                                <a class="addthis_button_email" rel="nofollow" target="_blank" title="Email" href="#">
+                                    <img src="/assets/client/Images/icon-share-dv-disable.png" osrc="/assets/client/Images/icon-share-dv-disable.png" usrc="/assets/client/Images/icon-share-dv.png" onmouseover="hoverx(this);" onmouseout="unhoverx(this);" />
+                                </a>
+                                &nbsp;
+                                <a class="addthis_button_pinterest_share" rel="nofollow" target="_blank" title="Pinterest" href="#">
+                                    <img src="/assets/client/Images/icon-share-pt-disable.png" osrc="/assets/client/Images/icon-share-pt-disable.png" usrc="/assets/client/Images/icon-share-pt.png" onmouseover="hoverx(this);" onmouseout="unhoverx(this);" />
+                                </a>
+                                <div class="atclear"></div>
                             </div>
-                            @{
-                                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
-                                if (session != null)
-                                {
-                                    <div class="button"><span><a href="/them-gio-hang?productId=@Model[0].SanPham.MaSP&quantity=1">Thêm vào giỏ</a></span></div>
-                                }
-                                else
-                                {
-                                    <div class="button"><span><a href="/dang-nhap">Thêm vào giỏ</a></span></div>
-                                }
-                            }
-                            
-                            <div class="clear"></div>
+                            <script src="/assets/client/js/addthis_widget.js"></script>
                         </div>
-                    <div class="wish-list">
-                        <ul>
-                            <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
-                            <li class="compare"><a href="#">So sánh</a></li>
-                        </ul>
+                        @{
+                            var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+                            if (session != null)
+                            {
+                                <div class="button"><span><a href="/them-gio-hang?productId=@Model.SanPham.MaSP&quantity=1">Thêm vào giỏ</a></span></div>
+                            }
+                            else
+                            {
+                                <div class="button"><span><a href="/dang-nhap">Thêm vào giỏ</a></span></div>
+                            }
+                        }
+
+                        <div class="clear"></div>
                     </div>
+
                 </div>
                 <!--AA-->
                 <div class="clear"></div>
             </div>
             <div class="product_desc">
-                <div id="horizontalTab">
-                    <ul class="resp-tabs-list">
-                        <li>Product Details</li>
-                        <li>product Tags</li>
-                        <li>Product Reviews</li>
-                        <div class="clear"></div>
-                    </ul>
-                    <div class="resp-tabs-container">
-                        <div class="product-desc">
-                            <p>Lorem Ipsum is simply dummy text of the <span>printing and typesetting industry</span>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <span>when an unknown printer took a galley of type and scrambled</span> it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span> It has survived not only five centuries</span>, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
-                        <div class="product-tags">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <h4>Add Your Tags:</h4>
-                            <div class="input-box">
-                                <input type="text" value="">
-                            </div>
-                            <div class="button"><span><a href="#">Add Tags</a></span></div>
-                        </div>
-                        <div class="review">
+                <ul class="table-info-detail-prd">
+                    @{
+                        if (Model.SanPham.ID_BN != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.BoNho.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_BXL != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.BoXL.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_Camera != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Camera.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_Card != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Card.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_Case != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Case.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_CL != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.ChatLieu.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_CN != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.ChoNgoi.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_Doi != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.DoiSX.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_DPG != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.DoPhangia.Ten</span></li>
+                        }
+                        if (Model.SanPham.IDHang != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Hang.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_HDH != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.HeDieuHanh.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_HS != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.HopSo.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_KD != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.KieuDang.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_KT != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.KichThuoc.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_LTR != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.LoaiTR.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_M != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Mua.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_Model != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Model.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_MS != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.MauSac.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_PB != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.PhienBan.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_Pin != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Pin.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_PK != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.PhuKien.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_QD != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Quangduong.Ten</span></li>
+                        }
+                        if (Model.SanPham.ID_R != null)
+                        {
+                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Ram.Ten</span></li>
+                        }
+                    }
 
-                            <h4>Lorem ipsum Review by <a href="#">Finibus Bonorum</a></h4>
-                            <ul>
-                                <li>Price :<a href="#"><img src="/Assets/client/images/price-rating.png" alt="" /></a></li>
-                                <li>Value :<a href="#"><img src="/Assets/client/images/value-rating.png" alt="" /></a></li>
-                                <li>Quality :<a href="#"><img src="/Assets/client/images/quality-rating.png" alt="" /></a></li>
-                            </ul>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <div class="your-review">
-                                <h3>How Do You Rate This Product?</h3>
-                                <p>Write Your Own Review?</p>
-                                <form>
-                                    <div>
-                                        <span><label>Nickname<span class="red">*</span></label></span>
-                                        <span><input type="text" value=""></span>
-                                    </div>
-                                    <div>
-                                        <span><label>Summary of Your Review<span class="red">*</span></label></span>
-                                        <span><input type="text" value=""></span>
-                                    </div>
-                                    <div>
-                                        <span><label>Review<span class="red">*</span></label></span>
-                                        <span><textarea> </textarea></span>
-                                    </div>
-                                    <div>
-                                        <span><input type="submit" value="SUBMIT REVIEW"></span>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                </ul>
+                <div class="intro-detail-prd">
+                   @Model.SanPham.Mota
                 </div>
             </div>
             <script type="text/javascript">
@@ -162,32 +216,21 @@
                         fit: true   // 100% fit in a container
                     });
                 });
-            </script>
-            <div class="content_bottom">
-                <div class="heading">
-                    <h3>CÁC SẢN PHẨM LIÊN QUAN</h3>
-                </div>
-                <div class="see">
-                    <p><a href="#">Tất cả sản phẩm</a></p>
-                </div>
-                <div class="clear"></div>
-            </div>
+            </script>           
         </div>
         <div class="rightsidebar span_3_of_1">
             <div class="categories">
                 @{ Html.RenderAction("MenuSanPham", "Home");}
-            </div>
-
-            <div class="subscribe">
-                <h2>Newsletters Signup</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
-                <div class="signup">
-                    <form>
-                        <input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-                    </form>
-                </div>
-            </div>
-
+            </div>           
         </div>
+    </div>
+    <div class="content_bottom">
+        <div class="heading">
+            <h3>CÁC SẢN PHẨM LIÊN QUAN</h3>
+        </div>
+        <div class="see">
+            <p><a href="#">Tất cả sản phẩm</a></p>
+        </div>
+        <div class="clear"></div>
     </div>
 </div>

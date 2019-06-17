@@ -21,10 +21,10 @@ namespace Model.EF
         [Key]
         public int MaSP { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string TieuDe { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string TenSP { get; set; }
 
         public string Mota { get; set; }
@@ -37,7 +37,7 @@ namespace Model.EF
         public int? MaLSP { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         public int? IDHang { get; set; }
 

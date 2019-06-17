@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Model.Dao
 {
-   public class DonHDao
+   public class DonHangDao
     {
         BanHang db = null;
-        public DonHDao()
+        public DonHangDao()
         {
             db = new BanHang();
         }
-        //public List<DonHang> donHang_TH()
-        //{
-        //    return db.DonHangs.Where(x => x.Status == true).ToList();
-        //}
-        //public List<DonHang> donHang_CTH()
-        //{
-        //    return db.DonHangs.Where(x => x.Status == false).OrderByDescending(y => y.date).ToList();
-        //}
+        public List<DonHang> donHang_TH()
+        {
+            return db.DonHangs.Where(x => x.Status == true).ToList();
+        }
+        public List<DonHang> donHang_CTH()
+        {
+            return db.DonHangs.Where(x => x.Status == false).OrderByDescending(y => y.date).ToList();
+        }
         public bool Delete(int id)
         {
             try

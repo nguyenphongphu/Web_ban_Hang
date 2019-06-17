@@ -29,22 +29,7 @@ namespace Web_ban_hang.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult Dangtin()
-        {
-            var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                ViewBag.tinh = new KhuvucDao().ListKV();
-                return View();
-            }
-            else
-            {
-
-                return Redirect("/dang-nhap");
-            }
-
-        }
+      
         public ActionResult Logout()
         {
             Session[CommonConstants.USER_SESSION] = null;
@@ -76,17 +61,16 @@ namespace Web_ban_hang.Controllers
                     user.CreatedDate = DateTime.Now;
 
                     user.MaCV = 3;
-                    //user.ChucVu.MaCV = CV[2].MaCV;
                     user.Status = true;
                     if (!string.IsNullOrEmpty(model.ProvinceID))
                     {
-                        diachi = diachi + model.ProvinceID;
+                        diachi =  ProvinceModel1(Convert.ToInt32(model.ProvinceID));
                     }
                     if (!string.IsNullOrEmpty(model.DistrictID))
                     {
-                        diachi = diachi + model.DistrictID;
+                        diachi = DistrictModel1(Convert.ToInt32(model.ProvinceID),Convert.ToInt32( model.DistrictID))+" "+diachi;
                     }
-                    user.DiaChi = model.Address + diachi;
+                    user.DiaChi = model.Address +" "+ diachi;
                     var result = dao.Insert(user);
                     if (result > 0)
                     {
@@ -137,33 +121,7 @@ namespace Web_ban_hang.Controllers
             }
             return View(model);
         }
-        [HttpPost]
-        public ActionResult Dangtin(DangBT dangBT)
-        {
-            if (ModelState.IsValid)
-            {
-                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
-                var image = (List<Image>)Session[CommonConstants.IMAGE_SESSION];
-                if (session != null)
-                {
-                    var newdao = new NewDao();
-                    dangBT.UserID = session.UserID;
-                    dangBT.SanPham.Date = DateTime.Now;
-                    if (image != null)
-                    {
-                        foreach (var item in image)
-                        {
-
-                        }
-                    }
-                    dangBT.SanPham.AnhTDe = "/ Upload/ Temp /" + dangBT.SanPham.LoaiSanPham.TenLSP+"/";
-                    newdao.Them(dangBT); 
-                }
-            }
-            
-            return View("Index");
-        }
-
+       
         [ChildActionOnly]
         public ActionResult MenuSP()
         {
@@ -249,12 +207,23 @@ namespace Web_ban_hang.Controllers
                     string fileName = file.FileName;
                     var date = DateTime.Now.ToString("dd-MM-yyyy");
 
-                    file.SaveAs(Path.Combine(Server.MapPath("~/Upload/Temp/" + session.UserName + "/"), date + "-" + fileName));
-                    var image = (List<Image>)Session[CommonConstants.IMAGE_SESSION];
+                    file.SaveAs(Path.Combine(Server.MapPath("~/Upload/Temp/" + session.UserName + "/"), date + "-" + fileName));                   
                     Image images = new Image();
                     images.image = "/Upload/Temp/" + session.UserName + "/" + date + "-" + fileName;
                     images.ten = session.UserID;
-                    image.Add(images);
+                    var hinh = Session[CommonConstants.IMAGE_SESSION];
+                    if (hinh!=null)
+                    {
+                        var list = (List<Image>)hinh;
+                        list.Add(images);
+                        Session[CommonConstants.IMAGE_SESSION] = list;
+                    }
+                    else
+                    {
+                        List < Image > image = new List<Image>();
+                        image.Add(images);
+                        Session.Add(CommonConstants.IMAGE_SESSION, image);
+                    }                    
                     return "/Upload/Temp/" + session.UserName + "/" + date + "-" + fileName;
                 }
                 else
@@ -292,6 +261,24 @@ namespace Web_ban_hang.Controllers
 
                 return false;
             }
+        }
+
+        public string ProvinceModel1(int id ) {
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/assets/client/data/Provinces_Data.xml"));
+
+            var xElement = xmlDoc.Element("Root").Elements("Item")
+               .Single(x => x.Attribute("type").Value == "province" && int.Parse(x.Attribute("id").Value) == id);
+            return xElement.Attribute("value").Value;           
+        }
+        public string DistrictModel1(int id,int id1)
+        {
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/assets/client/data/Provinces_Data.xml"));
+
+            var xElement = xmlDoc.Element("Root").Elements("Item")
+               .Single(x => x.Attribute("type").Value == "province" && int.Parse(x.Attribute("id").Value) == id);
+           var ten= xElement.Elements("Item").Single(x => x.Attribute("type").Value == "district" && int.Parse(x.Attribute("id").Value) == id1);
+            
+            return ten.Attribute("value").Value;
         }
     }
 }

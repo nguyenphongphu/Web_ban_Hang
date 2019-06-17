@@ -54,7 +54,7 @@ namespace Web_ban_hang
             routes.MapRoute(
                 name: "san-pham-hot-new",
                 url: "san-pham/{metatitle}",
-                defaults: new { controller = "SanPham", action = "SanphamLSP", id = UrlParameter.Optional },
+                defaults: new { controller = "SanPham", action = "SanphamHot_New", id = UrlParameter.Optional },
                 namespaces: new[] { "Web_ban_hang.Controllers" }
             );
             routes.MapRoute(
