@@ -910,18 +910,213 @@ new SelectListItem { Value = "2", Text = "Máy Tính Để Bàn" },
             return View("LoaiSanPham");
         }
         [HttpDelete]
-        public ActionResult DeleteBoNho(int id)
+        public JsonResult DeleteBoNho(int id)
         {
-            var check = new CheckData().BoNho(id);
-            if (check)
+            bool check = new DeleteData().DeleteBoNho(id);
+            return Json(new
             {
-                new DeleteData().DeleteBoNho(id);
-                return RedirectToAction("BoNho");
-            }
-            else
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteBoXL(int id)
+        {
+            bool check = new DeleteData().DeleteBoXL(id);
+            return Json(new
             {
-                return RedirectToAction("BoNho");
-            }
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteCamera(int id)
+        {
+            bool check = new DeleteData().DeleteCamera(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteCard(int id)
+        {
+            bool check = new DeleteData().DeleteCard(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteChatlieu(int id)
+        {
+            bool check = new DeleteData().DeleteChatLieu(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteCaes(int id)
+        {
+            bool check = new DeleteData().DeleteCase(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteChoNgoi(int id)
+        {
+            bool check = new DeleteData().DeleteChoNgoi(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteDoiSX(int id)
+        {
+            bool check = new DeleteData().DeleteDoiSX(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteDophanGia(int id)
+        {
+            bool check = new DeleteData().DeleteDoPhanGia(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteHang(int id)
+        {
+            bool check = new DeleteData().DeleteHang(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteHDH(int id)
+        {
+            bool check = new DeleteData().DeleteHDH(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteHopSo(int id)
+        {
+            bool check = new DeleteData().DeleteHopSo(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteKichThuoc(int id)
+        {
+            bool check = new DeleteData().DeleteKichTHuoc(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteKieuDang(int id)
+        {
+            bool check = new DeleteData().DeleteKieuDang(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteLoaiTR(int id)
+        {
+            bool check = new DeleteData().DeleteLTR(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult UpdateMauSac(int id)
+        {
+            bool check = new DeleteData().DeleteMauSac(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteModel(int id)
+        {
+            bool check = new DeleteData().DeleteModel(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteMua(int id)
+        {
+            bool check = new DeleteData().DeleteMua(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+
+        [HttpDelete]
+        public JsonResult DeletePhienBan(int id)
+        {
+            bool check = new DeleteData().DeletePhienBan(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+
+        [HttpDelete]
+        public JsonResult DeletePhukien(int id)
+        {
+            bool check = new DeleteData().DeletePhuKien(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeletePin(int id)
+        {
+            bool check = new DeleteData().DeletePin(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteQuangDuong(int id)
+        {
+            bool check = new DeleteData().DeleteQuangDuong(id);
+            return Json(new
+            {
+                status = check
+            });
+        }
+        [HttpDelete]
+        public JsonResult DeleteRam(int id)
+        {
+            bool check = new DeleteData().DeleteRam(id);
+            return Json(new
+            {
+                status = check
+            });
         }
     }
 }

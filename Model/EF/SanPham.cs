@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -21,70 +21,102 @@ namespace Model.EF
         [Key]
         public int MaSP { get; set; }
 
-        [StringLength(100)]
+        [StringLength(50)]
+        [Display(Name = "Tiêu đề:")]
         public string TieuDe { get; set; }
 
-        [StringLength(500)]
+        [StringLength(50)]
+        [Display(Name = "Tên sản phẩn:")]
         public string TenSP { get; set; }
 
+        [Display(Name = "Mô Tả:")]
         public string Mota { get; set; }
 
+        public int? soluong { get; set; }
+
+        [Display(Name = "Giá Bán:")]
         public decimal? GiaBan { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Hình Ảnh:")]
         public string AnhTDe { get; set; }
 
         public int? MaLSP { get; set; }
 
         [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
+        [Display(Name = "Hãng sản xuất:")]
         public int? IDHang { get; set; }
 
         public int? IDhinh { get; set; }
 
+        [Display(Name = "Pin:")]
         public int? ID_Pin { get; set; }
 
+        [Display(Name = "Bộ xử lý:")]
         public int? ID_BXL { get; set; }
 
+        [Display(Name = "Hệ Diều Hành:")]
         public int? ID_HDH { get; set; }
 
+        [Display(Name = "Kích Thước:")]
         public int? ID_KT { get; set; }
 
+        [Display(Name = " Ram: ")]
         public int? ID_R { get; set; }
 
+        [Display(Name = "Camera:")]
         public int? ID_Camera { get; set; }
 
+        [Display(Name = "Chổ ngồi:")]
         public int? ID_CN { get; set; }
 
+        [Display(Name = "Kiểu dáng:")]
         public int? ID_KD { get; set; }
 
+        [Display(Name = "Phụ kiện:")]
         public int? ID_PK { get; set; }
 
+        [Display(Name = "Quảng đường:")]
         public int? ID_QD { get; set; }
 
+        [Display(Name = "Loại thời trang:")]
         public int? ID_LTR { get; set; }
 
+        [Display(Name = "Đời sản xuất:")]
         public int? ID_Doi { get; set; }
 
+        [Display(Name = "Card:")]
         public int? ID_Card { get; set; }
 
+        [Display(Name = "Mùa:")]
         public int? ID_M { get; set; }
 
+        [Display(Name = "Chất liệu:")]
         public int? ID_CL { get; set; }
 
+        [Display(Name = "Độ phân giả:")]
         public int? ID_DPG { get; set; }
 
+        [Display(Name = "Màu Sắc:")]
         public int? ID_MS { get; set; }
 
+        [Display(Name = "Phiên bản:")]
         public int? ID_PB { get; set; }
 
+        [Display(Name = "Case:")]
         public int? ID_Case { get; set; }
 
+        [Display(Name = " Bộ nhớ: ")]
         public int? ID_BN { get; set; }
 
+        [Display(Name = "Hộp số:")]
         public int? ID_HS { get; set; }
 
+        [Display(Name = "Model:")]
         public int? ID_Model { get; set; }
 
         public virtual BoNho BoNho { get; set; }

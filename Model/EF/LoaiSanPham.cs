@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -41,10 +41,13 @@ namespace Model.EF
         public int MaLSP { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Loại sản phẩm: ")]
         public string TenLSP { get; set; }
 
         [StringLength(50)]
         public string Link { get; set; }
+
+        public int? LSPParentID { get; set; }
 
         public bool Status { get; set; }
 

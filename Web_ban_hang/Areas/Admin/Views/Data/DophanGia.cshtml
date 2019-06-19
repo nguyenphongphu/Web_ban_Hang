@@ -7,7 +7,7 @@
 }
 
 @section header{
-    Thêm người dùng
+    Thêm dữ liệu độ phân giải
 }
 @section jsFooter{
     <script src="/assets/admin/js/controller/datacontroller.js"></script>
@@ -36,9 +36,17 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.STT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.STT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.STT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Thêm" class="btn btn-primary" />
-                <input type="button" value="Sữa" class="btn btn-danger" />
+                <input type="button" value="Sửa" class="btn btn-danger" id="btn_DophanGia"/>
             </div>
         </div>
     </div>
@@ -61,6 +69,7 @@
                                 <th>STT</th>
                                 <th>Dung lượng</th>
                                 <th>Loai sản phẩn</th>
+                                <th>Sấp Xếp</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -71,13 +80,14 @@
                                     <td>@item.ID_DPG</td>
                                     <td>@item.Ten</td>
                                     <td id="@item.LoaiSanPham.MaLSP">@item.LoaiSanPham.TenLSP</td>
+                                    <td>@item.STT</td>
                                     <td>
                                         <a href="javascript:" id="suaid">Sửa</a>
                                         |
                                         @Ajax.ActionLink("Xoá", "Delete", new { @id = item.ID_DPG }, new AjaxOptions
                                    {
                                        Confirm = "Bạn có muốn xoá bản ghi này?",
-                                       OnComplete = "$('#row_" + @item.ID_DPG + "').remove()",
+                                       OnSuccess = "loaddatadelete(data," + item.ID_DPG + ")",
                                        HttpMethod = "Delete"
                                    })
                                     </td>

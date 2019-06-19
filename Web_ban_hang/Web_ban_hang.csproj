@@ -184,7 +184,7 @@
     </Compile>
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\DistrictModel.cs" />
-    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\NewImage.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NewModel.cs" />
     <Compile Include="Models\ProvinceModel.cs" />
@@ -2964,6 +2964,7 @@
     <Content Include="assets\admin\model\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="assets\admin\model\ckfinder\userfiles\.htaccess" />
     <Content Include="assets\client\js\addthis_widget.js" />
+    <Content Include="assets\client\js\bootstrap-input-spinner.js" />
     <Content Include="assets\client\js\bootstrap.js" />
     <Content Include="assets\client\js\bootstrap.min.js" />
     <Content Include="assets\client\js\controller\baseController.js" />
@@ -2972,6 +2973,8 @@
     <Content Include="assets\client\js\controller\dangtin.js" />
     <Content Include="assets\client\js\controller\DangtinController.js" />
     <Content Include="assets\admin\js\controller\Modelcontroller.js" />
+    <Content Include="assets\client\js\controller\giohangController.js" />
+    <Content Include="assets\client\js\controller\SanphamController.js" />
     <Content Include="assets\client\js\controller\userController.js" />
     <Content Include="assets\client\js\easing.js" />
     <Content Include="assets\client\js\easyResponsiveTabs.js" />
@@ -2985,6 +2988,7 @@
     <Content Include="assets\client\js\jquery-3.3.1.slim.min.map" />
     <Content Include="assets\client\js\jquery-ui.js" />
     <Content Include="assets\client\js\jquery.accordion.js" />
+    <Content Include="assets\client\js\jquery.dataTables.min.js" />
     <Content Include="assets\client\js\jquery.easing.js" />
     <Content Include="assets\client\js\move-top.js" />
     <Content Include="assets\client\js\npm.js" />
@@ -3224,6 +3228,42 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="assets\admin\vendor\jquery\placeholders.jquery.min.js" />
+    <Content Include="Upload\Data\1.jpg" />
+    <Content Include="Upload\Data\10.jpg" />
+    <Content Include="Upload\Data\11.jpeg" />
+    <Content Include="Upload\Data\12.jpeg" />
+    <Content Include="Upload\Data\13.jpeg" />
+    <Content Include="Upload\Data\14.jpeg" />
+    <Content Include="Upload\Data\15.jpeg" />
+    <Content Include="Upload\Data\2.png" />
+    <Content Include="Upload\Data\3.jpeg" />
+    <Content Include="Upload\Data\4.jpg" />
+    <Content Include="Upload\Data\5.jpg" />
+    <Content Include="Upload\Data\6.jpg" />
+    <Content Include="Upload\Data\7.jpg" />
+    <Content Include="Upload\Data\8.jpg" />
+    <Content Include="Upload\Data\9.jpg" />
+    <Content Include="Upload\Data\lt1.jpg" />
+    <Content Include="Upload\Data\lt10.jpg" />
+    <Content Include="Upload\Data\lt11.jpg" />
+    <Content Include="Upload\Data\lt12.jpg" />
+    <Content Include="Upload\Data\lt13.jpg" />
+    <Content Include="Upload\Data\lt14.jpg" />
+    <Content Include="Upload\Data\lt2.jpg" />
+    <Content Include="Upload\Data\lt3.jpg" />
+    <Content Include="Upload\Data\lt4.jpg" />
+    <Content Include="Upload\Data\lt5.jpg" />
+    <Content Include="Upload\Data\lt6.jpg" />
+    <Content Include="Upload\Data\lt7.jpg" />
+    <Content Include="Upload\Data\lt8.jpg" />
+    <Content Include="Upload\Data\lt9.jpg" />
+    <Content Include="Upload\Data\mt1.jpg" />
+    <Content Include="Upload\Data\mt2.png" />
+    <Content Include="Upload\Data\mt3.jpg" />
+    <Content Include="Upload\Data\mt4.jpg" />
+    <Content Include="Upload\Data\mt5.jpg" />
+    <Content Include="Upload\Data\mt6.jpg" />
+    <Content Include="Upload\Data\mt7.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3264,18 +3304,6 @@
     <Folder Include="assets\admin\model\ckfinder\userfilesfiles\" />
     <Folder Include="assets\admin\model\ckfinder\userfilesflash\" />
     <Folder Include="assets\admin\model\ckfinder\userfiles_thumbs\Files\" />
-    <Folder Include="assets\client\images\am-thanh\" />
-    <Folder Include="assets\client\images\dien-thoai\" />
-    <Folder Include="assets\client\images\do-noi-that\" />
-    <Folder Include="assets\client\images\khac\" />
-    <Folder Include="assets\client\images\laptop\" />
-    <Folder Include="assets\client\images\may-tinh-de-ban\" />
-    <Folder Include="assets\client\images\sach-bao-nghe-thuat\" />
-    <Folder Include="assets\client\images\Temp\" />
-    <Folder Include="assets\client\images\the-thao\" />
-    <Folder Include="assets\client\images\thoi-trang\" />
-    <Folder Include="assets\client\images\tivi\" />
-    <Folder Include="assets\client\images\xe-co\" />
     <Folder Include="Upload\Data\212x212\" />
     <Folder Include="Upload\Data\480x360\" />
     <Folder Include="Upload\Data\55x41\" />

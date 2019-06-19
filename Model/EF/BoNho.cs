@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -19,9 +19,13 @@ namespace Model.EF
         public int ID_BN { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Dung lượng bộ nhớ: ")]
         public string Ten { get; set; }
 
+        [Display(Name = "Loại sản phẩm: ")]
         public int? MaLSP { get; set; }
+
+        public int? STT { get; set; }
 
         public virtual LoaiSanPham LoaiSanPham { get; set; }
 

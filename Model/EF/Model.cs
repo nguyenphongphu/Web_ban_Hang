@@ -16,12 +16,16 @@ namespace Model.EF
         }
 
         [Key]
-        public int ID_Mdel { get; set; }
+        public int ID_Model { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Model:")]
         public string Ten { get; set; }
 
+        [Display(Name = "Tên hãng: ")]
         public int? IDHang { get; set; }
+
+        public int? STT { get; set; }
 
         public virtual Hang Hang { get; set; }
 

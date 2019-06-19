@@ -32,8 +32,8 @@
                     {
                         var url = "/chi-tiet/" + item.SanPham.TieuDe + "-" + item.MaSP;
 
-                        <div class="grid_1_of_4 images_1_of_5">
-                            <a href="@url" class="item-sp" style="text-decoration:none">
+                        <div class="grid_1_of_4 images_1_of_5" id="sanphamid">
+                            <a href="@url" class="item-sp" style="text-decoration:none" id="@item.STT">
                                 <img src="@item.SanPham.AnhTDe" alt="@item.SanPham.TenSP" />
                                 <h2>@item.SanPham.TenSP</h2>
                                 <div class="price-details">

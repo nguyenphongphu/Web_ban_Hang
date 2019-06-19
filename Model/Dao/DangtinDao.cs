@@ -19,11 +19,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Hangs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Hangs.Where(x => x.MaLSP == menu.ID).OrderBy(x=>x.STT).ToList();
             }
             else
             {
-                return db.Hangs.Where(x => x.MaLSP == malsp).ToList();
+                return db.Hangs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }           
         }
         public List<Pin> pin(int malsp)
@@ -31,11 +31,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Pins.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Pins.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Pins.Where(x => x.MaLSP == malsp).ToList();
+                return db.Pins.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }           
         }
         public List<BoXL> boxuly(int malsp)
@@ -43,11 +43,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.BoXLs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.BoXLs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.BoXLs.Where(x => x.MaLSP == malsp).ToList();
+                return db.BoXLs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
            
         }
@@ -56,11 +56,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.HeDieuHanhs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.HeDieuHanhs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.HeDieuHanhs.Where(x => x.MaLSP == malsp).ToList();
+                return db.HeDieuHanhs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
            
         }
@@ -69,11 +69,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.KichThuocs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.KichThuocs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.KichThuocs.Where(x => x.MaLSP == malsp).ToList();
+                return db.KichThuocs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Ram> ram(int malsp)
@@ -81,11 +81,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Rams.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Rams.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Rams.Where(x => x.MaLSP == malsp).ToList();
+                return db.Rams.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Camera> camera(int malsp)
@@ -93,11 +93,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Cameras.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Cameras.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Cameras.Where(x => x.MaLSP == malsp).ToList();
+                return db.Cameras.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<ChoNgoi> chongoi(int malsp)
@@ -105,11 +105,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.ChoNgois.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.ChoNgois.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.ChoNgois.Where(x => x.MaLSP == malsp).ToList();
+                return db.ChoNgois.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
 
@@ -118,11 +118,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.KieuDangs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.KieuDangs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.KieuDangs.Where(x => x.MaLSP == malsp).ToList();
+                return db.KieuDangs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<PhuKien> phukien(int malsp)
@@ -130,11 +130,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.PhuKiens.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.PhuKiens.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.PhuKiens.Where(x => x.MaLSP == malsp).ToList();
+                return db.PhuKiens.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Quangduong> quangduong(int malsp)
@@ -142,11 +142,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Quangduongs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Quangduongs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Quangduongs.Where(x => x.MaLSP == malsp).ToList();
+                return db.Quangduongs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<LoaiTR> loaiTR(int malsp)
@@ -154,11 +154,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.LoaiTRs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.LoaiTRs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.LoaiTRs.Where(x => x.MaLSP == malsp).ToList();
+                return db.LoaiTRs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<DoiSX> doisanxuat(int malsp)
@@ -166,11 +166,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.DoiSXes.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.DoiSXes.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.DoiSXes.Where(x => x.MaLSP == malsp).ToList();
+                return db.DoiSXes.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Card> card(int malsp)
@@ -178,11 +178,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Cards.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Cards.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Cards.Where(x => x.MaLSP == malsp).ToList();
+                return db.Cards.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Mua> Mua(int malsp)
@@ -190,11 +190,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Muas.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Muas.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Muas.Where(x => x.MaLSP == malsp).ToList();
+                return db.Muas.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<ChatLieu> Chatlieu(int malsp)
@@ -202,11 +202,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.ChatLieux.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.ChatLieux.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.ChatLieux.Where(x => x.MaLSP == malsp).ToList();
+                return db.ChatLieux.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<PhienBan> phienban(int malsp)
@@ -214,11 +214,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.PhienBans.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.PhienBans.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.PhienBans.Where(x => x.MaLSP == malsp).ToList();
+                return db.PhienBans.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<DoPhangia> dophangia(int malsp)
@@ -226,11 +226,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.DoPhangias.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.DoPhangias.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.DoPhangias.Where(x => x.MaLSP == malsp).ToList();
+                return db.DoPhangias.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<MauSac> mausac(int malsp)
@@ -238,11 +238,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.MauSacs.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.MauSacs.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.MauSacs.Where(x => x.MaLSP == malsp).ToList();
+                return db.MauSacs.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Case> Case(int malsp)
@@ -250,11 +250,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.Cases.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.Cases.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.Cases.Where(x => x.MaLSP == malsp).ToList();
+                return db.Cases.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<BoNho> bonho(int malsp)
@@ -262,11 +262,11 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.BoNhoes.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.BoNhoes.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.BoNhoes.Where(x => x.MaLSP == malsp).ToList();
+                return db.BoNhoes.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<HopSo> hopso(int malsp)
@@ -274,16 +274,16 @@ namespace Model.Dao
             var menu = db.Menus.SingleOrDefault(x => x.ID == malsp && x.MenuParentID != null);
             if (menu != null)
             {
-                return db.HopSoes.Where(x => x.MaLSP == menu.ID).ToList();
+                return db.HopSoes.Where(x => x.MaLSP == menu.ID).OrderBy(x => x.STT).ToList();
             }
             else
             {
-                return db.HopSoes.Where(x => x.MaLSP == malsp).ToList();
+                return db.HopSoes.Where(x => x.MaLSP == malsp).OrderBy(x => x.STT).ToList();
             }
         }
         public List<Model.EF.Model> models(int id)
         {            
-            return db.Models.Where(x => x.IDHang == id).ToList();
+            return db.Models.Where(x => x.IDHang == id).OrderBy(x => x.STT).ToList();
         }
     }
 }

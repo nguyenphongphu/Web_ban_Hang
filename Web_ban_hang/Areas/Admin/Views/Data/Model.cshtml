@@ -7,11 +7,11 @@
 }
 
 @section header{
-    Thêm người dùng
+    Thêm dữ liệu Model
 }
 @section jsFooter{
     <script src="/assets/admin/js/controller/Modelcontroller.js"></script>
-    
+
 }
 @using (Html.BeginForm("Model", "Data", FormMethod.Post))
 {
@@ -43,9 +43,17 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.STT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.STT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.STT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Thêm" class="btn btn-primary" />
-                <input type="button" value="Sữa" class="btn btn-danger" />
+                <input type="button" value="Sửa" class="btn btn-danger" id="btn_suaModel"/>
             </div>
         </div>
     </div>
@@ -69,24 +77,26 @@
                                 <th>Tên Model</th>
                                 <th>Tên Hãng</th>
                                 <th>Loai sản phẩn</th>
+                                <th>Sấp Xếp</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in models)
                             {
-                                <tr id="row_@item.ID_Mdel">
-                                    <td>@item.ID_Mdel</td>
+                                <tr id="row_@item.ID_Model">
+                                    <td>@item.ID_Model</td>
                                     <td>@item.Ten</td>
                                     <td id="@item.Hang.IDHang">@item.Hang.Ten</td>
                                     <td id="@item.Hang.LoaiSanPham.MaLSP">@item.Hang.LoaiSanPham.TenLSP</td>
+                                    <td>@item.STT</td>
                                     <td>
                                         <a href="javascript:" id="suamodel">Sửa</a>
                                         |
-                                        @Ajax.ActionLink("Xoá", "Delete", new { @id = item.ID_Mdel }, new AjaxOptions
+                                        @Ajax.ActionLink("Xoá", "DeleteModel", new { @id = item.ID_Model }, new AjaxOptions
                                    {
                                        Confirm = "Bạn có muốn xoá bản ghi này?",
-                                       OnComplete = "$('#row_" + @item.ID_Mdel + "').remove()",
+                                       OnSuccess = "loaddatadelete(data," + item.ID_Model + ")",
                                        HttpMethod = "Delete"
                                    })
                                     </td>

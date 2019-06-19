@@ -91,7 +91,7 @@ namespace Web_ban_hang.Controllers
             //var model = new FooterDao().GetFooter();
             return PartialView();
         }
-        public ActionResult timkiem(string keyword, int page = 1, int pageSize = 1)
+        public ActionResult timkiem(string keyword, int page = 1, int pageSize = 10)
         {
             int totalRecord = 0;
             var model = new NewDao().Search(keyword, ref totalRecord, page, pageSize);

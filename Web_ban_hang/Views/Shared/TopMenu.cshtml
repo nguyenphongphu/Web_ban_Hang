@@ -2,13 +2,13 @@
 <div class="call">
     <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></p>
 </div>
-<div class="account_desc">
+<div class="account_desc" id="userDN">
     @{
         var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
     }
     @if (session == null)
     {
-        <ul>
+        <ul id="0">
             @foreach (var item in Model)
             {
                 <li><a href="@item.Link">@item.Text</a></li>
@@ -18,7 +18,7 @@
     }
     else
     {
-        <ul>
+        <ul id="1">
             <li><a href="@Model[0].Link">@Model[0].Text</a></li>
             <li class="dropdown  " role="presentation">
                 <a class=" dropdown-toggle" data-toggle=dropdown href="javascript:">

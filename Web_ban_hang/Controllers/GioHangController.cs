@@ -1,6 +1,7 @@
 ﻿using Common;
 using Model.Dao;
 using Model.EF;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -188,21 +189,23 @@ namespace Web_ban_hang.Controllers
                         gioHang.soluong = item.Quantity;
                         gioHang.UserID = session.UserID;
                         new GioHangDao().insertdonhang(gioHang, shipName, mobile, address, email);                        
-                        total += (item.sanpham.GiaBan.GetValueOrDefault(0) * item.Quantity);
                     }
 
                 }
                 string content = null;
                 foreach (var item in cart)
                 {
-                    total += (item.sanpham.GiaBan.GetValueOrDefault(0) * item.Quantity);
-                    content = content + "<tr>" +
-                             "<td>" + item.sanpham.MaSP + "</td>" +
-                             "<td>" + item.sanpham.TenSP + "</td>" +
-                             "<td><img src='https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/MinhHieu/huong-dan-cach-tao-link-download-truc-tiep-tu-google-driver-1.png' width='100' /></td>" +
-                    "<td>" + item.Quantity + "</td>" +
-                             "<td>" + total + "</td>" +
-                         "</tr>";
+                    if (item.check)
+                    {
+                        total += (item.sanpham.GiaBan.GetValueOrDefault(0) * item.Quantity);
+                        content = content + "<tr>" +
+                                 "<td>" + item.sanpham.MaSP + "</td>" +
+                                 "<td>" + item.sanpham.TenSP + "</td>" +
+                                 "<td><img src='https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/MinhHieu/huong-dan-cach-tao-link-download-truc-tiep-tu-google-driver-1.png' width='100' /></td>" +
+                        "<td>" + item.Quantity + "</td>" +
+                                 "<td>" + total + "</td>" +
+                             "</tr>";
+                    }
                 }
                 string body = "<!DOCTYPE html>" +
                             "<html>" +
@@ -253,25 +256,33 @@ namespace Web_ban_hang.Controllers
         {
             return View();
         }
-        public bool Check(int id)
-        {
+        public JsonResult Check(string MaSP)
+        {           
             var cart = Session[CartSession];
             var list = new List<CartItem>();
             if (cart != null)
             {
+                JObject js = JObject.Parse(MaSP);
                 list = (List<CartItem>)cart;
                 foreach (var item in list)
                 {
-                    if (item.sanpham.MaSP == id)
+                    string ten = "row_" + item.sanpham.MaSP;
+                    if (js.ContainsKey(ten))
                     {
                         item.check = true;
-                    }                   
+                    }                        
                 }
                 Session[CartSession] = list;
-                return true;
+                return Json(new
+                {
+                    status = true
+                });
             }
-            return false;
-            
+            return Json(new
+            {
+                status = false
+            });
+
         }
         public void upload()
         {
@@ -297,6 +308,10 @@ namespace Web_ban_hang.Controllers
                             new GioHangDao().insert(gioHang);
                         }                                      
                 }
+            }
+            else if(cart == null && session != null)
+            {
+                new GioHangDao().deleteall(session.UserID);
             }
             
         }

@@ -12,7 +12,7 @@ namespace Web_ban_hang.Areas.Admin.Controllers
         // GET: Admin/HinhAnh
         public ActionResult Index()
         {
-            var hinhanh= new DataDao().hinhAnhs();
+            var hinhanh= new DataDao().hinhAnhs();          
                 return View(hinhanh);
         }
     }

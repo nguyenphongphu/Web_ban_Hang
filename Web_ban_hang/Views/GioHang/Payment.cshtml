@@ -3,13 +3,17 @@
     ViewBag.Title = "Thanh toán";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section jsFooter{
+
+    <script src="~/assets/client/js/controller/giohangController.js"></script>
+}
 <div class="content">
     <div class="section group">
         @if (Model.Count > 0)
         {
-            <table class="table">
+            <table class="table" id="datagioH">
                 <thead>
-                    <tr>                        
+                    <tr>
                         <td>STT</td>
                         <td>Tên SP</td>
                         <td>Ảnh SP</td>
@@ -26,7 +30,7 @@
                             <td>@(i + 1)</td>
                             <td>@Model[i].sanpham.TenSP</td>
                             <td><img src="@Model[i].sanpham.AnhTDe" width="100" /></td>
-                            <td><input type="text" class="txtQuantity" data-id="@Model[i].sanpham.MaSP" value="@Model[i].Quantity" /></td>
+                            <td>@Model[i].Quantity</td>
                             <td>@Model[i].sanpham.GiaBan.GetValueOrDefault(0).ToString("N0")</td>
                             <td>@((Model[i].sanpham.GiaBan.GetValueOrDefault(0) * Model[i].Quantity).ToString("N0"))</td>
                             <td><a href="#" data-id="@Model[i].sanpham.MaSP" class="btn-delete">Xoá</a></td>
@@ -34,38 +38,35 @@
                     }
                 </tbody>
             </table>
+            <div class="an"><b>Tổng tiền:</b> <span id="tong_tien" style="left:5px">0</span> <b style="left:5px"> Đồng</b> </div>
         }
     </div>
     <div class="section group">
         <div class="col-md-6">
             @using (Html.BeginForm("Payment", "GioHang", FormMethod.Post))
             {
-                var user=(Model.EF.Taikhoan)ViewBag.user;
+                var user = (Model.EF.Taikhoan)ViewBag.user;
                 if (user != null)
                 {
                     <div class="form-group">
                         <label>Người nhận</label>
-                        <input name="shipName" class="form-control" value="@user.HovaTen"/>
+                        <input name="shipName" class="form-control" value="@user.HovaTen" />
                     </div>
                     <div class="form-group">
                         <label>Điện thoại</label>
-                        <input name="mobile" class="form-control" value="@user.Phone"/>
+                        <input name="mobile" class="form-control" value="@user.Phone" />
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ</label>
-                        <input name="address" class="form-control" value="@user.DiaChi"/>
+                        <input name="address" class="form-control" value="@user.DiaChi" />
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" class="form-control" value="@user.Email"/>
-                    </div>
-                    <div>
-                        <input type="radio" name="chon" value="COD"> COD 
-                        <input type="radio" name="chon" value="ATM"> ATM
+                        <input name="email" class="form-control" value="@user.Email" />
                     </div>
                     <button type="submit" class="btn">Gửi đơn hàng</button>
                 }
-                
+
             }
         </div>
 

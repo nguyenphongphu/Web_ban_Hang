@@ -11,11 +11,15 @@ namespace Web_ban_hang.Areas.Admin.Models
         public int ID_Mdel { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Tên Model: ")]
         public string Ten { get; set; }
 
+        [Display(Name = "Loại sản phẩm: ")]
         public int? MaLSP { get; set; }
 
+        [Display(Name = "Loại Hãng: ")]
         public int? IDHang { get; set; }
 
+        public int? STT { get; set; }
     }
 }

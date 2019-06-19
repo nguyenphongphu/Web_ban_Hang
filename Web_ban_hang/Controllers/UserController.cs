@@ -204,23 +204,24 @@ namespace Web_ban_hang.Controllers
                         Directory.CreateDirectory(Server.MapPath("~/Upload/Temp/") + session.UserName);
                     }
                     int fileSize = file.ContentLength;
-                    string fileName = file.FileName;
+                    var random = new Random();
+                    string fileName = random.Next(0, int.MaxValue) + file.FileName;
                     var date = DateTime.Now.ToString("dd-MM-yyyy");
-
                     file.SaveAs(Path.Combine(Server.MapPath("~/Upload/Temp/" + session.UserName + "/"), date + "-" + fileName));                   
-                    Image images = new Image();
+                    NewImage images = new NewImage();
                     images.image = "/Upload/Temp/" + session.UserName + "/" + date + "-" + fileName;
+                    images.link = session.UserID + "-" + date + "-" + fileName;
                     images.ten = session.UserID;
                     var hinh = Session[CommonConstants.IMAGE_SESSION];
                     if (hinh!=null)
                     {
-                        var list = (List<Image>)hinh;
+                        var list = (List<NewImage>)hinh;
                         list.Add(images);
                         Session[CommonConstants.IMAGE_SESSION] = list;
                     }
                     else
                     {
-                        List < Image > image = new List<Image>();
+                        List < NewImage > image = new List<NewImage>();
                         image.Add(images);
                         Session.Add(CommonConstants.IMAGE_SESSION, image);
                     }                    

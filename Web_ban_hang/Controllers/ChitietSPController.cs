@@ -18,5 +18,13 @@ namespace Web_ban_hang.Controllers
             //ViewBag.SPLQ= newdao.
             return View(Ctiet);
         }
+        public JsonResult dataSP(int malsp)
+        {
+            bool so = new NewDao().update(malsp);
+            return Json(new
+            {
+                status = true
+            });
+        }
     }
 }

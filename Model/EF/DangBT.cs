@@ -18,10 +18,9 @@ namespace Model.EF
 
         public int? MaKV { get; set; }
 
-        [StringLength(50)]
-        public string LinkBT { get; set; }
+        public bool? Status { get; set; }
 
-        public int? Xem { get; set; }
+        public int Xem { get; set; }
 
         public virtual Khuvuc Khuvuc { get; set; }
 

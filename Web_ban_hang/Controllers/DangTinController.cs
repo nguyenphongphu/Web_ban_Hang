@@ -1,13 +1,16 @@
-﻿using Model.Dao;
+﻿using Common;
+using Model.Dao;
 using Model.EF;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web_ban_hang.Common;
 using Web_ban_hang.Models;
+using System.IO;
 
 namespace Web_ban_hang.Controllers
 {
@@ -21,9 +24,9 @@ namespace Web_ban_hang.Controllers
             if (session != null)
             {
                 ViewBag.user = new UserDao().GetById(session.UserName);
-                ViewBag.tinh = new KhuvucDao().ListKV();               
+                ViewBag.tinh = new KhuvucDao().ListKV();
                 return View();
-                
+
             }
             else
             {
@@ -38,58 +41,118 @@ namespace Web_ban_hang.Controllers
             if (ModelState.IsValid)
             {
                 var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
-                var image = (List<Image>)Session[CommonConstants.IMAGE_SESSION];
+                var image = (List<NewImage>)Session[Web_ban_hang.Common.CommonConstants.IMAGE_SESSION];
                 if (session != null)
                 {
                     var newdao = new NewDao();
                     var dangBT = new DangBT();
+                    var sanpham = new SanPham();
                     dangBT.UserID = session.UserID;
-                    dangBT.SanPham.Date = DateTime.Now.Date ;
-                    dangBT.SanPham.TieuDe = dangtin_m.TieuDe;
-                    dangBT.SanPham.TenSP = dangtin_m.TieuDe;
-                    dangBT.SanPham.Mota = dangtin_m.Mota;
                     dangBT.MaKV = dangtin_m.MaKV;
-                    if (image != null)
+                    dangBT.Status = true;
+                    dangBT.Xem = 0;
+                    var hinh212x212 = new Link().resizeImage(212, 212, Server.MapPath("~" + image[0].image));
+                    hinh212x212.Save(Server.MapPath("~/Upload/Data/212x212/" + image[0].link));
+                    sanpham.Date = DateTime.Now;
+                    sanpham.TieuDe = dangtin_m.TieuDe;
+                    sanpham.TenSP = dangtin_m.TieuDe;
+                    sanpham.Mota = dangtin_m.Mota;
+                    sanpham.AnhTDe = "/Upload/Data/212x212/" + image[0].link;
+                    sanpham.GiaBan = dangtin_m.GiaBan;
+                    sanpham.MaLSP = dangtin_m.MaLSP;
+                    sanpham.IDHang = dangtin_m.IDHang;
+                    sanpham.ID_BN = dangtin_m.ID_BN;
+                    sanpham.ID_BXL = dangtin_m.ID_BXL;
+                    sanpham.ID_Camera = dangtin_m.ID_Camera;
+                    sanpham.ID_Card = dangtin_m.ID_Card;
+                    sanpham.ID_Case = dangtin_m.ID_Case;
+                    sanpham.ID_CL = dangtin_m.ID_CL;
+                    sanpham.ID_CN = dangtin_m.ID_CN;
+                    sanpham.ID_Doi = dangtin_m.ID_Doi;
+                    sanpham.ID_DPG = dangtin_m.ID_DPG;
+                    sanpham.ID_HDH = dangtin_m.ID_HDH;
+                    sanpham.ID_HS = dangtin_m.ID_HS;
+                    sanpham.ID_KD = dangtin_m.ID_KD;
+                    sanpham.ID_KT = dangtin_m.ID_KT;
+                    sanpham.ID_LTR = dangtin_m.ID_LTR;
+                    sanpham.ID_M = dangtin_m.ID_M;
+                    sanpham.ID_Model = dangtin_m.ID_Model;
+                    sanpham.ID_MS = dangtin_m.ID_MS;
+                    sanpham.ID_PB = dangtin_m.ID_PB;
+                    sanpham.ID_Pin = dangtin_m.ID_Pin;
+                    sanpham.ID_PK = dangtin_m.ID_PK;
+                    sanpham.ID_QD = dangtin_m.ID_QD;
+                    sanpham.ID_R = dangtin_m.ID_R;
+                    dangBT.SanPham = sanpham;
+                    int so = newdao.Them(dangBT);
+                    if (so > 0)
                     {
-                        foreach (var item in image)
+                        if (image != null)
                         {
+                            int i = 1;
+                            foreach (var item in image)
+                            {
+                                var hinh480_360 = new Link().resizeImage(480, 360, Server.MapPath("~" + item.image));
+                                hinh480_360.Save(Server.MapPath("~/Upload/Data/480x360/" + item.link));
+                                var listhinh = new HinhAnh();
+                                listhinh.MASP = so;
+                                listhinh.Link = "/Upload/Data/480x360/" + item.link;
+                                listhinh.AnhFull = true;
+                                listhinh.STTANH = i;
 
+                                var hinh55x41 = new Link().resizeImage(55, 41, Server.MapPath("~" + item.image));
+                                hinh55x41.Save(Server.MapPath("~/Upload/Data/55x41/" + item.link));
+                                var listhinh_1 = new HinhAnh();
+                                listhinh_1.MASP = so;
+                                listhinh_1.Link = "/Upload/Data/55x41/" + item.link;
+                                listhinh_1.AnhThumbnail = true;
+                                listhinh_1.STTANH = i;
+                                newdao.Themhinh(listhinh);
+                                newdao.Themhinh(listhinh_1);
+                                i++;
+                            }
+
+                            Session[Web_ban_hang.Common.CommonConstants.IMAGE_SESSION] = null;
+                            string link = Server.MapPath("~/Upload/Temp/") + session.UserName;
+                            DeleteDirectory(link);
                         }
                     }
-                    dangBT.SanPham.AnhTDe = "/Upload/Temp/" + dangBT.SanPham.LoaiSanPham.TenLSP + "/";
+                    else
+                    {
+                        Session[Web_ban_hang.Common.CommonConstants.IMAGE_SESSION] = null;
+                        string link = Server.MapPath("~/Upload/Temp/") + session.UserName;
+                        DeleteDirectory(link);
+                        string link1 = Server.MapPath("~/Upload/Data/212x212/" + image[0].link);
+                        DeleteDirectory(link1);
+                    }
 
-                    dangBT.SanPham.IDHang = dangtin_m.IDHang;
-                    dangBT.SanPham.ID_BN = dangtin_m.ID_BN;
-                    dangBT.SanPham.ID_BXL = dangtin_m.ID_BXL;
-                    dangBT.SanPham.ID_Camera = dangtin_m.ID_Camera;
-                    dangBT.SanPham.ID_Card = dangtin_m.ID_Card;
-                    dangBT.SanPham.ID_Case = dangtin_m.ID_Case;
-                    dangBT.SanPham.ID_CL = dangtin_m.ID_CL;
-                    dangBT.SanPham.ID_CN = dangtin_m.ID_CN;
-                    dangBT.SanPham.ID_Doi = dangtin_m.ID_Doi;
-                    dangBT.SanPham.ID_DPG = dangtin_m.ID_DPG;
-                    dangBT.SanPham.ID_HDH = dangtin_m.ID_HDH;
-                    dangBT.SanPham.ID_HS = dangtin_m.ID_HS;
-                    dangBT.SanPham.ID_KD = dangtin_m.ID_KD;
-                    dangBT.SanPham.ID_KT = dangtin_m.ID_KT;
-                    dangBT.SanPham.ID_LTR = dangtin_m.ID_LTR;
-                    dangBT.SanPham.ID_M = dangtin_m.ID_M;
-                    dangBT.SanPham.ID_Model = dangtin_m.ID_Model;
-                    dangBT.SanPham.ID_MS = dangtin_m.ID_MS;
-                    dangBT.SanPham.ID_PB = dangtin_m.ID_PB;
-                    dangBT.SanPham.ID_Pin = dangtin_m.ID_Pin;
-                    dangBT.SanPham.ID_PK = dangtin_m.ID_PK;
-                    dangBT.SanPham.ID_QD = dangtin_m.ID_QD;
-                    dangBT.SanPham.ID_R = dangtin_m.ID_R;
-                    newdao.Them(dangBT);
+
                 }
             }
 
             return Redirect("/");
-        } 
+        }
+        private void DeleteDirectory(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                //Delete all files from the Directory
+                foreach (string file in Directory.GetFiles(path))
+                {
+                    System.IO.File.Delete(file);
+                }
+                //Delete all child Directories
+                foreach (string directory in Directory.GetDirectories(path))
+                {
+                    DeleteDirectory(directory);
+                }
+                //Delete a Directory
+                Directory.Delete(path);
+            }
+        }
         public JsonResult data(int malsp)
         {
-             var dao = new DangtinDao();
+            var dao = new DangtinDao();
             var hangs = new List<ProvinceModel>();
             var bonhos = new List<ProvinceModel>();
             var boxulys = new List<ProvinceModel>();
@@ -361,20 +424,20 @@ namespace Web_ban_hang.Controllers
                 foreach (var item in dao.models(malsp))
                 {
                     province = new ProvinceModel();
-                    province.ID = item.ID_Mdel;
+                    province.ID = item.ID_Model;
                     province.Name = item.Ten;
                     hangs.Add(province);
                 }
-            }           
+            }
             return Json(new
             {
                 hang = hangs,
-                bonho=bonhos,
+                bonho = bonhos,
                 boxuly = boxulys,
                 camera = cameras,
                 card = cards,
                 Case = Cases,
-                Chatlieu =Chatlieus,
+                Chatlieu = Chatlieus,
                 chongoi = chongois,
                 doisanxuat = doisanxuats,
                 dophangia = dophangias,
@@ -393,6 +456,25 @@ namespace Web_ban_hang.Controllers
                 models = modelss,
                 status = true
             });
+        }
+
+        public JsonResult dataModel(int ma)
+        {
+            var dao = new DangtinDao();
+            var models = new List<ProvinceModel>();
+            ProvinceModel province = null;
+            foreach (var item in dao.models(ma))
+            {
+                province = new ProvinceModel();
+                province.ID = item.ID_Model;
+                province.Name = item.Ten;
+                models.Add(province);
+            }
+            return Json(new
+            {
+                model = models
+            });
+
         }
     }
 }

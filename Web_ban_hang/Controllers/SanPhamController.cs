@@ -100,5 +100,6 @@ namespace Web_ban_hang.Controllers
                 ViewBag.Prev = page - 1;
                 return View(ListALL);                  
         }
+        
     }
 }

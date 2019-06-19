@@ -30,30 +30,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @if (Model != null)
                             {
-                            <tr id="row_@item.ID_DH">
-                                <td>@item.ID_DH</td>
-                                <td>@item.SanPham.TenSP</td>
-                                <td>@item.Khuvuc.TenKV</td>
-                                <td>@item.soluong</td>
-                                <td>@item.Gia</td>
-                                <td>@item.date</td>
-                                <td>@item.Name</td>
-                                <td>@item.Phone</td>
-                                <td>@item.Diachi</td>
-                                <td>@item.email</td>
-                                <td>@item.Taikhoan.Username</td>
-                                <td>
-                                    @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID_DH }, new AjaxOptions
-                               {
-                                   Confirm = "Bạn có muốn xoá bản ghi này?",
-                                   OnComplete = "$('#row_" + @item.ID_DH + "').remove()",
-                                   HttpMethod = "Delete"
-                               })
-                                </td>
-                            </tr>
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.ID_DH">
+                                        <td>@item.ID_DH</td>
+                                        <td>@item.SanPham.TenSP</td>
+                                        <td>@item.Khuvuc.TenKV</td>
+                                        <td>@item.soluong</td>
+                                        <td>@item.Gia</td>
+                                        <td>@item.date</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Phone</td>
+                                        <td>@item.Diachi</td>
+                                        <td>@item.email</td>
+                                        <td>@item.Taikhoan.Username</td>
+                                        <td>
+                                            @Ajax.ActionLink("Gửi", "GuiHang", new { @id = item.ID_DH }, new AjaxOptions
+                                           {
+                                            Confirm = "Bạn có muốn gửi hàng bản ghi này?",
+                                            OnComplete = "$('#row_" + @item.ID_DH + "').remove()",
+                                            HttpMethod = "POST"
+                                           })
+                                            |
+                                            @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID_DH }, new AjaxOptions
+                                            {
+                                            Confirm = "Bạn có muốn xoá bản ghi này?",
+                                            OnComplete = "$('#row_" + @item.ID_DH + "').remove()",
+                                            HttpMethod = "Delete"
+                                            })
+                                        </td>
+                                    </tr>
+                                }
                             }
+
                         </tbody>
                     </table>
                 </div>

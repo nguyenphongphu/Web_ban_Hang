@@ -8,6 +8,9 @@
 <link href="/Assets/client/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="/Assets/client/css/global.css">
 <script src="/Assets/client/js/slides.min.jquery.js"></script>
+@section jsFooter{
+    <script src="/assets/client/js/controller/SanphamController.js"></script>
+}
 <script>
     $(function () {
         $('#products').slides({
@@ -56,13 +59,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="desc span_3_of_2 ">                   
-                    <h2>@Model.SanPham.TenSP </h2>
+                <div class="desc span_3_of_2 " id="sanphamid">
+                    <h2 id="@Model.STT">@Model.SanPham.TenSP </h2>
                     <br />
-                    <div><p>@Model.Taikhoan.HovaTen</p>@Model.Taikhoan.Phone</div>
+                    <div><h5>@Model.Taikhoan.HovaTen | @Model.Taikhoan.Phone | @Model.SanPham.Date.Date.ToString("dd/MM/yyyy")</h5></div>
                     <div class="row-info-prd price">
-                        <div><b>Giá Bán:</b> <span>@(Model.SanPham.GiaBan.HasValue ? Model.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></div>                           
-                     </div>                    
+                        <div><b>Giá Bán:</b> <span>@(Model.SanPham.GiaBan.HasValue ? Model.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></div>
+                    </div>
                     <div class="share-desc">
                         <div class="share">
                             <div class="addthis_toolbox row-info-prd social">
@@ -87,21 +90,44 @@
                             </div>
                             <script src="/assets/client/js/addthis_widget.js"></script>
                         </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div>
                         @{
                             var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
                             if (session != null)
                             {
+                                <div class="col-xs-5 col-xs-offset-1 container">
+                                    <div class="input-group number-spinner">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                                        </span>
+                                        <input type="text" class="col-md-2 form-control text-center " value="1">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </span>
+                                    </div>
+                                </div>
                                 <div class="button"><span><a href="/them-gio-hang?productId=@Model.SanPham.MaSP&quantity=1">Thêm vào giỏ</a></span></div>
                             }
                             else
                             {
+                                <div class="col-xs-5 col-xs-offset-1 container">
+                                    <div class="input-group number-spinner">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                                        </span>
+                                        <input type="text" class="col-md-2 form-control text-center  " value="0" maxlength="@Model.SanPham.soluong">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </span>
+                                    </div>
+                                </div>
                                 <div class="button"><span><a href="/dang-nhap">Thêm vào giỏ</a></span></div>
                             }
                         }
-
                         <div class="clear"></div>
                     </div>
-
                 </div>
                 <!--AA-->
                 <div class="clear"></div>
@@ -109,103 +135,104 @@
             <div class="product_desc">
                 <ul class="table-info-detail-prd">
                     @{
+                        <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.LoaiSanPham.TenLSP</span></li>
                         if (Model.SanPham.ID_BN != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.BoNho.Ten</span></li>
+                            <li><span class="tit">Bộ nhớ</span><span class="cont">@Model.SanPham.BoNho.Ten</span></li>
                         }
                         if (Model.SanPham.ID_BXL != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.BoXL.Ten</span></li>
+                            <li><span class="tit">Bộ xử lý</span><span class="cont">@Model.SanPham.BoXL.Ten</span></li>
                         }
                         if (Model.SanPham.ID_Camera != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Camera.Ten</span></li>
+                            <li><span class="tit">Camera</span><span class="cont">@Model.SanPham.Camera.Ten</span></li>
                         }
                         if (Model.SanPham.ID_Card != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Card.Ten</span></li>
+                            <li><span class="tit">Card</span><span class="cont">@Model.SanPham.Card.Ten</span></li>
                         }
                         if (Model.SanPham.ID_Case != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Case.Ten</span></li>
+                            <li><span class="tit">Case</span><span class="cont">@Model.SanPham.Case.Ten</span></li>
                         }
                         if (Model.SanPham.ID_CL != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.ChatLieu.Ten</span></li>
+                            <li><span class="tit">Chất liệu</span><span class="cont">@Model.SanPham.ChatLieu.Ten</span></li>
                         }
                         if (Model.SanPham.ID_CN != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.ChoNgoi.Ten</span></li>
+                            <li><span class="tit">Chỗ ngồi</span><span class="cont">@Model.SanPham.ChoNgoi.Ten</span></li>
                         }
                         if (Model.SanPham.ID_Doi != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.DoiSX.Ten</span></li>
+                            <li><span class="tit">Đời sản xuất</span><span class="cont">@Model.SanPham.DoiSX.Ten</span></li>
                         }
                         if (Model.SanPham.ID_DPG != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.DoPhangia.Ten</span></li>
+                            <li><span class="tit">Độ phân giả</span><span class="cont">@Model.SanPham.DoPhangia.Ten</span></li>
                         }
                         if (Model.SanPham.IDHang != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Hang.Ten</span></li>
+                            <li><span class="tit">Hãng</span><span class="cont">@Model.SanPham.Hang.Ten</span></li>
                         }
                         if (Model.SanPham.ID_HDH != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.HeDieuHanh.Ten</span></li>
+                            <li><span class="tit">Hệ điều hành</span><span class="cont">@Model.SanPham.HeDieuHanh.Ten</span></li>
                         }
                         if (Model.SanPham.ID_HS != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.HopSo.Ten</span></li>
+                            <li><span class="tit">Hộp số</span><span class="cont">@Model.SanPham.HopSo.Ten</span></li>
                         }
                         if (Model.SanPham.ID_KD != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.KieuDang.Ten</span></li>
+                            <li><span class="tit">Kiểu dáng</span><span class="cont">@Model.SanPham.KieuDang.Ten</span></li>
                         }
                         if (Model.SanPham.ID_KT != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.KichThuoc.Ten</span></li>
+                            <li><span class="tit">Kích thước</span><span class="cont">@Model.SanPham.KichThuoc.Ten</span></li>
                         }
                         if (Model.SanPham.ID_LTR != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.LoaiTR.Ten</span></li>
+                            <li><span class="tit">Loại thời trang</span><span class="cont">@Model.SanPham.LoaiTR.Ten</span></li>
                         }
                         if (Model.SanPham.ID_M != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Mua.Ten</span></li>
+                            <li><span class="tit">Mùa</span><span class="cont">@Model.SanPham.Mua.Ten</span></li>
                         }
                         if (Model.SanPham.ID_Model != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Model.Ten</span></li>
+                            <li><span class="tit">Model</span><span class="cont">@Model.SanPham.Model.Ten</span></li>
                         }
                         if (Model.SanPham.ID_MS != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.MauSac.Ten</span></li>
+                            <li><span class="tit">Màu sắc</span><span class="cont">@Model.SanPham.MauSac.Ten</span></li>
                         }
                         if (Model.SanPham.ID_PB != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.PhienBan.Ten</span></li>
+                            <li><span class="tit">Phiên bản</span><span class="cont">@Model.SanPham.PhienBan.Ten</span></li>
                         }
                         if (Model.SanPham.ID_Pin != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Pin.Ten</span></li>
+                            <li><span class="tit">Pin</span><span class="cont">@Model.SanPham.Pin.Ten</span></li>
                         }
                         if (Model.SanPham.ID_PK != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.PhuKien.Ten</span></li>
+                            <li><span class="tit">Phụ kiện</span><span class="cont">@Model.SanPham.PhuKien.Ten</span></li>
                         }
                         if (Model.SanPham.ID_QD != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Quangduong.Ten</span></li>
+                            <li><span class="tit">Quảng đường</span><span class="cont">@Model.SanPham.Quangduong.Ten</span></li>
                         }
                         if (Model.SanPham.ID_R != null)
                         {
-                            <li><span class="tit">Loại sản phẩm</span><span class="cont">@Model.SanPham.Ram.Ten</span></li>
+                            <li><span class="tit">Ram</span><span class="cont">@Model.SanPham.Ram.Ten</span></li>
                         }
                     }
 
                 </ul>
                 <div class="intro-detail-prd">
-                   @Model.SanPham.Mota
+                    @Model.SanPham.Mota
                 </div>
             </div>
             <script type="text/javascript">
@@ -216,12 +243,13 @@
                         fit: true   // 100% fit in a container
                     });
                 });
-            </script>           
+              
+            </script>
         </div>
         <div class="rightsidebar span_3_of_1">
             <div class="categories">
                 @{ Html.RenderAction("MenuSanPham", "Home");}
-            </div>           
+            </div>
         </div>
     </div>
     <div class="content_bottom">

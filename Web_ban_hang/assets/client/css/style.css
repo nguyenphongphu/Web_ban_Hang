@@ -1255,7 +1255,7 @@ body {
 
 .span_3_of_2 .button {
     float: right;
-    margin-top: 40px;
+    margin-top: 0px;
     line-height: 3em;
 }
 
@@ -3060,4 +3060,11 @@ group-info-detail-prd .if-more {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+}
+.container {
+    padding-top: 10px;
+}
+.an {
+    float: right;
+    margin-right: 20%;
 }

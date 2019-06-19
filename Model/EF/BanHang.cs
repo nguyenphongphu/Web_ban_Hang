@@ -45,7 +45,6 @@ namespace Model.EF
         public virtual DbSet<Ram> Rams { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
-        //public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Taikhoan> Taikhoans { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
 

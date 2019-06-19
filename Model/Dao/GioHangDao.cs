@@ -47,11 +47,11 @@ namespace Model.Dao
 
             }
         }
-        public bool deleteall()
+        public bool deleteall( int id)
         {
             try
             {
-                var sanphan = db.GioHangs.ToList();
+                var sanphan = db.GioHangs.Where(x=>x.UserID==id).ToList();
                 foreach (var item in sanphan)
                 {
                     db.GioHangs.Remove(item);                   

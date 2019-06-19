@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="/Assets/client/css/slider.css" rel="stylesheet" />
     <link href="/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/Assets/client/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/client/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <link href="/Assets/client/css/bootstrap-theme.css" rel="stylesheet" />
     <link href="/assets/client/css/jquery-ui.css" rel="stylesheet" />
 
@@ -49,7 +49,7 @@
             <div class="header_slide ">
                 @RenderSection("slide", required: false)
             </div>
-            <div class="an_top an_top1">
+            @*<div class="an_top an_top1">
                 <div class="headertop_desc">
                     @{Html.RenderAction("TopMenu", "Home"); }
                     <div class="clear"></div>
@@ -71,7 +71,7 @@
                         @{Html.RenderAction("Cart", "Home"); }
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="main">
             @RenderBody()
@@ -90,27 +90,31 @@
 
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
     <script>
-        var header = document.querySelector('.header_bottom');
-        var origOffsetY = header.offsetTop;
+        //var header = document.querySelector('.header_bottom');
+        //var origOffsetY = header.offsetTop;
 
-        var menutop = document.querySelector('.an_top');
+        //var menutop = document.querySelector('.an_top');
 
-        function onScroll(e) {
-            window.scrollY >= origOffsetY ? menutop.classList.add('sticky') :
-                menutop.classList.remove('sticky');
-            window.scrollY >= origOffsetY ? menutop.classList.remove('an_top1') :
-                menutop.classList.add('an_top1');
-        }
-        document.addEventListener('scroll', onScroll);
+        //function onScroll(e) {
+        //    window.scrollY >= origOffsetY ? menutop.classList.add('sticky') :
+        //        menutop.classList.remove('sticky');
+        //    window.scrollY >= origOffsetY ? menutop.classList.remove('an_top1') :
+        //        menutop.classList.add('an_top1');
+        //}
+        //document.addEventListener('scroll', onScroll);
         $(window).on('beforeunload', function () {
             var URL = "/GioHang/upload";
             var data = "";
-            navigator.sendBeacon(URL, data);
+            var user = $('#userDN ul').attr('id');
+            if (user ==1) {
+                navigator.sendBeacon(URL, data);
+            }              
         });
 
     </script>
     <script src="/assets/client/js/controller/baseController.js"></script>
     <script src="/assets/client/js/cdcjs.js"></script>
+
     @RenderSection("jsFooter", required: false)
 </body>
 

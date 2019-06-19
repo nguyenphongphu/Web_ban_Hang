@@ -5,6 +5,7 @@
     registerEvent: function () {
         $("#sanpham a").on('click', function () {
             var id = $(this).attr('id');
+            $('#MaLSP').val(id);
             if (id != null) {
                 var name = $(this).html;
                 var so;
@@ -29,6 +30,7 @@
                                 var data = res.hang;
                                 var html = optionsl(data);
                                 $('#phantu').append(mang("IDHang", "Hãng sản xuất:", html, name));
+                                common.loadmodel();
                             }
                             if (res.models.length > 0) {
                                 var data = res.models;
@@ -53,7 +55,7 @@
                             if (res.Case.length > 0) {
                                 var data = res.Case;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_Case", "Camera:", html, id));
+                                $('#phantu').append(mang("ID_Case", "Case:", html, id));
                             }
                             if (res.Chatlieu.length > 0) {
                                 var data = res.Chatlieu;
@@ -140,44 +142,22 @@
             
         });
         
-        var mang = function (a, b, html,id) {
-            if (id > 11 && id < 24 && a == "IDHang") {
-                var so = parseInt(id)+1;
-                var link =
-                    "<div class='form-group col-md-6'>" +
-                    "<label class='control-label col-md-4' for='" + a + "'>" + b + "</label>" +
-                    "<div class=' from-table col-md-7'>" +
-                    "<select class='form-control col-md-4' id='" + a + "'name='" + a + "'>" + html + "</select>" +
-                    "<span class='field-validation-valid text-danger' data-valmsg-for='P" + a + "' data-valmsg-replace='true'></span>" +
-                    "</div>" +
-                    "<script type='text/javascript'>" +                                        
-                    "$('#"+a+"').val('"+so+"');"+
-                    "$('#" + a + "').on('change', function () {" +
-                    " var value = $(this).val();" +
-                    "$('#SanPham_" + a + "').val(value);" +
-                    "});" +
-                    "</script> " +
-                    "</div>";
-                return link;
-            } else {
-                var link =
-                    "<div class='form-group col-md-6'>" +
-                    "<label class='control-label col-md-4' for='" + a + "'>" + b + "</label>" +
-                    "<div class=' from-table col-md-7'>" +
-                    "<select class='form-control col-md-4' id='" + a + "'name='" + a + "'>" + html + "</select>" +
-                    "<span class='field-validation-valid text-danger' data-valmsg-for='P" + a + "' data-valmsg-replace='true'></span>" +
-                    "</div>" +
-                    "<script type='text/javascript'>" +
-                    "$('#" + a + "').on('change', function () {" +
-                    " var value = $(this).val();" +
-                    "$('#SanPham_" + a + "').val(value);" +
-                    "});" +
-                    "</script> " +
-                    "</div>";
-                return link; 
-            }
-            
-                      
+        var mang = function (a, b, html, id) {
+            var link =
+                "<div class='form-group col-md-6'>" +
+                "<label class='control-label col-md-4' for='" + a + "'>" + b + "</label>" +
+                "<div class=' from-table col-md-7'>" +
+                "<select class='form-control col-md-4' id='" + a + "'name='" + a + "'>" + html + "</select>" +
+                "<span class='field-validation-valid text-danger' data-valmsg-for='" + a + "' data-valmsg-replace='true'></span>" +
+                "</div>" +
+                "<script type='text/javascript'>" +
+                "$('#" + a + "').on('change', function () {" +
+                " var value = $(this).val();" +
+                "$('#SanPham_" + a + "').val(value);" +
+                "});" +
+                "</script> " +
+                "</div>";
+            return link;             
         }
         var optionsl = function(data){
             var html = '<option value="">--Chọn--</option>';
@@ -187,6 +167,50 @@
             return html;
         }    
         
+    },
+    loadmodel: function () {
+        var link =
+            "<div class='form-group col-md-6'>" +
+            "<label class='control-label col-md-4' for='ID_Model'> Model:</label>" +
+            "<div class=' from-table col-md-7'>" +
+            "<select class='form-control col-md-4' id='ID_Model'name='ID_Model'><option value=''>--Chọn--</option></select>" +
+            "<span class='field-validation-valid text-danger' data-valmsg-for='ID_Model' data-valmsg-replace='true'></span>" +
+            "</div>" +
+            "<script type='text/javascript'>" +
+            "$('#ID_Model').on('change', function () {" +
+            " var value = $(this).val();" +
+            "$('#SanPham_ID_Model').val(value);" +
+            "});" +
+            "</script> " +
+            "</div>";
+        $('#phantu').append(link);
+        $('#IDHang').off('change').on('change', function () {
+            var id = $('#IDHang').val();
+            if (id != '') {              
+                loadDistrict(parseInt(id));
+            }
+            else {
+                var html = '<option value="">--Chọn--</option>';
+                $('#ID_Model').html(html);          
+            }
+        });
+
+        var loadDistrict = function (id) {
+            $.ajax({
+                url: '/DangTin/dataModel',
+                data: { ma: id },
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {                   
+                    var html = '<option value="">--Chọn--</option>';
+                    $.each(data.model, function (i, item) {
+                        html += '<option value="' + item.ID + '">' + item.Name + '</option>'
+                    });
+                    $('#ID_Model').html(html);
+                }
+            });
+        }
+            
     }
 }
 common.init();
