@@ -49,7 +49,7 @@ namespace Web_ban_hang.Controllers
                     var sanpham = new SanPham();
                     dangBT.UserID = session.UserID;
                     dangBT.MaKV = dangtin_m.MaKV;
-                    dangBT.Status = true;
+                    dangBT.Status = false;
                     dangBT.Xem = 0;
                     var hinh212x212 = new Link().resizeImage(212, 212, Server.MapPath("~" + image[0].image));
                     hinh212x212.Save(Server.MapPath("~/Upload/Data/212x212/" + image[0].link));

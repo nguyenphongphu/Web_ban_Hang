@@ -19,7 +19,7 @@ namespace Model.Dao
         }
         public List<DangBT> ListAllPaging()
         {
-            return db.DangBTs.Where(x => x.Status == true).ToList();
+            return db.DangBTs.ToList();
         }
 
         public bool Delete(int id)
@@ -36,9 +36,9 @@ namespace Model.Dao
                 return false;
             }
         }
-        public SanPham ViewDetail(int id)
+        public DangBT ViewDetail(int id)
         {
-            return db.SanPhams.Find(id);
+            return db.DangBTs.SingleOrDefault(x=>x.SanPham.MaSP==id);
         }
         public DangBT ViewBT(int id)
         {
@@ -250,6 +250,30 @@ namespace Model.Dao
             {
                 return false;
             }
+        }
+        public object ChangeStatus(long id)
+        {
+            var user = db.DangBTs.Find(id);
+            user.Status = !user.Status;
+            db.SaveChanges();
+            return user.Status;
+        }
+        public bool updateSL(int Ma,int so)
+        {
+            var user = db.DangBTs.Single(x=>x.SanPham.MaSP==Ma);
+            if(user.SanPham.soluong - so >= 0)
+            {
+                user.SanPham.soluong = user.SanPham.soluong - so;
+            }
+            else
+            {
+                if (user.SanPham.soluong == 0)
+                {
+                    user.Status = false;
+                }                 
+            }            
+            db.SaveChanges();
+            return user.Status;
         }
     }
 }

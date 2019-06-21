@@ -62,10 +62,11 @@
                 <div class="desc span_3_of_2 " id="sanphamid">
                     <h2 id="@Model.STT">@Model.SanPham.TenSP </h2>
                     <br />
-                    <div><h5>@Model.Taikhoan.HovaTen | @Model.Taikhoan.Phone | @Model.SanPham.Date.Date.ToString("dd/MM/yyyy")</h5></div>
+                    <div><h5> @Model.Taikhoan.HovaTen | @Model.Taikhoan.Phone | @Model.SanPham.Date.Value.ToString("dd/MM/yyyy")</h5></div>
                     <div class="row-info-prd price">
                         <div><b>Giá Bán:</b> <span>@(Model.SanPham.GiaBan.HasValue ? Model.SanPham.GiaBan.Value.ToString("N0") : "Liên hệ")</span></div>
                     </div>
+                    <div id="maSPCT"> <b>ID: </b>@Model.SanPham.MaSP</div>
                     <div class="share-desc">
                         <div class="share">
                             <div class="addthis_toolbox row-info-prd social">
@@ -102,13 +103,13 @@
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
                                         </span>
-                                        <input type="text" class="col-md-2 form-control text-center " value="1">
+                                        <input type="text" class="col-md-2 form-control text-center " value="1" max="@Model.SanPham.soluong">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="button"><span><a href="/them-gio-hang?productId=@Model.SanPham.MaSP&quantity=1">Thêm vào giỏ</a></span></div>
+                                <div class="button"><span><a href="/them-gio-hang?productId=@Model.SanPham.MaSP&quantity=1" id="bt_gh">Thêm vào giỏ</a></span></div>
                             }
                             else
                             {
@@ -117,7 +118,7 @@
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
                                         </span>
-                                        <input type="text" class="col-md-2 form-control text-center  " value="0" maxlength="@Model.SanPham.soluong">
+                                        <input type="text" class="col-md-2 form-control text-center  " value="1" max="@Model.SanPham.soluong">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
                                         </span>

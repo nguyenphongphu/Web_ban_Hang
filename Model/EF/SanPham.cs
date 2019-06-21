@@ -14,6 +14,7 @@
         {
             DangBTs = new HashSet<DangBT>();
             DonHangs = new HashSet<DonHang>();
+            HinhAnhs = new HashSet<HinhAnh>();
             GioHangs = new HashSet<GioHang>();
             Slides = new HashSet<Slide>();
         }
@@ -21,11 +22,11 @@
         [Key]
         public int MaSP { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         [Display(Name = "Tiêu đề:")]
         public string TieuDe { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         [Display(Name = "Tên sản phẩn:")]
         public string TenSP { get; set; }
 
@@ -51,7 +52,6 @@
         [Display(Name = "Hãng sản xuất:")]
         public int? IDHang { get; set; }
 
-        public int? IDhinh { get; set; }
 
         [Display(Name = "Pin:")]
         public int? ID_Pin { get; set; }
@@ -147,7 +147,8 @@
 
         public virtual HeDieuHanh HeDieuHanh { get; set; }
 
-        public virtual HinhAnh HinhAnh { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
 
         public virtual HopSo HopSo { get; set; }
 

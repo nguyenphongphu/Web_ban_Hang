@@ -33,10 +33,18 @@ namespace Web_ban_hang.Areas.Admin.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            new UserDao().Delete(id);
+            new NewDao().Delete(id);
 
             return RedirectToAction("Index");
         }
-
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new NewDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
+        }
     }
 }

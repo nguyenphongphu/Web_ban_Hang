@@ -36,6 +36,7 @@ namespace Model.Dao
                 return false;
             }
         }
+
         public bool GuiHang(int id)
         {
             try

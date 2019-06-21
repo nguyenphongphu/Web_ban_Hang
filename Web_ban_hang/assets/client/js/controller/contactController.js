@@ -11,7 +11,7 @@
             var content = $('#txtContent').val();
 
             $.ajax({
-                url: '/Contact/Send',
+                url: '/LienHe/Send',
                 type: 'POST',
                 dataType: 'json',
                 data: {

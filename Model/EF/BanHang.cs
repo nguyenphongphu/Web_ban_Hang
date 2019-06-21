@@ -47,7 +47,7 @@ namespace Model.EF
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<Taikhoan> Taikhoans { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
-
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ChucVu>()
@@ -71,17 +71,17 @@ namespace Model.EF
                 .Property(e => e.Link)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Model>()
-                .HasMany(e => e.SanPhams)
-                .WithOptional(e => e.Model)
-                .HasForeignKey(e => e.ID_Model);
-
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaBan)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<SanPham>()
                 .HasMany(e => e.DangBTs)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.DonHangs)
                 .WithRequired(e => e.SanPham)
                 .WillCascadeOnDelete(false);
 
@@ -117,6 +117,11 @@ namespace Model.EF
 
             modelBuilder.Entity<Taikhoan>()
                 .HasMany(e => e.DangBTs)
+                .WithRequired(e => e.Taikhoan)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Taikhoan>()
+                .HasMany(e => e.DonHangs)
                 .WithRequired(e => e.Taikhoan)
                 .WillCascadeOnDelete(false);
 

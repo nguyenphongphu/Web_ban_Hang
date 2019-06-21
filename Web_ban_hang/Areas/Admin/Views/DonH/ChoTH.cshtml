@@ -45,11 +45,12 @@
                                     <td>@item.email</td>
                                     <td>@item.Taikhoan.Username</td>
                                     <td>
-                                        @Ajax.ActionLink("Gữi", "GuiHang", new { @id = item.ID_DH }, new AjaxOptions
-                                        {
-                                            Confirm = "Bạn có muốn xoá bản ghi này?",
-                                            HttpMethod = "Delete"
-                                        })
+                                        @Ajax.ActionLink("Gửi", "GuiHang", new { @id = item.ID_DH }, new AjaxOptions
+                                   {
+                                       Confirm = "Bạn có muốn gửi bản ghi này?",
+                                       OnComplete = "window.location.reload()",
+                                       HttpMethod = "POST"
+                                   })
                                     </td>
                                 </tr>
                             }

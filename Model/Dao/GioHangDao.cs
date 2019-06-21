@@ -73,18 +73,25 @@ namespace Model.Dao
         {
             try
             {
-                var donhang = new DonHang();
+                var donhang = new EF.DonHang();
                 donhang.MaSP = giohang.MaSP;
+                donhang.UserID = giohang.UserID;
                 donhang.date = DateTime.Now;
+                donhang.Gia = giohang.Gia;
+                donhang.soluong = giohang.soluong;
+                donhang.Thanhtien = giohang.soluong * giohang.Gia.GetValueOrDefault(0);
+                donhang.Status = false;
+                donhang.MaKV = giohang.MaKV;
                 donhang.Diachi = address;
                 donhang.Name = shipName;
                 donhang.Phone = mobile;
                 donhang.email = email;
-                donhang.MaKV = giohang.MaKV;
-                donhang.soluong = giohang.soluong;
-                donhang.Gia = giohang.Gia;
                 db.DonHangs.Add(donhang);
-                db.GioHangs.Remove(giohang);                                                             
+                var data = db.GioHangs.Where(x=>x.ID_GH==giohang.ID_GH).ToList();
+                if (data.Count>0)
+                {
+                    db.GioHangs.Remove(data[0]);
+                }                                                                             
                 db.SaveChanges();
                 return true;
             }

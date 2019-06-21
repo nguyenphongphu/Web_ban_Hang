@@ -18,7 +18,7 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MaSP { get; set; }
 
-        public int? UserID { get; set; }
+        public int UserID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? date { get; set; }
@@ -30,7 +30,7 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int soluong { get; set; }
 
-        public int? MaKV { get; set; }
+        public int MaKV { get; set; }
 
         public virtual Khuvuc Khuvuc { get; set; }
 

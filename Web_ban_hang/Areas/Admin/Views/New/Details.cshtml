@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
+@section header{
+   Chi tiết sản phẩm
+}
 <div>
-    <h4>SanPham</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -66,7 +66,6 @@
         <dd>
             @Html.DisplayFor(model => model.LoaiSanPham.TenLSP)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.BoNho.Ten)
         </dt>
@@ -154,15 +153,6 @@
         <dd>
             @Html.DisplayFor(model => model.HeDieuHanh.Ten)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh.Link)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh.Link)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.HopSo.Ten)
         </dt>

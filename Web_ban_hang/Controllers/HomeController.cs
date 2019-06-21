@@ -62,6 +62,8 @@ namespace Web_ban_hang.Controllers
                             var cartiem = new CartItem();
                             cartiem.sanpham = item.SanPham;
                             cartiem.Quantity = item.soluong;
+                            cartiem.ID = item.ID_GH;
+                            cartiem.MaKV = item.MaKV;
                             if (danhsach!=null)
                             {
                                 foreach (var item1 in danhsach)

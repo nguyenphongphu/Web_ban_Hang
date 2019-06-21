@@ -158,6 +158,7 @@
     <Compile Include="Areas\Admin\Controllers\DonHController.cs" />
     <Compile Include="Areas\Admin\Controllers\HinhAnhController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LienHeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewController.cs" />
     <Compile Include="Areas\Admin\Controllers\UpdateDataController.cs" />
@@ -211,6 +212,8 @@
     <Content Include="assets\admin\dist\css\timeline.css" />
     <Content Include="assets\admin\dist\js\sb-admin-2.js" />
     <Content Include="assets\admin\js\controller\datacontroller.js" />
+    <Content Include="assets\admin\js\controller\donhController.js" />
+    <Content Include="assets\admin\js\controller\LienheController.js" />
     <Content Include="assets\admin\js\controller\userController.js" />
     <Content Include="assets\admin\js\demo\chart-area-demo.js" />
     <Content Include="assets\admin\js\demo\chart-bar-demo.js" />
@@ -3213,6 +3216,7 @@
     <Content Include="Areas\Admin\Views\DonH\ChoTH.cshtml" />
     <Content Include="assets\client\js\cdcjs.js" />
     <Content Include="Areas\Admin\Views\HinhAnh\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LienHe\Index.cshtml" />
     <None Include="assets\client\js\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3273,7 +3277,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\TopMenu.cshtml" />

@@ -9,12 +9,6 @@
     [Table("HinhAnh")]
     public partial class HinhAnh
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HinhAnh()
-        {
-            SanPhams = new HashSet<SanPham>();
-        }
-
         [Key]
         public int IDhinh { get; set; }
 
@@ -30,7 +24,6 @@
 
         public int? STTANH { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        public virtual SanPham SanPham { get; set; }
     }
 }

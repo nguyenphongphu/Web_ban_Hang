@@ -1,6 +1,7 @@
 ﻿var common = {
     init: function () {
         common.registerEvent();
+        common.loadcheck();
     },
     registerEvent: function () {
         $("#sanpham a").on('click', function () {
@@ -60,62 +61,62 @@
                             if (res.Chatlieu.length > 0) {
                                 var data = res.Chatlieu;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_CL", "Chat lieu:", html, id));
+                                $('#phantu').append(mang("ID_CL", "Chất liệu:", html, id));
                             }
                             if (res.chongoi.length > 0) {
                                 var data = res.chongoi;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_CN", "Cho Ngoi:", html, id));
+                                $('#phantu').append(mang("ID_CN", "Chỗ ngồi:", html, id));
                             }
                             if (res.doisanxuat.length > 0) {
                                 var data = res.doisanxuat;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_Doi", "Doi San Xuat:", html, id));
+                                $('#phantu').append(mang("ID_Doi", "Đời sản xuất:", html, id));
                             }
                             if (res.dophangia.length > 0) {
                                 var data = res.dophangia;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_DPG", "Do Phan Gia:", html, id));
+                                $('#phantu').append(mang("ID_DPG", "Độ phân giải:", html, id));
                             }
                             if (res.hedieuhanh.length > 0) {
                                 var data = res.hedieuhanh;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_HDH", "He Dieu Hanh:", html, id));
+                                $('#phantu').append(mang("ID_HDH", "Hệ điều hành:", html, id));
                             }
                             if (res.hopso.length > 0) {
                                 var data = res.hopso;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_HS", "Hop So:", html, id));
+                                $('#phantu').append(mang("ID_HS", "Hộp số:", html, id));
                             }
                             if (res.kichthuoc.length > 0) {
                                 var data = res.kichthuoc;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_KT", "Kich Thuoc:", html, id));
+                                $('#phantu').append(mang("ID_KT", "Kích thước:", html, id));
                             }
                             if (res.kieudang.length > 0) {
                                 var data = res.kieudang;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_KD", "Kieu Da:", html, id));
+                                $('#phantu').append(mang("ID_KD", "Kiểu dáng:", html, id));
                             }
                             if (res.loaiTR.length > 0) {
                                 var data = res.loaiTR;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_LTR", "Loai Thoi Trang:", html, id));
+                                $('#phantu').append(mang("ID_LTR", "Loại thời trang:", html, id));
                             }
                             if (res.mausac.length > 0) {
                                 var data = res.mausac;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_MS", "Mau Sac:", html, id));
+                                $('#phantu').append(mang("ID_MS", "Màu sắc:", html, id));
                             }
                             if (res.Mua.length > 0) {
                                 var data = res.Mua;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_M", "Mua:", html, id));
+                                $('#phantu').append(mang("ID_M", "Mùa:", html, id));
                             }
                             if (res.phukien.length > 0) {
                                 var data = res.phukien;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_PK", "Phu Kien:", html, id));
+                                $('#phantu').append(mang("ID_PK", "Phụ kiện:", html, id));
                             }
                             if (res.pin.length > 0) {
                                 var data = res.pin;
@@ -125,7 +126,7 @@
                             if (res.quangduong.length > 0) {
                                 var data = res.quangduong;
                                 var html = optionsl(data);
-                                $('#phantu').append(mang("ID_QD", "Quang Duong:", html, id));
+                                $('#phantu').append(mang("ID_QD", "Quảng đường:", html, id));
                             }
                             if (res.ram.length > 0) {
                                 var data = res.ram;
@@ -211,6 +212,44 @@
             });
         }
             
+    },
+    loadcheck: function () {
+        $("form").on("submit", function () {
+
+            var has_empty = false;
+            var khuvuc = $('#MaKV').val();
+            var tieude = $('#TieuDe').val();
+            var mota = $('#Mota').val();
+            var gia = $('#GiaBan').val();
+            var malsp = $('#MaLSP').val();
+            if (khuvuc.trim() != null) {
+                has_empty = true;
+            } else {
+                alert("chua chon khu vuc");
+            }
+            if (tieude.trim() != null) {
+                has_empty = true;
+            } else {
+                alert("tieu đề không được trống");
+            }
+            if (mota.trim() != null) {
+                has_empty = true;
+            } else {
+                alert("Mô tảkhông được trống");
+            }
+            if (gia.trim() != null) {
+                has_empty = true;
+            } else {
+                alert("Giá không được trống");
+            }
+            if (malsp.trim() != null) {
+                has_empty = true;
+            } else {
+                alert("Chưa chọn loại sản phẩm");
+            }
+            return has_empty;
+        });
+       
     }
 }
 common.init();

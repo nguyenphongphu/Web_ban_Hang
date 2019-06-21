@@ -40,6 +40,8 @@ namespace Web_ban_hang.Controllers
                             cartiem.sanpham = item.SanPham;
                             cartiem.Quantity = item.soluong;
                             cartiem.check = false;
+                            cartiem.ID = item.ID_GH;
+                            cartiem.MaKV = item.MaKV;
                             if (danhsach!=null)
                             {
                                 foreach (var item1 in danhsach)
@@ -121,10 +123,11 @@ namespace Web_ban_hang.Controllers
                 else
                 {
                     //tạo mới đối tượng cart item
-                    var item = new CartItem();
-                    item.sanpham = product;
+                    var item = new CartItem(); 
+                    item.sanpham = product.SanPham;
                     item.Quantity = quantity;
                     item.check = false;
+                    item.MaKV = product.MaKV;
                     list.Add(item);
                 }
                 //Gán vào session
@@ -134,9 +137,10 @@ namespace Web_ban_hang.Controllers
             {
                 //tạo mới đối tượng cart item
                 var item = new CartItem();
-                item.sanpham = product;
+                item.sanpham = product.SanPham;
                 item.Quantity = quantity;
                 item.check = false;
+                item.MaKV = product.MaKV;
                 var list = new List<CartItem>();
                 list.Add(item);
                 //Gán vào session
@@ -188,10 +192,14 @@ namespace Web_ban_hang.Controllers
                         gioHang.Gia = item.sanpham.GiaBan;
                         gioHang.soluong = item.Quantity;
                         gioHang.UserID = session.UserID;
-                        new GioHangDao().insertdonhang(gioHang, shipName, mobile, address, email);                        
+                        gioHang.ID_GH = item.ID;
+                        gioHang.MaKV = item.MaKV;
+                        new GioHangDao().insertdonhang(gioHang, shipName, mobile, address, email);
+                        new NewDao().updateSL(item.sanpham.MaSP, item.Quantity);                       
                     }
 
                 }
+                
                 string content = null;
                 foreach (var item in cart)
                 {
@@ -204,7 +212,14 @@ namespace Web_ban_hang.Controllers
                                  "<td><img src='https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/MinhHieu/huong-dan-cach-tao-link-download-truc-tiep-tu-google-driver-1.png' width='100' /></td>" +
                         "<td>" + item.Quantity + "</td>" +
                                  "<td>" + total + "</td>" +
-                             "</tr>";
+                             "</tr>";                        
+                    }
+                }
+                for (int i = 0; i < cart.Count; i++)
+                {
+                    if (cart[i].check)
+                    {
+                        cart.Remove(cart[i]);
                     }
                 }
                 string body = "<!DOCTYPE html>" +
@@ -214,7 +229,8 @@ namespace Web_ban_hang.Controllers
                                 "<title>Thông tin đơn hàng mới từ khách hàng:" + shipName + "</title>" +
                             "</head>" +
                             "<body>" +
-                                "Thông tin đơn hàng mới từ khách hàng: " + shipName + "<br />" +
+                            "<b>ĐÂY LÀ EMAIL TỰ ĐỘNG</b> <br />" +
+                                 "Thông tin đơn hàng mới từ khách hàng: " + shipName + "<br />" +
                                 "Điện thoại: " + mobile + " <br />" +
                                 "Email: " + email + "<br />" +
                                 "Địa chỉ: " + address + "<br />" +

@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -57,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\CheckData.cs" />
+    <Compile Include="Dao\ContactDao.cs" />
     <Compile Include="Dao\DangtinDao.cs" />
     <Compile Include="Dao\DataDao.cs" />
     <Compile Include="Dao\DeleteData.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="EF\DoiSX.cs" />
     <Compile Include="EF\DonHang.cs" />
     <Compile Include="EF\DoPhangia.cs" />
+    <Compile Include="EF\Feedback.cs" />
     <Compile Include="EF\GioHang.cs" />
     <Compile Include="EF\Hang.cs" />
     <Compile Include="EF\HeDieuHanh.cs" />

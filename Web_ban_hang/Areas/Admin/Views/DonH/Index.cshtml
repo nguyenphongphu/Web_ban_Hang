@@ -47,13 +47,6 @@
                                         <td>@item.email</td>
                                         <td>@item.Taikhoan.Username</td>
                                         <td>
-                                            @Ajax.ActionLink("Gửi", "GuiHang", new { @id = item.ID_DH }, new AjaxOptions
-                                           {
-                                            Confirm = "Bạn có muốn gửi hàng bản ghi này?",
-                                            OnComplete = "$('#row_" + @item.ID_DH + "').remove()",
-                                            HttpMethod = "POST"
-                                           })
-                                            |
                                             @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID_DH }, new AjaxOptions
                                             {
                                             Confirm = "Bạn có muốn xoá bản ghi này?",

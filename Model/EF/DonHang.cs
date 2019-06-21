@@ -12,20 +12,20 @@ namespace Model.EF
         [Key]
         public int ID_DH { get; set; }
 
-        public int? MaSP { get; set; }
+        public int MaSP { get; set; }
 
-        public int? UserID { get; set; }
+        public int UserID { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
 
         public decimal? Gia { get; set; }
 
         public int soluong { get; set; }
 
-        public int? Thanhtien { get; set; }
+        public decimal? Thanhtien { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public int? MaKV { get; set; }
 

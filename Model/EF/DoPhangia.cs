@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -19,10 +19,8 @@
         public int ID_DPG { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Độ phân giả:")]
         public string Ten { get; set; }
 
-        [Display(Name = "Loại sản phẩm: ")]
         public int? MaLSP { get; set; }
 
         public int? STT { get; set; }

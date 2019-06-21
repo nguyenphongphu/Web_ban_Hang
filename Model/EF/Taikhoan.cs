@@ -20,8 +20,6 @@
         [Key]
         public int UserID { get; set; }
 
-  
-        [StringLength(32)]
         [Display(Name = "Tài khoản:")]
         [Required(ErrorMessage = "Bạn chưa nhập tên tài khoản")]
         public string Username { get; set; }

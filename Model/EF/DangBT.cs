@@ -16,9 +16,9 @@ namespace Model.EF
 
         public int MaSP { get; set; }
 
-        public int? MaKV { get; set; }
+        public int MaKV { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public int Xem { get; set; }
 

@@ -15,19 +15,25 @@ namespace Web_ban_hang.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var data = new DonHangDao().donHang_TH();
-            return View();
+            return View(data);
         }
         public ActionResult ChoTH()
         {
             var data = new DonHangDao().donHang_CTH();
-            return View();
+            return View(data);
         }
         [HttpDelete]
         public ActionResult Delete(int id)
         {
             new Model.Dao.DonHangDao().Delete(id);
-            return RedirectToAction("Inhex");
+            return RedirectToAction("Index");
         }
-        
+        [HttpPost]
+        public ActionResult GuiHang(int id)
+        {
+            new Model.Dao.DonHangDao().GuiHang(id);
+            return RedirectToAction("Index", "DonH");
+        }
+
     }
 }

@@ -7,6 +7,9 @@
 @section header{
     Danh sách bản đăng tin
 }
+@section jsFooter{
+<script src="/assets/admin/js/controller/donhController.js"></script>
+}
 <div class="row">
 
     <div class="col-lg-12">
@@ -23,6 +26,7 @@
                                 <th>Tài khoản</th>
                                 <th>Mã sản phẩn</th>
                                 <th>Khu vục</th>
+                                <td>Trạng Thái</td>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -36,6 +40,7 @@
                                         <a href="/Admin/New/Details/@item.MaSP">@item.SanPham.TenSP</a>
                                     </td>
                                     <td>@item.Khuvuc.TenKV</td>
+                                    <td><a href="java:" class="btn-active" data-id="@item.STT">@Html.Raw(item.Status ? "<strong>Kích hoạt</strong>" : "Khoá")</a></td>
                                     <td>
 
                                         @Ajax.ActionLink("Xoá", "Delete", new { @id = item.STT }, new AjaxOptions
@@ -46,9 +51,9 @@
                                    })
                                     </td>
                                 </tr>
-                            }           
+                            }
                         </tbody>
-                    </table>                    
+                    </table>
                 </div>
                 <!-- /.table-responsive -->
             </div>

@@ -19,11 +19,12 @@
         public int ID_KT { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Kích thước")]
+        [Display(Name = "Kích thước:")]
         public string Ten { get; set; }
 
         [Display(Name = "Loại sản phẩm: ")]
         public int? MaLSP { get; set; }
+
 
         public int? STT { get; set; }
 
