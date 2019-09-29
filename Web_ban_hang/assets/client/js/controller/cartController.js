@@ -1,6 +1,7 @@
 ﻿var so = 0;
 var dataMaSP = {};
 var tong = 0;
+soluong = 0;
 var cart = {
     init: function () {
         cart.regEvents();
@@ -59,6 +60,7 @@ var cart = {
             var listProduct = $('.txtQuantity');
             var cartList = [];
             $.each(listProduct, function (i, item) {
+                soluong = $(item).val();
                 cartList.push({
                     Quantity: $(item).val(),
                     sanpham: {
@@ -75,6 +77,8 @@ var cart = {
                 success: function (res) {
                     if (res.status == true) {
                         window.location.href = "/gio-hang";
+                    } else {
+                        alert("vượt quá số lượng trong kho");
                     }
                 }
             })

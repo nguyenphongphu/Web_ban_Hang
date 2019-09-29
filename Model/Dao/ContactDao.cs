@@ -20,6 +20,10 @@ namespace Model.Dao
         {
             return db.Feedbacks.ToList();
         }
+        public Feedback feedbackid(int id)
+        {
+            return db.Feedbacks.Find(id);
+        }
         public int InsertFeedBack(Feedback fb)
         {
             db.Feedbacks.Add(fb);
@@ -32,9 +36,6 @@ namespace Model.Dao
             try
             {
                 var data = db.Feedbacks.Find(feedback.FeedbackID);
-                data.Noidung = feedback.Noidung;
-                data.Status = true;
-                db.SaveChanges();
                 string body = "<!DOCTYPE html>" +
                                 "<html>" +
                                 "<head>" +
@@ -46,6 +47,7 @@ namespace Model.Dao
                                     "Điện thoại: " + feedback.Phone + " <br />" +
                                     "Email: " + feedback.Email + "<br />" +
                                     "Địa chỉ: " + feedback.Address + "<br />" +
+                                    "Câu hỏi: " + feedback.Content + "<br />" +
                                     "<div class='content'>" +
                                     "<div class='section group'>" +
                                        feedback.Noidung +
@@ -57,6 +59,9 @@ namespace Model.Dao
 
                 new MailHelper().SendMailTL(feedback.Email, "Trả lởi từ Shop Bán Đồ Củ", body);
                 new MailHelper().SendMailTL(toEmail, "Trả lởi từ Shop Bán Đồ Củ", body);
+                data.Noidung = feedback.Noidung;
+                data.Status = true;
+                db.SaveChanges();
                 return true;
             }
             catch (Exception)

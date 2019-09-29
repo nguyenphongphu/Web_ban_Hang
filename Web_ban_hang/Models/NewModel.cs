@@ -21,6 +21,7 @@ namespace Web_ban_hang.Models
         public string Mota { get; set; }
 
         [Display(Name = "Giá:")]
+        [Required(ErrorMessage = "Bạn chưa nhập giá")]
         public decimal GiaBan { get; set; }
 
         [Display(Name = "Loại sản phẩm:")]

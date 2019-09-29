@@ -21,16 +21,18 @@ namespace Web_ban_hang.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-               var check= new ContactDao().gui(feedback);
+                var data = new ContactDao().feedbackid(feedback.FeedbackID);
+                data.Noidung = feedback.Noidung;
+               var check= new ContactDao().gui(data);
                 if (check)
                 {
                     SetAlert("gửi thành công", "success");
-                    RedirectToAction("Index", "LienHe");
+                    return RedirectToAction("Index", "LienHe");
                 }
                 else
                 {
                     SetAlert("gửi không thành công", "success");
-                    RedirectToAction("Index", "LienHe");
+                    return RedirectToAction("Index", "LienHe");
                 }
                 
             }

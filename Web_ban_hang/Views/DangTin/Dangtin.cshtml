@@ -18,12 +18,13 @@
                 <div class="header_bottom_left">
                     <div class="nav" style="padding:10px">
                         <div class="dropdown">
+                            @Html.ValidationMessageFor(model => model.MaKV, "", new { @class = "text-danger" })
                             <button class="dropdown-toggl btn btn-danger" data-toggle=dropdown id="bt-tinh">
                                 <span id="tinh">Toàn quốc</span>
                                 <span class="caret"></span>
                             </button>
                             <div class="an_top1">
-                                @Html.TextBoxFor(model => model.MaKV, htmlAttributes: new { @id = "tinh1" })                                
+                                @Html.TextBoxFor(model => model.MaKV)
                             </div>
                             <ul class=" dropdown-menu btn-toolbar menu-tinh" role="toolbar" id="id-ten-t">
                                 @foreach (var item in tinh)
@@ -82,7 +83,6 @@
                         </div>
                         <div class="form-group">
                             <div class="form-row" id="phantu">
-
                             </div>
                         </div>
                         <div class="form-group" style="display: none;">
@@ -121,36 +121,36 @@
                                 @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        @{ 
+                        @{
 
                             var user = (Model.EF.Taikhoan)ViewBag.user;
                             if (user != null)
                             {
                                 <div class="form-group">
-                                    <label class="control-label col-md-2">Người đăng </label>
+                                    <label class="control-label col-md-2">Người đăng: </label>
                                     <div class="col-md-5">
                                         <input name="shipName" class="form-control" value="@user.HovaTen" />
-                                    </div>                    
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2">Điện thoại</label>
-                                    <div class="col-md-5"> 
-                                        <input name="mobile" class="form-control" value="@user.Phone" />
-                                    </div>                                      
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-2">Email</label>
+                                    <label class="control-label col-md-2">Điện thoại:</label>
                                     <div class="col-md-5">
-                                         <input name="email" class="form-control" value="@user.Email" />
-                                    </div>                                        
+                                        <input name="mobile" class="form-control" value="@user.Phone" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Email:</label>
+                                    <div class="col-md-5">
+                                        <input name="email" class="form-control" value="@user.Email" />
+                                    </div>
                                 </div>
                             }
-                       }
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Đăng tin" class="btn btn-default" />
-                                        </div>
-                                    </div>
+                        }
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Đăng tin" class="btn btn-default" />
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -179,7 +179,7 @@
     $("#id-ten-t>li>a").on('click', function () {
         var val = $(this).html();
         $("#tinh").html(val);
-        $("#tinh1").val($(this).attr('rel'));
+        $("#MaKV").val($(this).attr('rel'));
     })
     $("#btnBackPost").on('click', function () {
         $(".review-news-box").css("display", "none");

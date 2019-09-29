@@ -119,6 +119,7 @@ namespace Web_ban_hang.Controllers
                     }
                     else
                     {
+                        ModelState.AddModelError("", "đăng tin không đúng.");
                         Session[Web_ban_hang.Common.CommonConstants.IMAGE_SESSION] = null;
                         string link = Server.MapPath("~/Upload/Temp/") + session.UserName;
                         DeleteDirectory(link);
@@ -126,11 +127,17 @@ namespace Web_ban_hang.Controllers
                         DeleteDirectory(link1);
                     }
 
-
+                    return Redirect("/");
                 }
             }
+            else
+            {                
+                var session = (UserLogin)Session[Web_ban_hang.Common.CommonConstants.USER_SESSION];
+                ViewBag.user = new UserDao().GetById(session.UserName);
+                ViewBag.tinh = new KhuvucDao().ListKV();
+            }
 
-            return Redirect("/");
+            return View(dangtin_m);
         }
         private void DeleteDirectory(string path)
         {

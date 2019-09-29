@@ -22,8 +22,8 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Hinh Anh</th>
-                                <th>Tên Sản Phẩn</th>
+                                <th>Hinh Ảnh</th>
+                                <th>Tên Sản Phẩm</th>
                                 <th>Anh FULL</th>
                                 <th>Anh Thumbnail</th>
                             </tr>
@@ -34,7 +34,7 @@
                             <tr id="row_@item.IDhinh">
                                 <td>@item.IDhinh</td>
                                 <td><img src="@item.Link" style="height:100px;width:100px"/></td>
-                                <td><a href="/Admin/New/Details/@item.MASP">@item.MASP</a></td>
+                                <td><a href="/Admin/New/Details/@item.MASP">@item.SanPham.TenSP</a></td>
                                 <td>@item.AnhFull</td>
                                 <td>@item.AnhThumbnail</td>
                             </tr>

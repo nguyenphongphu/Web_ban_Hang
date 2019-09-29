@@ -93,7 +93,18 @@ namespace Web_ban_hang.Controllers
                 var jsonItem = jsonCart.SingleOrDefault(x => x.sanpham.MaSP == item.sanpham.MaSP);
                 if (jsonItem != null)
                 {
-                    item.Quantity = jsonItem.Quantity;
+                    if (item.sanpham.soluong >= jsonItem.Quantity)
+                    {
+                        item.Quantity = jsonItem.Quantity;
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        });
+                    }                   
+                    
                 }
             }
             Session[CartSession] = sessionCart;
